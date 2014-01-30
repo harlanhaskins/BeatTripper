@@ -147,7 +147,7 @@
     
     NSString *hoursString = hours > 0 ? [NSString stringWithFormat:@"%li:", (long)hours] : @"";
     
-    NSString *intervalString = [NSString stringWithFormat:@"%@%li:%02li", hoursString, minutes, seconds];
+    NSString *intervalString = [NSString stringWithFormat:@"%@%li:%02li", hoursString, (long)minutes, (long)seconds];
     
     return intervalString;
 }
