@@ -76,7 +76,7 @@
 - (void) removeSongAtIndex:(NSInteger)songIndex {
     [self.songs removeObjectAtIndex:songIndex];
     
-    [cell.containingTableView deleteRowsAtIndexPaths:@[[cell.containingTableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.tableView deleteRowsAtIndexPaths:@[[cell.containingTableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationLeft];
     [self performSelector:@selector(fillSongs) withObject:nil afterDelay:0.5];
 }
 
