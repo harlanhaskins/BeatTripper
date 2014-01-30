@@ -8,12 +8,15 @@
 
 #import "PlaylistViewController.h"
 #import "PlaylistTableViewModel.h"
+#import "MusicView.h"
 
 @interface PlaylistViewController ()
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) PlaylistTableViewModel *model;
+
+@property (nonatomic) MusicView *musicView;
 
 @end
 
@@ -71,8 +74,21 @@
 
 - (void) viewDidLayoutSubviews {
     self.tableView.frame = self.view.frame;
-    self.tableView.height *= 0.5;
+    self.tableView.height /= 2.0;
     [self.tableView centerToParent];
+    
+    CGRect musicViewRect;
+    if (self.musicView) {
+        musicViewRect = self.musicView.frame;
+        self.musicView = nil;
+    }
+    else {
+        musicViewRect.origin.y = self.tableView.bottom;
+        musicViewRect.size.width = self.view.width;
+        musicViewRect.size.height = self.view.height - musicViewRect.origin.y;
+    }
+    self.musicView = [[MusicView alloc] initWithFrame:musicViewRect];
+    [self.view addSubview:self.musicView];
 }
 
 - (void)didReceiveMemoryWarning
