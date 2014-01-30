@@ -19,6 +19,8 @@
 		C985847C1899F79100D52B7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584641899F79100D52B7F /* UIKit.framework */; };
 		C98584841899F79100D52B7F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C98584821899F79100D52B7F /* InfoPlist.strings */; };
 		C98584861899F79100D52B7F /* BeatWalkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584851899F79100D52B7F /* BeatWalkerTests.m */; };
+		C98584911899F8EF00D52B7F /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584901899F8EF00D52B7F /* PlaylistViewController.m */; };
+		C98584941899F9EF00D52B7F /* PlaylistTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,10 @@
 		C98584811899F79100D52B7F /* BeatWalkerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeatWalkerTests-Info.plist"; sourceTree = "<group>"; };
 		C98584831899F79100D52B7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C98584851899F79100D52B7F /* BeatWalkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatWalkerTests.m; sourceTree = "<group>"; };
+		C985848F1899F8EF00D52B7F /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistViewController.h; sourceTree = "<group>"; };
+		C98584901899F8EF00D52B7F /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
+		C98584921899F9EF00D52B7F /* PlaylistTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistTableViewModel.h; sourceTree = "<group>"; };
+		C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,10 @@
 			children = (
 				C985846F1899F79100D52B7F /* AppDelegate.h */,
 				C98584701899F79100D52B7F /* AppDelegate.m */,
+				C985848F1899F8EF00D52B7F /* PlaylistViewController.h */,
+				C98584901899F8EF00D52B7F /* PlaylistViewController.m */,
+				C98584921899F9EF00D52B7F /* PlaylistTableViewModel.h */,
+				C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */,
 				C98584721899F79100D52B7F /* Images.xcassets */,
 				C98584671899F79100D52B7F /* Supporting Files */,
 			);
@@ -240,7 +250,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98584711899F79100D52B7F /* AppDelegate.m in Sources */,
+				C98584941899F9EF00D52B7F /* PlaylistTableViewModel.m in Sources */,
 				C985846D1899F79100D52B7F /* main.m in Sources */,
+				C98584911899F8EF00D52B7F /* PlaylistViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

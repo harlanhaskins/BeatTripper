@@ -7,14 +7,24 @@
 //
 
 #import "AppDelegate.h"
+#import "PlaylistViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    UINavigationController *navController = [UINavigationController new];
+    
+    PlaylistViewController *playlistVC = [PlaylistViewController new];
+    navController.viewControllers = @[playlistVC];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.window.rootViewController = playlistVC;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
