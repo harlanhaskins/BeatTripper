@@ -12,7 +12,7 @@
 
 @interface PlaylistTableViewModel ()
 
-@property (nonatomic) NSArray *songs;
+@property (nonatomic) NSMutableArray *songs;
 @property (nonatomic) MPMusicPlayerController *musicController;
 
 @end
@@ -49,7 +49,14 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MediaItemTableViewCell *cell = [MediaItemTableViewCell cellWithMediaItem:self.songs[indexPath.row] containingTableView:tableView];
+    cell.delegate = self;
     return cell;
+}
+
+- (void) swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+{
+    [self.songs removeObjectAtIndex:index];
+    [cell.containingTableView deleteRowsAtIndexPaths:@[[cell.containingTableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationLeft];
 }
 
 @end

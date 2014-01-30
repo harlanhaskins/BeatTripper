@@ -22,16 +22,11 @@
 {
     [super viewDidLoad];
     
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     self.view.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1.0];
     
     self.model = [PlaylistTableViewModel model];
-    
-    __weak PlaylistViewController *weakSelf = self;
-    self.model.reloadTableViewCell = ^{
-        [weakSelf.tableView reloadData];
-    };
-    
-    [self setNeedsStatusBarAppearanceUpdate];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     

@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SWTableViewCell.h"
 
-@interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate>
+@interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate>
 
 + (instancetype) model;
-
-@property (nonatomic, copy) void (^reloadTableViewCell)();
 
 @end
