@@ -439,6 +439,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeatWalker/BeatWalker-Prefix.pch";
 				INFOPLIST_FILE = "BeatWalker/BeatWalker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -452,6 +453,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeatWalker/BeatWalker-Prefix.pch";
 				INFOPLIST_FILE = "BeatWalker/BeatWalker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -474,6 +476,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "BeatWalkerTests/BeatWalkerTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -493,6 +496,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeatWalker/BeatWalker-Prefix.pch";
 				INFOPLIST_FILE = "BeatWalkerTests/BeatWalkerTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -518,6 +522,7 @@
 				C985848B1899F79100D52B7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C985848C1899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatWalkerTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +531,7 @@
 				C985848E1899F79100D52B7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
