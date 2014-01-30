@@ -70,6 +70,10 @@
 - (void) swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
     NSInteger songIndex = [self.tableView indexPathForCell:cell].row;
+    [self removeSongAtIndex:songIndex];
+}
+
+- (void) removeSongAtIndex:(NSInteger)songIndex {
     [self.songs removeObjectAtIndex:songIndex];
     
     [cell.containingTableView deleteRowsAtIndexPaths:@[[cell.containingTableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationLeft];
