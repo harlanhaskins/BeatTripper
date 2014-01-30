@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C93D9421189AEEFD00D1A336 /* UIColor+BeatWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */; };
 		C98584611899F79100D52B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584601899F79100D52B7F /* Foundation.framework */; };
 		C98584631899F79100D52B7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584621899F79100D52B7F /* CoreGraphics.framework */; };
 		C98584651899F79100D52B7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584641899F79100D52B7F /* UIKit.framework */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C93D941F189AEEFD00D1A336 /* UIColor+BeatWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BeatWalker.h"; sourceTree = "<group>"; };
+		C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BeatWalker.m"; sourceTree = "<group>"; };
 		C985845D1899F79100D52B7F /* BeatWalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatWalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98584601899F79100D52B7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C98584621899F79100D52B7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -167,6 +170,8 @@
 				C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */,
 				C985849D189A107100D52B7F /* UIView+Positioning.h */,
 				C985849B189A106A00D52B7F /* UIView+Positioning.m */,
+				C93D941F189AEEFD00D1A336 /* UIColor+BeatWalker.h */,
+				C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				C98584B1189A178C00D52B7F /* SWUtilityButtonView.m in Sources */,
 				C98584911899F8EF00D52B7F /* PlaylistViewController.m in Sources */,
 				C98584AF189A178C00D52B7F /* SWTableViewCell.m in Sources */,
+				C93D9421189AEEFD00D1A336 /* UIColor+BeatWalker.m in Sources */,
 				C98584B0189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				C985849A189A05B300D52B7F /* MediaItemTableViewCell.m in Sources */,
 			);

@@ -28,6 +28,10 @@
     cell.item = item;
     cell.textLabel.text = item.title;
     cell.detailTextLabel.text = item.artist;
+    
+    cell.textLabel.textColor =
+    cell.detailTextLabel.textColor = [UIColor beatWalkerTextColor];
+    
     cell.imageView.image = item.artwork;
     [cell.imageView setClipsToBounds:YES];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;

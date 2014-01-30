@@ -130,7 +130,7 @@
     UILabel *label = [UILabel new];
     label.text = [self stringForTimeInterval:[self playbackDuration]];
     label.font = [UIFont systemFontOfSize:10.0];
-    label.textColor = [UIColor lightGrayColor];
+    label.textColor = [UIColor beatWalkerSubtleTextColor];
     label.textAlignment = NSTextAlignmentCenter;
     [label sizeToFit];
     return label;
@@ -150,6 +150,10 @@
     NSString *intervalString = [NSString stringWithFormat:@"%@%li:%02li", hoursString, (long)minutes, (long)seconds];
     
     return intervalString;
+}
+
+- (NSString*) description {
+    return [NSString stringWithFormat:@"<MPMediaItem\n\t   Artist: %@\n\t   Title: %@>", self.artist, self.title];
 }
 
 - (NSString *) lyrics

@@ -12,5 +12,10 @@
 @interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate>
 
 + (instancetype) model;
+- (void) loadSongs;
+
+@property (nonatomic) UITableView *tableView;
+
+@property (nonatomic, copy) void (^refreshTableViewBlock)();
 
 @end

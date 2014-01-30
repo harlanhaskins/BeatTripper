@@ -13,6 +13,7 @@
 @interface PlaylistTableViewModel ()
 
 @property (nonatomic) NSMutableArray *songs;
+@property (nonatomic) NSMutableArray *collections;
 @property (nonatomic) MPMusicPlayerController *musicController;
 
 @end
@@ -22,25 +23,38 @@
 + (instancetype) model {
     PlaylistTableViewModel *model = [PlaylistTableViewModel new];
     model.musicController = [MPMusicPlayerController applicationMusicPlayer];
-    [model loadSongs];
     return model;
 }
 
 - (void) loadSongs {
+    if (self.songs) {
+        self.songs = nil;
+    }
     MPMediaQuery *songQuery = [MPMediaQuery songsQuery];
-    NSMutableArray *songs = [songQuery collections].mutableCopy;
-    [self setSongs:songs];
+    self.collections = [songQuery collections].mutableCopy;
+    [self fillSongs];
 }
 
-- (void) setSongs:(NSMutableArray *)songs {
-    NSMutableArray *newSongs = [NSMutableArray array];
-    for (NSInteger i = 0; i < 40; i++) {
-        NSInteger index = arc4random_uniform((u_int32_t)songs.count);
-        MPMediaItem *song = [songs[index] items][0];
-        [songs removeObjectAtIndex:index];
-        [newSongs addObject:song];
+- (void) fillSongs {
+    if (!self.songs) {
+        self.songs = [NSMutableArray array];
     }
-    _songs = newSongs;
+    
+    const NSUInteger queueSize = 40;
+    
+    NSUInteger songs = self.songs.count;
+    NSUInteger collections = self.collections.count;
+    
+    while (songs < queueSize && collections > 0) {
+        NSUInteger randomIndex = arc4random_uniform((u_int32_t)collections);
+        MPMediaItem *song = [self.collections[randomIndex] items][0];
+        [self.collections removeObjectAtIndex:randomIndex];
+        [self.songs addObject:song];
+        
+        songs = self.songs.count;
+        collections = self.collections.count;
+    }
+    self.refreshTableViewBlock();
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -55,8 +69,15 @@
 
 - (void) swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
-    [self.songs removeObjectAtIndex:index];
+    NSInteger songIndex = [self.tableView indexPathForCell:cell].row;
+    [self.songs removeObjectAtIndex:songIndex];
+    
     [cell.containingTableView deleteRowsAtIndexPaths:@[[cell.containingTableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationLeft];
+    [self performSelector:@selector(fillSongs) withObject:nil afterDelay:0.5];
+}
+
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = tableView.backgroundColor;
 }
 
 @end
