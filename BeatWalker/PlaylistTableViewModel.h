@@ -10,4 +10,8 @@
 
 @interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate>
 
++ (instancetype) model;
+
+@property (nonatomic, copy) void (^reloadTableViewCell)();
+
 @end

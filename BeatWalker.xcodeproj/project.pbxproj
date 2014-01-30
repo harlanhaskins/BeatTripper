@@ -21,6 +21,8 @@
 		C98584861899F79100D52B7F /* BeatWalkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584851899F79100D52B7F /* BeatWalkerTests.m */; };
 		C98584911899F8EF00D52B7F /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584901899F8EF00D52B7F /* PlaylistViewController.m */; };
 		C98584941899F9EF00D52B7F /* PlaylistTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */; };
+		C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */; };
+		C985849A189A05B300D52B7F /* MediaItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9858499189A05B300D52B7F /* MediaItemTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,10 @@
 		C98584901899F8EF00D52B7F /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
 		C98584921899F9EF00D52B7F /* PlaylistTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistTableViewModel.h; sourceTree = "<group>"; };
 		C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableViewModel.m; sourceTree = "<group>"; };
+		C98584951899FBC400D52B7F /* MPMediaItem-Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem-Properties.h"; sourceTree = "<group>"; };
+		C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem-Properties.m"; sourceTree = "<group>"; };
+		C9858498189A05B300D52B7F /* MediaItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaItemTableViewCell.h; sourceTree = "<group>"; };
+		C9858499189A05B300D52B7F /* MediaItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaItemTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,8 @@
 				C98584901899F8EF00D52B7F /* PlaylistViewController.m */,
 				C98584921899F9EF00D52B7F /* PlaylistTableViewModel.h */,
 				C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */,
+				C9858498189A05B300D52B7F /* MediaItemTableViewCell.h */,
+				C9858499189A05B300D52B7F /* MediaItemTableViewCell.m */,
 				C98584721899F79100D52B7F /* Images.xcassets */,
 				C98584671899F79100D52B7F /* Supporting Files */,
 			);
@@ -132,6 +140,8 @@
 				C98584691899F79100D52B7F /* InfoPlist.strings */,
 				C985846C1899F79100D52B7F /* main.m */,
 				C985846E1899F79100D52B7F /* BeatWalker-Prefix.pch */,
+				C98584951899FBC400D52B7F /* MPMediaItem-Properties.h */,
+				C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -250,9 +260,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98584711899F79100D52B7F /* AppDelegate.m in Sources */,
+				C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */,
 				C98584941899F9EF00D52B7F /* PlaylistTableViewModel.m in Sources */,
 				C985846D1899F79100D52B7F /* main.m in Sources */,
 				C98584911899F8EF00D52B7F /* PlaylistViewController.m in Sources */,
+				C985849A189A05B300D52B7F /* MediaItemTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,12 @@
 //
 
 #import "PlaylistViewController.h"
+#import "PlaylistTableViewModel.h"
 
 @interface PlaylistViewController ()
 
 @property (nonatomic) UITableView *tableView;
+@property (nonatomic) PlaylistTableViewModel *model;
 
 @end
 
@@ -20,7 +22,17 @@
 {
     [super viewDidLoad];
     
+    self.model = [PlaylistTableViewModel model];
+    
+    __weak PlaylistViewController *weakSelf = self;
+    self.model.reloadTableViewCell = ^{
+        [weakSelf.tableView reloadData];
+    };
+    
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    
+    self.tableView.dataSource = self.model;
+    self.tableView.delegate = self.model;
     
     [self.view addSubview:self.tableView];
 }
