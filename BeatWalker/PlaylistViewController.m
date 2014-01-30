@@ -22,6 +22,8 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1.0];
+    
     self.model = [PlaylistTableViewModel model];
     
     __weak PlaylistViewController *weakSelf = self;
@@ -29,12 +31,25 @@
         [weakSelf.tableView reloadData];
     };
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    [self setNeedsStatusBarAppearanceUpdate];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     
     self.tableView.dataSource = self.model;
     self.tableView.delegate = self.model;
     
     [self.view addSubview:self.tableView];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void) viewDidLayoutSubviews {
+    self.tableView.frame = self.view.frame;
+    self.tableView.height *= 0.66;
+    [self.tableView centerToParent];
 }
 
 - (void)didReceiveMemoryWarning

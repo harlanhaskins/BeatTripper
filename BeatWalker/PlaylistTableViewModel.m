@@ -30,24 +30,13 @@
     MPMediaQuery *songQuery = [MPMediaQuery songsQuery];
     NSMutableArray *songs = [songQuery collections].mutableCopy;
     [self setSongs:songs];
-    [self.musicController setQueueWithQuery:songQuery];
-    self.musicController.shuffleMode = MPMusicShuffleModeSongs;
-}
-
-- (NSMutableArray*) allSongsFromCollectionArray:(NSArray*)collections {
-    NSMutableArray *songs = [NSMutableArray array];
-    for (MPMediaItemCollection *collection in collections) {
-        [songs addObjectsFromArray:[collection items]];
-    }
-    return songs;
 }
 
 - (void) setSongs:(NSMutableArray *)songs {
-    songs = [self allSongsFromCollectionArray:songs];
     NSMutableArray *newSongs = [NSMutableArray array];
     for (NSInteger i = 0; i < 40; i++) {
         NSInteger index = arc4random_uniform((u_int32_t)songs.count);
-        MPMediaItem *song = songs[index];
+        MPMediaItem *song = [songs[index] items][0];
         [songs removeObjectAtIndex:index];
         [newSongs addObject:song];
     }
@@ -59,7 +48,7 @@
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [MediaItemTableViewCell cellWithMediaItem:self.songs[indexPath.row]];
+    MediaItemTableViewCell *cell = [MediaItemTableViewCell cellWithMediaItem:self.songs[indexPath.row] containingTableView:tableView];
     return cell;
 }
 

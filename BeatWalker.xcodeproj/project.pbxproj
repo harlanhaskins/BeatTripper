@@ -23,6 +23,13 @@
 		C98584941899F9EF00D52B7F /* PlaylistTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */; };
 		C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */; };
 		C985849A189A05B300D52B7F /* MediaItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9858499189A05B300D52B7F /* MediaItemTableViewCell.m */; };
+		C985849C189A106A00D52B7F /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = C985849B189A106A00D52B7F /* UIView+Positioning.m */; };
+		C98584AC189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584A1189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m */; };
+		C98584AD189A178C00D52B7F /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584A3189A178C00D52B7F /* SWCellScrollView.m */; };
+		C98584AE189A178C00D52B7F /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584A5189A178C00D52B7F /* SWLongPressGestureRecognizer.m */; };
+		C98584AF189A178C00D52B7F /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584A7189A178C00D52B7F /* SWTableViewCell.m */; };
+		C98584B0189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584A9189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m */; };
+		C98584B1189A178C00D52B7F /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584AB189A178C00D52B7F /* SWUtilityButtonView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +67,21 @@
 		C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem-Properties.m"; sourceTree = "<group>"; };
 		C9858498189A05B300D52B7F /* MediaItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaItemTableViewCell.h; sourceTree = "<group>"; };
 		C9858499189A05B300D52B7F /* MediaItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaItemTableViewCell.m; sourceTree = "<group>"; };
+		C985849B189A106A00D52B7F /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
+		C985849D189A107100D52B7F /* UIView+Positioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Positioning.h"; sourceTree = "<group>"; };
+		C985849F189A178C00D52B7F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C98584A0189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
+		C98584A1189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
+		C98584A2189A178C00D52B7F /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = "<group>"; };
+		C98584A3189A178C00D52B7F /* SWCellScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCellScrollView.m; sourceTree = "<group>"; };
+		C98584A4189A178C00D52B7F /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		C98584A5189A178C00D52B7F /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		C98584A6189A178C00D52B7F /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewCell.h; sourceTree = "<group>"; };
+		C98584A7189A178C00D52B7F /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewCell.m; sourceTree = "<group>"; };
+		C98584A8189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonTapGestureRecognizer.h; sourceTree = "<group>"; };
+		C98584A9189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
+		C98584AA189A178C00D52B7F /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
+		C98584AB189A178C00D52B7F /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,12 +158,15 @@
 		C98584671899F79100D52B7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C985849E189A178C00D52B7F /* SWTableViewCell */,
 				C98584681899F79100D52B7F /* BeatWalker-Info.plist */,
 				C98584691899F79100D52B7F /* InfoPlist.strings */,
 				C985846C1899F79100D52B7F /* main.m */,
 				C985846E1899F79100D52B7F /* BeatWalker-Prefix.pch */,
 				C98584951899FBC400D52B7F /* MPMediaItem-Properties.h */,
 				C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */,
+				C985849D189A107100D52B7F /* UIView+Positioning.h */,
+				C985849B189A106A00D52B7F /* UIView+Positioning.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -162,6 +187,27 @@
 				C98584821899F79100D52B7F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C985849E189A178C00D52B7F /* SWTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C985849F189A178C00D52B7F /* Constants.h */,
+				C98584A0189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.h */,
+				C98584A1189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m */,
+				C98584A2189A178C00D52B7F /* SWCellScrollView.h */,
+				C98584A3189A178C00D52B7F /* SWCellScrollView.m */,
+				C98584A4189A178C00D52B7F /* SWLongPressGestureRecognizer.h */,
+				C98584A5189A178C00D52B7F /* SWLongPressGestureRecognizer.m */,
+				C98584A6189A178C00D52B7F /* SWTableViewCell.h */,
+				C98584A7189A178C00D52B7F /* SWTableViewCell.m */,
+				C98584A8189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.h */,
+				C98584A9189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m */,
+				C98584AA189A178C00D52B7F /* SWUtilityButtonView.h */,
+				C98584AB189A178C00D52B7F /* SWUtilityButtonView.m */,
+			);
+			name = SWTableViewCell;
+			path = PodFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,9 +307,16 @@
 			files = (
 				C98584711899F79100D52B7F /* AppDelegate.m in Sources */,
 				C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */,
+				C98584AC189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				C98584AE189A178C00D52B7F /* SWLongPressGestureRecognizer.m in Sources */,
+				C98584AD189A178C00D52B7F /* SWCellScrollView.m in Sources */,
+				C985849C189A106A00D52B7F /* UIView+Positioning.m in Sources */,
 				C98584941899F9EF00D52B7F /* PlaylistTableViewModel.m in Sources */,
 				C985846D1899F79100D52B7F /* main.m in Sources */,
+				C98584B1189A178C00D52B7F /* SWUtilityButtonView.m in Sources */,
 				C98584911899F8EF00D52B7F /* PlaylistViewController.m in Sources */,
+				C98584AF189A178C00D52B7F /* SWTableViewCell.m in Sources */,
+				C98584B0189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				C985849A189A05B300D52B7F /* MediaItemTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

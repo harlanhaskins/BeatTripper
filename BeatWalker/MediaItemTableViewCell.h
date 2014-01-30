@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
 @class MPMediaItem;
 
-@interface MediaItemTableViewCell : UITableViewCell
+@interface MediaItemTableViewCell : SWTableViewCell
 
-+ (instancetype) cellWithMediaItem:(MPMediaItem*)item;
++ (instancetype) cellWithMediaItem:(MPMediaItem*)item containingTableView:(UITableView*)tableView;
 
 @end
