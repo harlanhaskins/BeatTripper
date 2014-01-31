@@ -102,7 +102,58 @@
 - (UIImage *) artwork
 {
     MPMediaItemArtwork *artwork = [self valueForProperty: MPMediaItemPropertyArtwork];
-	return [artwork imageWithSize:CGSizeMake(256.0f, 256.0f)];
+    CGSize imageSize = CGSizeMake(256.0f, 256.0f);
+    UIImage *artworkImage = [artwork imageWithSize:imageSize];
+    
+    if (!artworkImage) {
+        artworkImage = [UIImage imageNamed:@"BlankArtwork"];
+    }
+    
+	return [self imageByCropping:artworkImage toSize:imageSize];
+}
+
+- (UIImage *)imageByCropping:(UIImage *)image toSize:(CGSize)size
+{
+    double x = (image.size.width - size.width) / 2.0;
+    double y = (image.size.height - size.height) / 2.0;
+    
+    CGRect cropRect = CGRectMake(x, y, size.height, size.width);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    
+    UIImage *cropped = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    return cropped;
+}
+
+- (UILabel*) cellTimeStampLabel {
+    UILabel *label = [UILabel new];
+    label.text = [self stringForTimeInterval:[self playbackDuration]];
+    label.font = [UIFont systemFontOfSize:10.0];
+    label.textColor = [UIColor beatWalkerSubtleTextColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    [label sizeToFit];
+    return label;
+}
+
+-(NSString*)stringForTimeInterval:(NSTimeInterval)timeInterval{
+    NSInteger hours = floor(timeInterval /  (60 * 60) );
+    
+    CGFloat minute_divisor = (NSInteger)timeInterval % (60 * 60);
+    NSInteger minutes = floor(minute_divisor / 60);
+    
+    CGFloat seconds_divisor = (NSInteger)timeInterval % 60;
+    NSInteger seconds = ceil(seconds_divisor);
+    
+    NSString *hoursString = hours > 0 ? [NSString stringWithFormat:@"%li:", (long)hours] : @"";
+    
+    NSString *intervalString = [NSString stringWithFormat:@"%@%li:%02li", hoursString, (long)minutes, (long)seconds];
+    
+    return intervalString;
+}
+
+- (NSString*) description {
+    return [NSString stringWithFormat:@"<MPMediaItem\n\t   Artist: %@\n\t   Title: %@>", self.artist, self.title];
 }
 
 - (NSString *) lyrics

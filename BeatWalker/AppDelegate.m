@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PlaylistViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @implementation AppDelegate
 
@@ -15,6 +16,9 @@
 {
     
     UINavigationController *navController = [UINavigationController new];
+    
+    // Stop playback if music is playing.
+    [[MPMusicPlayerController iPodMusicPlayer] stop];
     
     PlaylistViewController *playlistVC = [PlaylistViewController new];
     navController.viewControllers = @[playlistVC];

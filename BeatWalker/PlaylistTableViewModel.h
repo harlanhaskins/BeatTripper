@@ -7,11 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SWTableViewCell.h"
+#import "MusicView.h"
+#import "PlayPauseButton.h"
 
-@interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate>
+@class MPMediaItem;
+
+@interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, MusicViewDelegate>
 
 + (instancetype) model;
+- (void) loadSongs;
 
-@property (nonatomic, copy) void (^reloadTableViewCell)();
+@property (nonatomic) UITableView *tableView;
+
+@property (nonatomic, copy) void (^refreshTableViewBlock)();
+
+@property (nonatomic, readonly) MPMediaItem *currentSong;
+
+- (void) popSong;
+- (void) unPopSong;
 
 @end

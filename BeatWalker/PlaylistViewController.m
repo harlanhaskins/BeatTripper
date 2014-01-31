@@ -8,11 +8,16 @@
 
 #import "PlaylistViewController.h"
 #import "PlaylistTableViewModel.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "MusicView.h"
 
 @interface PlaylistViewController ()
 
 @property (nonatomic) UITableView *tableView;
+@property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) PlaylistTableViewModel *model;
+
+@property (nonatomic) MusicView *musicView;
 
 @end
 
@@ -22,36 +27,65 @@
 {
     [super viewDidLoad];
     
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     self.model = [PlaylistTableViewModel model];
     
+    self.tableView = [self createTableViewWithRefreshControl];
+    
+    self.model.tableView = self.tableView;
+    
     __weak PlaylistViewController *weakSelf = self;
-    self.model.reloadTableViewCell = ^{
-        [weakSelf.tableView reloadData];
+    self.model.refreshTableViewBlock = ^{
+        [weakSelf reloadTableView];
     };
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    self.tableView.backgroundColor =
+    self.view.backgroundColor = [UIColor beatWalkerBackgroundColor];
+    
+    self.tableView.separatorColor = [UIColor beatWalkerSeparatorColor];
     
     self.tableView.dataSource = self.model;
     self.tableView.delegate = self.model;
     
     [self.view addSubview:self.tableView];
+    
+    self.musicView = [MusicView new];
+    self.musicView.delegate = self.model;
+    [self.view addSubview:self.musicView];
+    
+    [self.model loadSongs];
 }
 
-- (void)didReceiveMemoryWarning
+- (UITableView*) createTableViewWithRefreshControl {
+    UITableViewController *tableVCForRefreshControl = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    tableVCForRefreshControl.refreshControl = [UIRefreshControl new];
+    [tableVCForRefreshControl.refreshControl addTarget:self.model action:@selector(loadSongs) forControlEvents:UIControlEventAllEvents];
+    self.refreshControl = tableVCForRefreshControl.refreshControl;
+    
+    return tableVCForRefreshControl.tableView;
+}
+
+- (void) reloadTableView {
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return UIStatusBarStyleLightContent;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) viewDidLayoutSubviews {
+    self.tableView.frame = self.view.frame;
+    self.tableView.height /= 2.0;
+    [self.tableView centerToParent];
+    
+    CGRect musicViewRect;
+    musicViewRect.origin.y = self.tableView.bottom;
+    musicViewRect.size.width = self.view.width;
+    musicViewRect.size.height = self.view.height - musicViewRect.origin.y;
+    self.musicView.frame = musicViewRect;
 }
-*/
 
 @end
