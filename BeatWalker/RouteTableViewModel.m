@@ -26,8 +26,6 @@
 
 - (void) loadRoutes
 {
-    
-    [self setRoutes:routes];
 }
 
 - (void) setRoutes:(NSMutableArray *)routes
