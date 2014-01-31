@@ -12,6 +12,9 @@
 		A75409E0189B4637000F6B8C /* RouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A75409DF189B4637000F6B8C /* RouteCell.m */; };
 		A75409E5189B4747000F6B8C /* RouteTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A75409E4189B4747000F6B8C /* RouteTableViewModel.m */; };
 		C901774D189B546400692598 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C901774C189B546400692598 /* MediaPlayer.framework */; };
+		C9017754189B5AB500692598 /* MediaItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C901774F189B5AB500692598 /* MediaItemTableViewCell.m */; };
+		C9017755189B5AB500692598 /* PlaylistTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9017751189B5AB500692598 /* PlaylistTableViewModel.m */; };
+		C9017756189B5AB500692598 /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9017753189B5AB500692598 /* PlaylistViewController.m */; };
 		C93D9421189AEEFD00D1A336 /* UIColor+BeatWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */; };
 		C93D9424189AFC4A00D1A336 /* MusicView.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9423189AFC4A00D1A336 /* MusicView.m */; };
 		C93D9427189AFCAD00D1A336 /* PlayPauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9426189AFCAD00D1A336 /* PlayPauseButton.m */; };
@@ -57,6 +60,12 @@
 		A75409E3189B4747000F6B8C /* RouteTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableViewModel.h; sourceTree = "<group>"; };
 		A75409E4189B4747000F6B8C /* RouteTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteTableViewModel.m; sourceTree = "<group>"; };
 		C901774C189B546400692598 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C901774E189B5AB500692598 /* MediaItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaItemTableViewCell.h; sourceTree = "<group>"; };
+		C901774F189B5AB500692598 /* MediaItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaItemTableViewCell.m; sourceTree = "<group>"; };
+		C9017750189B5AB500692598 /* PlaylistTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistTableViewModel.h; sourceTree = "<group>"; };
+		C9017751189B5AB500692598 /* PlaylistTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableViewModel.m; sourceTree = "<group>"; };
+		C9017752189B5AB500692598 /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistViewController.h; sourceTree = "<group>"; };
+		C9017753189B5AB500692598 /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
 		C93D941F189AEEFD00D1A336 /* UIColor+BeatWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BeatWalker.h"; sourceTree = "<group>"; };
 		C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BeatWalker.m"; sourceTree = "<group>"; };
 		C93D9422189AFC4A00D1A336 /* MusicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicView.h; sourceTree = "<group>"; };
@@ -79,14 +88,8 @@
 		C98584811899F79100D52B7F /* BeatWalkerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeatWalkerTests-Info.plist"; sourceTree = "<group>"; };
 		C98584831899F79100D52B7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C98584851899F79100D52B7F /* BeatWalkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatWalkerTests.m; sourceTree = "<group>"; };
-		C985848F1899F8EF00D52B7F /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistViewController.h; path = /Users/Oliver/Desktop/beatwalker/BeatWalker/PlaylistViewController.h; sourceTree = "<absolute>"; };
-		C98584901899F8EF00D52B7F /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistViewController.m; path = /Users/Oliver/Desktop/beatwalker/BeatWalker/PlaylistViewController.m; sourceTree = "<absolute>"; };
-		C98584921899F9EF00D52B7F /* PlaylistTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistTableViewModel.h; path = /Users/Oliver/Desktop/beatwalker/BeatWalker/PlaylistTableViewModel.h; sourceTree = "<absolute>"; };
-		C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistTableViewModel.m; path = /Users/Oliver/Desktop/beatwalker/BeatWalker/PlaylistTableViewModel.m; sourceTree = "<absolute>"; };
 		C98584951899FBC400D52B7F /* MPMediaItem-Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem-Properties.h"; sourceTree = "<group>"; };
 		C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem-Properties.m"; sourceTree = "<group>"; };
-		C9858498189A05B300D52B7F /* MediaItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaItemTableViewCell.h; path = /Users/Oliver/Desktop/beatwalker/BeatWalker/MediaItemTableViewCell.h; sourceTree = "<absolute>"; };
-		C9858499189A05B300D52B7F /* MediaItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaItemTableViewCell.m; path = /Users/Oliver/Desktop/beatwalker/BeatWalker/MediaItemTableViewCell.m; sourceTree = "<absolute>"; };
 		C985849B189A106A00D52B7F /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
 		C985849D189A107100D52B7F /* UIView+Positioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Positioning.h"; sourceTree = "<group>"; };
 		C985849F189A178C00D52B7F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -151,12 +154,12 @@
 				C93D9423189AFC4A00D1A336 /* MusicView.m */,
 				C93D9425189AFCAD00D1A336 /* PlayPauseButton.h */,
 				C93D9426189AFCAD00D1A336 /* PlayPauseButton.m */,
-				C985848F1899F8EF00D52B7F /* PlaylistViewController.h */,
-				C98584901899F8EF00D52B7F /* PlaylistViewController.m */,
-				C98584921899F9EF00D52B7F /* PlaylistTableViewModel.h */,
-				C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */,
-				C9858498189A05B300D52B7F /* MediaItemTableViewCell.h */,
-				C9858499189A05B300D52B7F /* MediaItemTableViewCell.m */,
+				C901774E189B5AB500692598 /* MediaItemTableViewCell.h */,
+				C901774F189B5AB500692598 /* MediaItemTableViewCell.m */,
+				C9017750189B5AB500692598 /* PlaylistTableViewModel.h */,
+				C9017751189B5AB500692598 /* PlaylistTableViewModel.m */,
+				C9017752189B5AB500692598 /* PlaylistViewController.h */,
+				C9017753189B5AB500692598 /* PlaylistViewController.m */,
 			);
 			name = Music;
 			sourceTree = "<group>";
@@ -364,10 +367,13 @@
 				C98584AD189A178C00D52B7F /* SWCellScrollView.m in Sources */,
 				C985849C189A106A00D52B7F /* UIView+Positioning.m in Sources */,
 				C985846D1899F79100D52B7F /* main.m in Sources */,
+				C9017755189B5AB500692598 /* PlaylistTableViewModel.m in Sources */,
+				C9017756189B5AB500692598 /* PlaylistViewController.m in Sources */,
 				C98584B1189A178C00D52B7F /* SWUtilityButtonView.m in Sources */,
 				A75409E0189B4637000F6B8C /* RouteCell.m in Sources */,
 				C98584AF189A178C00D52B7F /* SWTableViewCell.m in Sources */,
 				C93D9421189AEEFD00D1A336 /* UIColor+BeatWalker.m in Sources */,
+				C9017754189B5AB500692598 /* MediaItemTableViewCell.m in Sources */,
 				C93D9427189AFCAD00D1A336 /* PlayPauseButton.m in Sources */,
 				C98584B0189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				C93D9424189AFC4A00D1A336 /* MusicView.m in Sources */,

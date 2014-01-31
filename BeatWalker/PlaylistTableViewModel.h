@@ -22,6 +22,8 @@
 
 @property (nonatomic, copy) void (^refreshTableViewBlock)();
 
+@property (nonatomic, copy) void (^playbackTimeUpdated)(double playbackTime);
+
 @property (nonatomic, readonly) MPMediaItem *currentSong;
 
 - (void) popSong;
