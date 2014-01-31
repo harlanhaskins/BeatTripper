@@ -82,6 +82,9 @@
         self.currentSongAmount = currentTime / totalTime;
         self.playbackTimeUpdated([self totalTimeWithCurrentTime]);
         self.songNumberUpdated([self totalSongAmountWithCurrentSongAmount]);
+        if (round(self.currentSongPlayTime) == round(self.currentSong.playbackDuration)) {
+            [self advanceToNextSong];
+        }
     }
 }
 
