@@ -20,6 +20,9 @@
 @property (nonatomic) double totalSongsPlayed;
 @property (nonatomic) double currentSongPlayTime;
 
+@property (nonatomic) double totalSongAmount;
+@property (nonatomic) double currentSongAmount;
+
 @property (nonatomic) NSTimer *musicCheckTimer;
 
 @end
@@ -28,7 +31,7 @@
 
 + (instancetype) model {
     PlaylistTableViewModel *model = [PlaylistTableViewModel new];
-    model.musicController = [MPMusicPlayerController applicationMusicPlayer];
+    model.musicController = [MPMusicPlayerController iPodMusicPlayer];
     model.musicCheckTimer = [NSTimer timerWithTimeInterval:1.0
                                                     target:model
                                                   selector:@selector(updatePlayedSongsCount)
@@ -75,9 +78,10 @@
     if (state == MPMusicPlaybackStatePlaying) {
         double currentTime = self.musicController.currentPlaybackTime;
         double totalTime = self.musicController.nowPlayingItem.playbackDuration;
-        self.currentSongPlayTime = currentTime / totalTime;
-        self.playbackTimeUpdated(currentTime);
-        self.songNumberUpdated(self.currentSongPlayTime);
+        self.currentSongPlayTime = currentTime;
+        self.currentSongAmount = currentTime / totalTime;
+        self.playbackTimeUpdated([self totalTimeWithCurrentTime]);
+        self.songNumberUpdated([self totalSongAmountWithCurrentSongAmount]);
     }
 }
 
@@ -104,11 +108,21 @@
 
 - (void) swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
-    [self removeSongAtIndexPath:[self.tableView indexPathForCell:cell]];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    if (indexPath.row == 0) {
+        [self popSong];
+    }
+    else {
+        [self removeSongAtIndexPath:indexPath];
+    }
 }
 
 - (double) totalTimeWithCurrentTime {
     return self.currentSongPlayTime + self.totalSongsPlayed;
+}
+
+- (double) totalSongAmountWithCurrentSongAmount {
+    return self.currentSongAmount + self.totalSongAmount;
 }
 
 - (void) popSong {
@@ -146,6 +160,8 @@
 }
 
 - (void) advanceToNextSong {
+    self.totalSongsPlayed += self.currentSongPlayTime;
+    self.totalSongAmount += self.currentSongAmount;
     [self popSong];
     [self resetCurrentItem];
 }
@@ -158,6 +174,8 @@
 - (void) resetCurrentItem {
     MPMediaItem *song = [self currentSong];
     [self.musicController setNowPlayingItem:song];
+    self.currentSongPlayTime = 0.0;
+    self.currentSongAmount = 0.0;
 }
 
 - (void) togglePlayback:(PlayState)state {
