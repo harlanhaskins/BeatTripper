@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BWDynamicViewController.h"
 
-@interface RouteViewController : UIViewController
+@interface RouteViewController : BWDynamicViewController
 
 @end

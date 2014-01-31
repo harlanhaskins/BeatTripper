@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self addParallax];
 	// Do any additional setup after loading the view.
 }
 

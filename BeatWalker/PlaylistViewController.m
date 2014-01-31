@@ -85,8 +85,6 @@
     [self.view addSubview:self.tableViewTopBorderCoverView];
     [self.view addSubview:self.tableViewBottomBorderCoverView];
     
-    [self addParallax];
-    
     [self.model loadSongs];
 }
 
