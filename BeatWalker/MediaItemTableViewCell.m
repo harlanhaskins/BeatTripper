@@ -24,7 +24,7 @@
     [utilityButtons sw_addUtilityButtonWithColor:deleteColor title:@"Delete"];
     
     MediaItemTableViewCell *cell = [[MediaItemTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SongCell" containingTableView:tableView leftUtilityButtons:nil rightUtilityButtons:utilityButtons];
-    cell.selectedBackgroundView = [UIView new];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.item = item;
     cell.textLabel.text = item.title;
