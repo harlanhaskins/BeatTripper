@@ -17,31 +17,30 @@
 
 @implementation MusicView
 
-+ (instancetype) new {
-    MusicView *view = [[MusicView alloc] init];
+- (void) setDelegate:(id<MusicViewDelegate>)delegate {
+    _delegate = delegate;
     NSArray *buttonImageTitles = @[@"PreviousButton", @"PlayButton", @"NextButton"];
     
-    view.buttons = [NSMutableArray array];
+    self.buttons = [NSMutableArray array];
     
     for (int i = 0; i < 3; i++) {
         UIButton *button;
         if (i == 1) {
             button = [PlayPauseButton new];
             [(PlayPauseButton*)button setPlayBackBlock:^(PlayState state) {
-                [view.delegate togglePlayback:state];
+                [self.delegate togglePlayback:state];
             }];
         }
         else {
             button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button setBackgroundImage:[UIImage imageNamed:buttonImageTitles[i]] forState:UIControlStateNormal];
-            [button addTarget:view.delegate action:[view selectorForButtonIndex:i] forControlEvents:UIControlEventTouchUpInside];
+            [button addTarget:self.delegate action:[self selectorForButtonIndex:i] forControlEvents:UIControlEventTouchUpInside];
         }
         button.tag = i;
         [button sizeToFit];
-        [view addSubview:button];
-        [view.buttons addObject:button];
+        [self addSubview:button];
+        [self.buttons addObject:button];
     }
-    return view;
 }
 
 - (void) setFrame:(CGRect)frame {

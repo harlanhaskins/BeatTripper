@@ -17,6 +17,11 @@
 @property (nonatomic) NSMutableArray *poppedSongStack;
 @property (nonatomic) MPMusicPlayerController *musicController;
 
+@property (nonatomic) double totalSongsPlayed;
+@property (nonatomic) double currentSongPlayTime;
+
+@property (nonatomic) NSTimer *musicCheckTimer;
+
 @end
 
 @implementation PlaylistTableViewModel
@@ -24,6 +29,11 @@
 + (instancetype) model {
     PlaylistTableViewModel *model = [PlaylistTableViewModel new];
     model.musicController = [MPMusicPlayerController applicationMusicPlayer];
+    model.musicCheckTimer = [NSTimer timerWithTimeInterval:1.0
+                                                    target:model
+                                                  selector:@selector(updatePlayedSongsCount)
+                                                  userInfo:nil
+                                                   repeats:YES];
     return model;
 }
 
@@ -32,6 +42,7 @@
         self.songs = nil;
     }
     MPMediaQuery *songQuery = [MPMediaQuery songsQuery];
+    [self.musicController setQueueWithQuery:songQuery];
     self.collections = [songQuery collections].mutableCopy;
     [self fillSongs];
 }
@@ -58,6 +69,14 @@
     self.refreshTableViewBlock();
 }
 
+- (void) updatePlayedSongsCount {
+    if ([self.musicController playbackState] == MPMusicPlaybackStatePlaying) {
+        double currentTime = self.musicController.currentPlaybackTime;
+        double totalTime = self.musicController.nowPlayingItem.playbackDuration;
+        self.currentSongPlayTime = currentTime / totalTime;
+    }
+}
+
 - (MPMediaItem*) currentSong {
     return self.songs[0];
 }
@@ -72,9 +91,20 @@
     return cell;
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    for (NSInteger i = 0; i < indexPath.row; i++) {
+        [self popSong];
+    }
+    [self resetCurrentItem];
+}
+
 - (void) swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
     [self removeSongAtIndexPath:[self.tableView indexPathForCell:cell]];
+}
+
+- (double) totalTimeWithCurrentTime {
+    return self.currentSongPlayTime + self.totalSongsPlayed;
 }
 
 - (void) popSong {
@@ -109,6 +139,33 @@
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = tableView.backgroundColor;
+}
+
+- (void) advanceToNextSong {
+    [self popSong];
+    [self resetCurrentItem];
+}
+
+- (void) returnToPreviousSong {
+    [self unPopSong];
+    [self resetCurrentItem];
+}
+
+- (void) resetCurrentItem {
+    MPMediaItem *song = [self currentSong];
+    [self.musicController setNowPlayingItem:song];
+}
+
+- (void) togglePlayback:(PlayState)state {
+    if (![self.musicController nowPlayingItem]) {
+        [self resetCurrentItem];
+    }
+    if (state == PlayStatePaused) {
+        [self.musicController pause];
+    }
+    else if (state == PlayStatePlaying) {
+        [self.musicController play];
+    }
 }
 
 @end

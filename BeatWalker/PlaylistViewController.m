@@ -16,7 +16,6 @@
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) PlaylistTableViewModel *model;
-@property (nonatomic) MPMusicPlayerController *musicController;
 
 @property (nonatomic) MusicView *musicView;
 
@@ -33,8 +32,6 @@
     self.model = [PlaylistTableViewModel model];
     
     self.tableView = [self createTableViewWithRefreshControl];
-    
-    self.musicController = [MPMusicPlayerController iPodMusicPlayer];
     
     self.model.tableView = self.tableView;
     
@@ -54,7 +51,7 @@
     [self.view addSubview:self.tableView];
     
     self.musicView = [MusicView new];
-    self.musicView.delegate = self;
+    self.musicView.delegate = self.model;
     [self.view addSubview:self.musicView];
     
     [self.model loadSongs];
@@ -89,35 +86,6 @@
     musicViewRect.size.width = self.view.width;
     musicViewRect.size.height = self.view.height - musicViewRect.origin.y;
     self.musicView.frame = musicViewRect;
-}
-
-- (void) advanceToNextSong {
-    [self.model popSong];
-    [self resetCurrentItem];
-}
-
-- (void) returnToPreviousSong {
-    [self.model unPopSong];
-    [self resetCurrentItem];
-}
-
-- (void) resetCurrentItem {
-    MPMediaItem *song = [self.model currentSong];
-    NSLog(@"Song: %@", song);
-    [self.musicController setNowPlayingItem:song];
-}
-
-- (void) togglePlayback:(PlayState)state {
-    if (![self.musicController nowPlayingItem]) {
-        [self resetCurrentItem];
-    }
-    if (state == PlayStatePaused) {
-        [self.musicController stop];
-    }
-    else if (state == PlayStatePlaying) {
-        NSLog(@"Song: %@", [self.musicController nowPlayingItem]);
-        [self.musicController play];
-    }
 }
 
 @end
