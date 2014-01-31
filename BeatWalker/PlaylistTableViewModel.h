@@ -21,7 +21,6 @@
 @property (nonatomic) UITableView *tableView;
 
 @property (nonatomic, copy) void (^refreshTableViewBlock)();
-@property (nonatomic, copy) void (^refreshTableViewBlock)();
 
 @property (nonatomic, readonly) MPMediaItem *currentSong;
 
