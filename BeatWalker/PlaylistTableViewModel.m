@@ -66,8 +66,7 @@
     [self.musicController setQueueWithItemCollection:collection];
     
     [self fillSongs];
-}
-
+}\
 - (MPMediaItemCollection*) shuffledCollectionWithMediaQuery:(MPMediaQuery*)query {
     NSMutableArray *collectionsArray = [query collections].mutableCopy;
     [collectionsArray shuffle];
@@ -93,7 +92,6 @@
     
     const NSUInteger queueSize = 40;
     
-    
     NSUInteger index = self.currentPlayingSongIndex;
     while (self.songs.count < queueSize && index < self.collection.items.count) {
         MPMediaItem *song = [self.collection items][index];
@@ -116,7 +114,7 @@
 }
 
 - (MPMediaItem*) currentSong {
-    return self.songs[0];
+    return [self.collection items][self.currentPlayingSongIndex][0];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
