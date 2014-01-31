@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04208E44189C4848006E54D6 /* BWDynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04208E43189C4848006E54D6 /* BWDynamicViewController.m */; };
 		A7351790189A0A11006D58F6 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = A735178F189A0A11006D58F6 /* Route.m */; };
 		A75409DA189B45FC000F6B8C /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75409D9189B45FC000F6B8C /* RouteViewController.m */; };
 		A75409E0189B4637000F6B8C /* RouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A75409DF189B4637000F6B8C /* RouteCell.m */; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04208E42189C4848006E54D6 /* BWDynamicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWDynamicViewController.h; sourceTree = "<group>"; };
+		04208E43189C4848006E54D6 /* BWDynamicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWDynamicViewController.m; sourceTree = "<group>"; };
 		A735178E189A0A11006D58F6 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
 		A735178F189A0A11006D58F6 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
 		A75409D8189B45FC000F6B8C /* RouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteViewController.h; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 			children = (
 				C985846F1899F79100D52B7F /* AppDelegate.h */,
 				C98584701899F79100D52B7F /* AppDelegate.m */,
+				04208E42189C4848006E54D6 /* BWDynamicViewController.h */,
+				04208E43189C4848006E54D6 /* BWDynamicViewController.m */,
 				A75409E2189B4652000F6B8C /* Music */,
 				A75409E1189B4644000F6B8C /* Routes */,
 				C98584721899F79100D52B7F /* Images.xcassets */,
@@ -385,6 +390,7 @@
 				A75409E0189B4637000F6B8C /* RouteCell.m in Sources */,
 				C98584AF189A178C00D52B7F /* SWTableViewCell.m in Sources */,
 				C93D9421189AEEFD00D1A336 /* UIColor+BeatWalker.m in Sources */,
+				04208E44189C4848006E54D6 /* BWDynamicViewController.m in Sources */,
 				C9017754189B5AB500692598 /* MediaItemTableViewCell.m in Sources */,
 				C93D9427189AFCAD00D1A336 /* PlayPauseButton.m in Sources */,
 				C98584B0189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m in Sources */,

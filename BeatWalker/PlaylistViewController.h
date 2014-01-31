@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MusicView.h"
+#import "BWDynamicViewController.h"
 
-@interface PlaylistViewController : UIViewController
+@interface PlaylistViewController : BWDynamicViewController
 
 @end
