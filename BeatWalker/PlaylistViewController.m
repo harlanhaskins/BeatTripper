@@ -25,6 +25,9 @@
 
 @property (nonatomic) MusicView *musicView;
 
+@property (nonatomic) UIView *tableViewTopBorderCoverView;
+@property (nonatomic) UIView *tableViewBottomBorderCoverView;
+
 @end
 
 @implementation PlaylistViewController
@@ -75,7 +78,41 @@
     [self.informationContainer addSubview:self.songsLabel];
     [self.view addSubview:self.informationContainer];
     
+    self.tableViewTopBorderCoverView = [UIView new];
+    self.tableViewBottomBorderCoverView = [UIView new];
+    
+    [self.view addSubview:self.tableViewTopBorderCoverView];
+    [self.view addSubview:self.tableViewBottomBorderCoverView];
+    
+    [self addParallax];
+    
     [self.model loadSongs];
+}
+
+- (void) addParallax {
+    
+    // Set vertical effect
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(-10);
+    verticalMotionEffect.maximumRelativeValue = @(10);
+    
+    // Set horizontal effect
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-10);
+    horizontalMotionEffect.maximumRelativeValue = @(10);
+    
+    // Create group to combine both
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    // Add both effects to your view
+    [self.view addMotionEffect:group];
 }
 
 - (UITableView*) createTableViewWithRefreshControl {
@@ -99,9 +136,10 @@
 
 - (void) viewDidLayoutSubviews {
     self.tableView.frame = self.view.frame;
-    self.tableView.height /= 2.0;
+    self.tableView.height /= 1.5;
+    self.tableView.width += 1;
     [self.tableView centerToParent];
-    self.tableView.y += 50.0;
+    self.tableView.y += 25.0;
     
     CGRect musicViewRect;
     musicViewRect.origin.y = self.tableView.bottom;
@@ -118,12 +156,32 @@
     CGFloat infoContainerAdjuster = self.informationContainer.width / 3;
     
     [self.timeLabel centerToParent];
-    self.timeLabel.y -= 40.0;
+    self.timeLabel.y -= 35.0;
     self.timeLabel.centerX = infoContainerAdjuster;
     
     [self.songsLabel centerToParent];
-    self.songsLabel.y -= 40.0;
+    self.songsLabel.y -= 35.0;
     self.songsLabel.centerX = infoContainerAdjuster * 2;
+    
+    [self setTableViewBorderCovers];
+}
+
+- (void) setTableViewBorderCovers {
+    
+    self.tableViewTopBorderCoverView.backgroundColor =
+    self.tableViewBottomBorderCoverView.backgroundColor = [UIColor beatWalkerSubtleTextColor];
+    
+    self.tableViewTopBorderCoverView.width =
+    self.tableViewBottomBorderCoverView.width = self.view.width * 1.5;
+    
+    self.tableViewTopBorderCoverView.height =
+    self.tableViewBottomBorderCoverView.height = 0.5;
+    
+    [self.tableViewTopBorderCoverView centerToParent];
+    [self.tableViewBottomBorderCoverView centerToParent];
+    
+    self.tableViewTopBorderCoverView.y = self.tableView.y - 0.5;
+    self.tableViewBottomBorderCoverView.y = self.tableView.bottom;
 }
 
 @end

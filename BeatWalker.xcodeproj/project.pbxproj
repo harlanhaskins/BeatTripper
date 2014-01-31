@@ -39,6 +39,7 @@
 		C98584AF189A178C00D52B7F /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584A7189A178C00D52B7F /* SWTableViewCell.m */; };
 		C98584B0189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584A9189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m */; };
 		C98584B1189A178C00D52B7F /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584AB189A178C00D52B7F /* SWUtilityButtonView.m */; };
+		C9A21286189C230A00D85E55 /* NSMutableArray+Shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A21285189C230A00D85E55 /* NSMutableArray+Shuffle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,8 @@
 		C98584A9189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
 		C98584AA189A178C00D52B7F /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
 		C98584AB189A178C00D52B7F /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
+		C9A21284189C230A00D85E55 /* NSMutableArray+Shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffle.h"; sourceTree = "<group>"; };
+		C9A21285189C230A00D85E55 /* NSMutableArray+Shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffle.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,8 @@
 				C901774F189B5AB500692598 /* MediaItemTableViewCell.m */,
 				C9017750189B5AB500692598 /* PlaylistTableViewModel.h */,
 				C9017751189B5AB500692598 /* PlaylistTableViewModel.m */,
+				C9A21284189C230A00D85E55 /* NSMutableArray+Shuffle.h */,
+				C9A21285189C230A00D85E55 /* NSMutableArray+Shuffle.m */,
 				C9017752189B5AB500692598 /* PlaylistViewController.h */,
 				C9017753189B5AB500692598 /* PlaylistViewController.m */,
 				C9017757189B5C5B00692598 /* InformationView.h */,
@@ -370,6 +375,7 @@
 				C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */,
 				C98584AC189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				C98584AE189A178C00D52B7F /* SWLongPressGestureRecognizer.m in Sources */,
+				C9A21286189C230A00D85E55 /* NSMutableArray+Shuffle.m in Sources */,
 				C98584AD189A178C00D52B7F /* SWCellScrollView.m in Sources */,
 				C985849C189A106A00D52B7F /* UIView+Positioning.m in Sources */,
 				C985846D1899F79100D52B7F /* main.m in Sources */,
