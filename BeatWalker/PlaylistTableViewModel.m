@@ -34,6 +34,7 @@
                                                   selector:@selector(updatePlayedSongsCount)
                                                   userInfo:nil
                                                    repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:model.musicCheckTimer forMode:NSDefaultRunLoopMode];
     return model;
 }
 
@@ -70,10 +71,13 @@
 }
 
 - (void) updatePlayedSongsCount {
-    if ([self.musicController playbackState] == MPMusicPlaybackStatePlaying) {
+    MPMusicPlaybackState state = [self.musicController playbackState];
+    if (state == MPMusicPlaybackStatePlaying) {
         double currentTime = self.musicController.currentPlaybackTime;
         double totalTime = self.musicController.nowPlayingItem.playbackDuration;
         self.currentSongPlayTime = currentTime / totalTime;
+        self.playbackTimeUpdated(currentTime);
+        self.songNumberUpdated(self.currentSongPlayTime);
     }
 }
 

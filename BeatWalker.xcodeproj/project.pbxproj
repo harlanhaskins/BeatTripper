@@ -15,6 +15,7 @@
 		C9017754189B5AB500692598 /* MediaItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C901774F189B5AB500692598 /* MediaItemTableViewCell.m */; };
 		C9017755189B5AB500692598 /* PlaylistTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9017751189B5AB500692598 /* PlaylistTableViewModel.m */; };
 		C9017756189B5AB500692598 /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9017753189B5AB500692598 /* PlaylistViewController.m */; };
+		C9017759189B5C5B00692598 /* InformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9017758189B5C5B00692598 /* InformationView.m */; };
 		C93D9421189AEEFD00D1A336 /* UIColor+BeatWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */; };
 		C93D9424189AFC4A00D1A336 /* MusicView.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9423189AFC4A00D1A336 /* MusicView.m */; };
 		C93D9427189AFCAD00D1A336 /* PlayPauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9426189AFCAD00D1A336 /* PlayPauseButton.m */; };
@@ -66,6 +67,8 @@
 		C9017751189B5AB500692598 /* PlaylistTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableViewModel.m; sourceTree = "<group>"; };
 		C9017752189B5AB500692598 /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistViewController.h; sourceTree = "<group>"; };
 		C9017753189B5AB500692598 /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
+		C9017757189B5C5B00692598 /* InformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationView.h; sourceTree = "<group>"; };
+		C9017758189B5C5B00692598 /* InformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationView.m; sourceTree = "<group>"; };
 		C93D941F189AEEFD00D1A336 /* UIColor+BeatWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BeatWalker.h"; sourceTree = "<group>"; };
 		C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BeatWalker.m"; sourceTree = "<group>"; };
 		C93D9422189AFC4A00D1A336 /* MusicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicView.h; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 				C9017751189B5AB500692598 /* PlaylistTableViewModel.m */,
 				C9017752189B5AB500692598 /* PlaylistViewController.h */,
 				C9017753189B5AB500692598 /* PlaylistViewController.m */,
+				C9017757189B5C5B00692598 /* InformationView.h */,
+				C9017758189B5C5B00692598 /* InformationView.m */,
 			);
 			name = Music;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9017759189B5C5B00692598 /* InformationView.m in Sources */,
 				C98584711899F79100D52B7F /* AppDelegate.m in Sources */,
 				C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */,
 				C98584AC189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m in Sources */,
