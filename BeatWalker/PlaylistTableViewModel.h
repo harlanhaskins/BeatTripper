@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SWTableViewCell.h"
 
+@class MPMediaItem;
+
 @interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate>
 
 + (instancetype) model;
@@ -17,5 +19,10 @@
 @property (nonatomic) UITableView *tableView;
 
 @property (nonatomic, copy) void (^refreshTableViewBlock)();
+
+@property (nonatomic, readonly) MPMediaItem *currentSong;
+
+- (void) popSong;
+- (void) unPopSong;
 
 @end

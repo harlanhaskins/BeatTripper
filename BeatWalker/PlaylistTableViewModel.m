@@ -14,6 +14,7 @@
 
 @property (nonatomic) NSMutableArray *songs;
 @property (nonatomic) NSMutableArray *collections;
+@property (nonatomic) NSMutableArray *poppedSongStack;
 @property (nonatomic) MPMusicPlayerController *musicController;
 
 @end
@@ -57,6 +58,10 @@
     self.refreshTableViewBlock();
 }
 
+- (MPMediaItem*) currentSong {
+    return self.songs[0];
+}
+
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.songs.count;
 }
@@ -69,15 +74,37 @@
 
 - (void) swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
-    NSInteger songIndex = [self.tableView indexPathForCell:cell].row;
-    [self removeSongAtIndex:songIndex withCell:cell];
+    [self removeSongAtIndexPath:[self.tableView indexPathForCell:cell]];
 }
 
-- (void) removeSongAtIndex:(NSInteger)songIndex withCell:(UITableViewCell*)cell {
-    [self.songs removeObjectAtIndex:songIndex];
+- (void) popSong {
+    [self removeSongAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+}
+
+- (void) removeSongAtIndexPath:(NSIndexPath*)indexPath {
+    MPMediaItem *song = self.songs[indexPath.row];
+    [self.songs removeObjectAtIndex:indexPath.row];
     
-    [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationLeft];
-    [self performSelector:@selector(fillSongs) withObject:nil afterDelay:0.5];
+    if (!self.poppedSongStack) {
+        self.poppedSongStack = [NSMutableArray array];
+    }
+    
+    [self.poppedSongStack insertObject:song atIndex:0];
+    
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    
+    [self performSelector:@selector(fillSongs) withObject:nil afterDelay:0.75];
+}
+
+- (void) unPopSong {
+    if (self.poppedSongStack.count == 0) return;
+    
+    MPMediaItem *song = self.poppedSongStack[0];
+    [self.poppedSongStack removeObjectAtIndex:0];
+    [self.songs insertObject:song atIndex:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+    [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.75];
 }
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {

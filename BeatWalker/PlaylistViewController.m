@@ -8,6 +8,7 @@
 
 #import "PlaylistViewController.h"
 #import "PlaylistTableViewModel.h"
+#import <MediaPlayer/MediaPlayer.h>
 #import "MusicView.h"
 
 @interface PlaylistViewController ()
@@ -15,6 +16,7 @@
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) PlaylistTableViewModel *model;
+@property (nonatomic) MPMusicPlayerController *musicController;
 
 @property (nonatomic) MusicView *musicView;
 
@@ -28,10 +30,11 @@
     
     [self setNeedsStatusBarAppearanceUpdate];
     
-    
     self.model = [PlaylistTableViewModel model];
     
     self.tableView = [self createTableViewWithRefreshControl];
+    
+    self.musicController = [MPMusicPlayerController iPodMusicPlayer];
     
     self.model.tableView = self.tableView;
     
@@ -49,6 +52,10 @@
     self.tableView.delegate = self.model;
     
     [self.view addSubview:self.tableView];
+    
+    self.musicView = [MusicView new];
+    self.musicView.delegate = self;
+    [self.view addSubview:self.musicView];
     
     [self.model loadSongs];
 }
@@ -78,23 +85,39 @@
     [self.tableView centerToParent];
     
     CGRect musicViewRect;
-    if (self.musicView) {
-        musicViewRect = self.musicView.frame;
-        self.musicView = nil;
-    }
-    else {
-        musicViewRect.origin.y = self.tableView.bottom;
-        musicViewRect.size.width = self.view.width;
-        musicViewRect.size.height = self.view.height - musicViewRect.origin.y;
-    }
-    self.musicView = [[MusicView alloc] initWithFrame:musicViewRect];
-    [self.view addSubview:self.musicView];
+    musicViewRect.origin.y = self.tableView.bottom;
+    musicViewRect.size.width = self.view.width;
+    musicViewRect.size.height = self.view.height - musicViewRect.origin.y;
+    self.musicView.frame = musicViewRect;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) advanceToNextSong {
+    [self.model popSong];
+    [self resetCurrentItem];
+}
+
+- (void) returnToPreviousSong {
+    [self.model unPopSong];
+    [self resetCurrentItem];
+}
+
+- (void) resetCurrentItem {
+    MPMediaItem *song = [self.model currentSong];
+    NSLog(@"Song: %@", song);
+    [self.musicController setNowPlayingItem:song];
+}
+
+- (void) togglePlayback:(PlayState)state {
+    if (![self.musicController nowPlayingItem]) {
+        [self resetCurrentItem];
+    }
+    if (state == PlayStatePaused) {
+        [self.musicController stop];
+    }
+    else if (state == PlayStatePlaying) {
+        NSLog(@"Song: %@", [self.musicController nowPlayingItem]);
+        [self.musicController play];
+    }
 }
 
 @end

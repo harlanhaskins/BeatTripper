@@ -17,39 +17,57 @@
 
 @implementation MusicView
 
-- (id) initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        CGFloat buttonCenterX = self.width / 4;
-        
-        NSArray *buttonImageTitles = @[@"PreviousButton", @"PlayButton", @"NextButton"];
-        
-        self.buttons = [NSMutableArray array];
-        
-        for (int i = 0; i < 3; i++) {
-            UIButton *button;
-            if (i == 1) {
-                button = [PlayPauseButton new];
-            }
-            else {
-                button = [UIButton buttonWithType:UIButtonTypeCustom];
-                [button setBackgroundImage:[UIImage imageNamed:buttonImageTitles[i]] forState:UIControlStateNormal];
-            }
-            [button sizeToFit];
-            [self addSubview:button];
-            [button centerToParent];
-            button.centerX = (buttonCenterX * (i + 1));
++ (instancetype) new {
+    MusicView *view = [[MusicView alloc] init];
+    NSArray *buttonImageTitles = @[@"PreviousButton", @"PlayButton", @"NextButton"];
+    
+    view.buttons = [NSMutableArray array];
+    
+    for (int i = 0; i < 3; i++) {
+        UIButton *button;
+        if (i == 1) {
+            button = [PlayPauseButton new];
+            [(PlayPauseButton*)button setPlayBackBlock:^(PlayState state) {
+                [view.delegate togglePlayback:state];
+            }];
         }
+        else {
+            button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button setBackgroundImage:[UIImage imageNamed:buttonImageTitles[i]] forState:UIControlStateNormal];
+            [button addTarget:view.delegate action:[view selectorForButtonIndex:i] forControlEvents:UIControlEventTouchUpInside];
+        }
+        button.tag = i;
+        [button sizeToFit];
+        [view addSubview:button];
+        [view.buttons addObject:button];
     }
-    return self;
+    return view;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void) setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    CGFloat buttonCenterX = self.width / 4;
+    for (UIButton *button in self.buttons) {
+        [button centerToParent];
+        button.centerX = (buttonCenterX * (button.tag + 1));
+    }
 }
-*/
+
+- (SEL) selectorForButtonIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+            return @selector(returnToPreviousSong);
+            break;
+        case 1:
+            return @selector(togglePlayback:);
+            break;
+        case 2:
+            return @selector(advanceToNextSong);
+            break;
+        default:
+            return nil;
+            break;
+    }
+}
 
 @end

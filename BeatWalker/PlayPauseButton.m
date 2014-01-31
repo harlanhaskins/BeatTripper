@@ -32,6 +32,7 @@
         self.playState = PlayStatePaused;
     }
     [self setBackgroundImage:[self imageForCurrentPlayState] forState:UIControlStateNormal];
+    self.playBackBlock(self.playState);
 }
 
 - (UIImage*) imageForCurrentPlayState {

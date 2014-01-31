@@ -17,4 +17,6 @@ typedef enum {
 
 @property (nonatomic, readonly) PlayState playState;
 
+@property (nonatomic, copy) void (^playBackBlock)(PlayState state);
+
 @end
