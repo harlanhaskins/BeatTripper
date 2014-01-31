@@ -30,7 +30,27 @@
 
 -(NSString*) details
 {
-    return [NSString stringWithFormat:@"~%lu Songs | %@", [[self songNumberAverage] integerValue], @""];
+    return [NSString stringWithFormat:@"~%lu Songs | %@",[[self songNumberAverage] longValue], [self stringForTimeAverage]];
+}
+
+- (NSString*) stringForTimeAverage {
+    return [self stringForTimeInterval:[[self timeAverage] doubleValue]];
+}
+
+-(NSString*)stringForTimeInterval:(NSTimeInterval)timeInterval{
+    NSInteger hours = floor(timeInterval /  (60 * 60) );
+    
+    CGFloat minute_divisor = (NSInteger)timeInterval % (60 * 60);
+    NSInteger minutes = floor(minute_divisor / 60);
+    
+    CGFloat seconds_divisor = (NSInteger)timeInterval % 60;
+    NSInteger seconds = ceil(seconds_divisor);
+    
+    NSString *hoursString = hours > 0 ? [NSString stringWithFormat:@"%li:", (long)hours] : @"";
+    
+    NSString *intervalString = [NSString stringWithFormat:@"%@%li:%02li", hoursString, (long)minutes, (long)seconds];
+    
+    return intervalString;
 }
 
 -(void) addTime:(NSTimeInterval)time

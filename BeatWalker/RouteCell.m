@@ -23,7 +23,7 @@
     
     cell.route = route;
     cell.textLabel.text = route.name;
-    cell.detailTextLabel.text = Number songs and length
+    cell.detailTextLabel.text = route.details;
     
     return cell;
 }
