@@ -130,8 +130,8 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.musicController setNowPlayingItem:self.songs[indexPath.row]];
-    [self resetCurrentItem];
+//    [self.musicController setNowPlayingItem:self.songs[indexPath.row]];
+//    [self resetCurrentItem];
 }
 
 - (void) swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
