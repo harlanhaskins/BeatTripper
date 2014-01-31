@@ -13,21 +13,24 @@
 @property (nonatomic) NSMutableArray *numberOfSongs;
 @property (nonatomic) NSMutableArray *times;
 
-@property (nonatomic) NSString *pointA;
-@property (nonatomic) NSString *pointB;
+@property (nonatomic) NSString *name;
 
 @end
 
 @implementation Route
 
-+ (instancetype) routeWithPointA:(NSString*)pointA pointB:(NSString*)pointB
++ (instancetype) routeWithName:(NSString *)name
 {
     Route *newRoute = [Route new];
     
-    newRoute.pointA = pointA;
-    newRoute.pointB = pointB;
+    newRoute.name = name;
     
     return newRoute;
+}
+
+-(NSString*) details
+{
+    return [NSString stringWithFormat:@"~%lu Songs | %@", [[self songNumberAverage] integerValue], @""];
 }
 
 -(void) addTime:(NSTimeInterval)time
@@ -35,7 +38,7 @@
     [_times addObject:[NSNumber numberWithDouble:time]];
 }
 
--(NSNumber*) timeAverage
+- (NSNumber*) timeAverage
 {
     CGFloat sum = 0;
     NSInteger count = 0;

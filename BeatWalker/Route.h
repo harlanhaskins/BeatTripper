@@ -10,7 +10,7 @@
 
 @interface Route : NSObject
 
-+ (instancetype) routeWithPointA:(NSString*)pointA pointB:(NSString*)pointB;
++ (instancetype) routeWithName:(NSString*)name;
 
 -(void) addTime:(NSTimeInterval)time;
 -(NSNumber*) timeAverage;
@@ -18,7 +18,7 @@
 -(void) addSongNumber:(NSNumber*)number;
 -(NSNumber*) songNumberAverage;
 
-@property (nonatomic, readonly) NSString *pointA;
-@property (nonatomic, readonly) NSString *pointB;
+@property (nonatomic, readonly) NSString *details;
+@property (nonatomic, readonly) NSString *name;
 
 @end

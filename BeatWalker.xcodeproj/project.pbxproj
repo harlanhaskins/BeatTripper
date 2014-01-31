@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A7351790189A0A11006D58F6 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = A735178F189A0A11006D58F6 /* Route.m */; };
+		A75409DA189B45FC000F6B8C /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75409D9189B45FC000F6B8C /* RouteViewController.m */; };
+		A75409E0189B4637000F6B8C /* RouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A75409DF189B4637000F6B8C /* RouteCell.m */; };
+		A75409E5189B4747000F6B8C /* RouteTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A75409E4189B4747000F6B8C /* RouteTableViewModel.m */; };
 		C98584611899F79100D52B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584601899F79100D52B7F /* Foundation.framework */; };
 		C98584631899F79100D52B7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584621899F79100D52B7F /* CoreGraphics.framework */; };
 		C98584651899F79100D52B7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584641899F79100D52B7F /* UIKit.framework */; };
@@ -39,6 +42,12 @@
 /* Begin PBXFileReference section */
 		A735178E189A0A11006D58F6 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
 		A735178F189A0A11006D58F6 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
+		A75409D8189B45FC000F6B8C /* RouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteViewController.h; sourceTree = "<group>"; };
+		A75409D9189B45FC000F6B8C /* RouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteViewController.m; sourceTree = "<group>"; };
+		A75409DE189B4637000F6B8C /* RouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteCell.h; sourceTree = "<group>"; };
+		A75409DF189B4637000F6B8C /* RouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteCell.m; sourceTree = "<group>"; };
+		A75409E3189B4747000F6B8C /* RouteTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableViewModel.h; sourceTree = "<group>"; };
+		A75409E4189B4747000F6B8C /* RouteTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteTableViewModel.m; sourceTree = "<group>"; };
 		C985845D1899F79100D52B7F /* BeatWalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatWalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98584601899F79100D52B7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C98584621899F79100D52B7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,6 +98,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A75409E1189B4644000F6B8C /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				A735178E189A0A11006D58F6 /* Route.h */,
+				A735178F189A0A11006D58F6 /* Route.m */,
+				A75409D8189B45FC000F6B8C /* RouteViewController.h */,
+				A75409D9189B45FC000F6B8C /* RouteViewController.m */,
+				A75409E3189B4747000F6B8C /* RouteTableViewModel.h */,
+				A75409E4189B4747000F6B8C /* RouteTableViewModel.m */,
+				A75409DE189B4637000F6B8C /* RouteCell.h */,
+				A75409DF189B4637000F6B8C /* RouteCell.m */,
+			);
+			name = Routes;
+			sourceTree = "<group>";
+		};
+		A75409E2189B4652000F6B8C /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				C985848F1899F8EF00D52B7F /* PlaylistViewController.h */,
+				C98584901899F8EF00D52B7F /* PlaylistViewController.m */,
+				C98584921899F9EF00D52B7F /* PlaylistTableViewModel.h */,
+				C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */,
+				C9858498189A05B300D52B7F /* MediaItemTableViewCell.h */,
+				C9858499189A05B300D52B7F /* MediaItemTableViewCell.m */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
 		C98584541899F79100D52B7F = {
 			isa = PBXGroup;
 			children = (
@@ -124,14 +161,8 @@
 			children = (
 				C985846F1899F79100D52B7F /* AppDelegate.h */,
 				C98584701899F79100D52B7F /* AppDelegate.m */,
-				C985848F1899F8EF00D52B7F /* PlaylistViewController.h */,
-				C98584901899F8EF00D52B7F /* PlaylistViewController.m */,
-				C98584921899F9EF00D52B7F /* PlaylistTableViewModel.h */,
-				C98584931899F9EF00D52B7F /* PlaylistTableViewModel.m */,
-				C9858498189A05B300D52B7F /* MediaItemTableViewCell.h */,
-				C9858499189A05B300D52B7F /* MediaItemTableViewCell.m */,
-				A735178E189A0A11006D58F6 /* Route.h */,
-				A735178F189A0A11006D58F6 /* Route.m */,
+				A75409E2189B4652000F6B8C /* Music */,
+				A75409E1189B4644000F6B8C /* Routes */,
 				C98584721899F79100D52B7F /* Images.xcassets */,
 				C98584671899F79100D52B7F /* Supporting Files */,
 			);
@@ -268,8 +299,11 @@
 				C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */,
 				C98584941899F9EF00D52B7F /* PlaylistTableViewModel.m in Sources */,
 				C985846D1899F79100D52B7F /* main.m in Sources */,
+				A75409E0189B4637000F6B8C /* RouteCell.m in Sources */,
 				C98584911899F8EF00D52B7F /* PlaylistViewController.m in Sources */,
 				C985849A189A05B300D52B7F /* MediaItemTableViewCell.m in Sources */,
+				A75409E5189B4747000F6B8C /* RouteTableViewModel.m in Sources */,
+				A75409DA189B45FC000F6B8C /* RouteViewController.m in Sources */,
 				A7351790189A0A11006D58F6 /* Route.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
