@@ -54,6 +54,7 @@
     self.tableView.backgroundColor = self.view.backgroundColor;
     self.tableView.dataSource = self.model;
     self.tableView.delegate = self.model;
+    self.tableView.separatorColor = [UIColor beatWalkerSubtleTextColor];
     
     [self.view addSubview:self.tableView];
     
