@@ -28,6 +28,8 @@
 
 @property (nonatomic) UIView *tableViewTopBorderCoverView;
 @property (nonatomic) UIView *tableViewBottomBorderCoverView;
+@property (nonatomic) UIButton *checkButton;
+@property (nonatomic) UIButton *xButton;
 
 @end
 
@@ -85,7 +87,27 @@
     [self.view addSubview:self.tableViewTopBorderCoverView];
     [self.view addSubview:self.tableViewBottomBorderCoverView];
     
+    self.checkButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.checkButton setImage:[UIImage imageNamed:@"CheckButton"] forState:UIControlStateNormal];
+    [self.checkButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
+    [self.checkButton sizeToFit];
+    [self.view addSubview:self.checkButton];
+    
+    self.xButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.xButton setImage:[UIImage imageNamed:@"XButton"] forState:UIControlStateNormal];
+    [self.xButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    [self.xButton sizeToFit];
+    [self.view addSubview:self.xButton];
+    
     [self.model loadSongs];
+}
+
+- (void) dismiss {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) finish {
+    
 }
 
 - (UITableView*) createTableViewWithRefreshControl {
@@ -121,7 +143,7 @@
     self.musicView.frame = musicViewRect;
     
     CGRect informationViewRect;
-    informationViewRect.origin = CGPointZero;
+    informationViewRect.origin = CGPointMake(5.0, 0.0);
     informationViewRect.size.width = self.view.width;
     informationViewRect.size.height = self.tableView.y;
     self.informationContainer.frame = informationViewRect;
@@ -137,6 +159,20 @@
     self.songsLabel.centerX = infoContainerAdjuster * 2;
     
     [self setTableViewBorderCovers];
+    
+    CGSize buttonSize = self.checkButton.size;
+    buttonSize = CGSizeApplyAffineTransform(buttonSize, CGAffineTransformMakeScale(0.85, 0.85));
+    
+    self.checkButton.size =
+    self.xButton.size = buttonSize;
+    
+    CGFloat buttonSidePadding = 15.0;
+    self.checkButton.centerY =
+    self.xButton.centerY =
+    self.informationContainer.centerY + 5.0;
+    
+    self.checkButton.right = self.view.width - buttonSidePadding;
+    self.xButton.x = buttonSidePadding;
 }
 
 - (void) setTableViewBorderCovers {

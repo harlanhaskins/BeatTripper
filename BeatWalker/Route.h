@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Route : NSObject
+@interface Route : NSObject<NSCoding>
 
 + (instancetype) routeWithName:(NSString*)name;
 

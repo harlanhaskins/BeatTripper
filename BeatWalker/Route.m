@@ -19,11 +19,28 @@
 
 @implementation Route
 
+- (void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.numberOfSongs forKey:@"numberOfSongs"];
+    [aCoder encodeObject:self.times forKey:@"times"];
+}
+
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.numberOfSongs = [aDecoder decodeObjectForKey:@"numberOfSongs"];
+        self.times = [aDecoder decodeObjectForKey:@"times"];
+    }
+    return self;
+}
+
 + (instancetype) routeWithName:(NSString *)name
 {
     Route *newRoute = [Route new];
     
     newRoute.name = name;
+    newRoute.numberOfSongs = [NSMutableArray array];
+    newRoute.times = [NSMutableArray array];
     
     return newRoute;
 }
@@ -55,44 +72,40 @@
 
 -(void) addTime:(NSTimeInterval)time
 {
-    [_times addObject:[NSNumber numberWithDouble:time]];
+    [self.times addObject:@(time)];
 }
 
 - (NSNumber*) timeAverage
 {
     CGFloat sum = 0;
-    NSInteger count = 0;
+    const NSInteger numberOfItemsToCheck = 5;
     
-    for (NSUInteger time = _times.count; time > (_times.count - 5); time--)
+    for (NSUInteger time = self.times.count; time > (self.times.count - numberOfItemsToCheck); time--)
     {
-        sum += [_times[time] doubleValue];
-        count++;
+        sum += [self.times[time] doubleValue];
         
-        if(time == 0) break;
+        if (time == 0) break;
     }
-    return @(sum/count);
+    return @(sum/numberOfItemsToCheck);
 }
 
 -(void) addSongNumber:(NSNumber*)number
 {
-    [_numberOfSongs addObject:number];
+    [self.numberOfSongs addObject:number];
 }
 
 -(NSNumber*) songNumberAverage
 {
     CGFloat sum = 0;
-    NSInteger count = 0;
+    const NSInteger numberOfItemsToCheck = 5;
     
-    for (NSUInteger songNumber = _numberOfSongs.count; songNumber > (_numberOfSongs.count - 5); songNumber--)
+    for (NSUInteger songNumber = self.numberOfSongs.count; songNumber > (self.numberOfSongs.count - 5); songNumber--)
     {
-        sum += [_numberOfSongs[songNumber] doubleValue];
-        count++;
+        sum += [self.numberOfSongs[songNumber] doubleValue];
         
-        if(songNumber == 0) break;
+        if (songNumber == 0) break;
     }
-    return @(sum/count);
+    return @(sum/numberOfItemsToCheck);
 }
-
-
 
 @end

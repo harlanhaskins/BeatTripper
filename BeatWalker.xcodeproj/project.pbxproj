@@ -20,6 +20,8 @@
 		C93D9421189AEEFD00D1A336 /* UIColor+BeatWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */; };
 		C93D9424189AFC4A00D1A336 /* MusicView.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9423189AFC4A00D1A336 /* MusicView.m */; };
 		C93D9427189AFCAD00D1A336 /* PlayPauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9426189AFCAD00D1A336 /* PlayPauseButton.m */; };
+		C980CECA189D5A9100A9DFA4 /* RouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C980CEC9189D5A9100A9DFA4 /* RouteManager.m */; };
+		C980CECD189D5E5400A9DFA4 /* RouteDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C980CECC189D5E5400A9DFA4 /* RouteDataManager.m */; };
 		C98584611899F79100D52B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584601899F79100D52B7F /* Foundation.framework */; };
 		C98584631899F79100D52B7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584621899F79100D52B7F /* CoreGraphics.framework */; };
 		C98584651899F79100D52B7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584641899F79100D52B7F /* UIKit.framework */; };
@@ -79,6 +81,10 @@
 		C93D9423189AFC4A00D1A336 /* MusicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicView.m; sourceTree = "<group>"; };
 		C93D9425189AFCAD00D1A336 /* PlayPauseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayPauseButton.h; sourceTree = "<group>"; };
 		C93D9426189AFCAD00D1A336 /* PlayPauseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayPauseButton.m; sourceTree = "<group>"; };
+		C980CEC8189D5A9100A9DFA4 /* RouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteManager.h; sourceTree = "<group>"; };
+		C980CEC9189D5A9100A9DFA4 /* RouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteManager.m; sourceTree = "<group>"; };
+		C980CECB189D5E5400A9DFA4 /* RouteDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteDataManager.h; sourceTree = "<group>"; };
+		C980CECC189D5E5400A9DFA4 /* RouteDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDataManager.m; sourceTree = "<group>"; };
 		C985845D1899F79100D52B7F /* BeatWalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatWalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98584601899F79100D52B7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C98584621899F79100D52B7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,6 +152,10 @@
 			children = (
 				A735178E189A0A11006D58F6 /* Route.h */,
 				A735178F189A0A11006D58F6 /* Route.m */,
+				C980CEC8189D5A9100A9DFA4 /* RouteManager.h */,
+				C980CEC9189D5A9100A9DFA4 /* RouteManager.m */,
+				C980CECB189D5E5400A9DFA4 /* RouteDataManager.h */,
+				C980CECC189D5E5400A9DFA4 /* RouteDataManager.m */,
 				A75409D8189B45FC000F6B8C /* RouteViewController.h */,
 				A75409D9189B45FC000F6B8C /* RouteViewController.m */,
 				A75409E3189B4747000F6B8C /* RouteTableViewModel.h */,
@@ -381,6 +391,7 @@
 				C98584AC189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				C98584AE189A178C00D52B7F /* SWLongPressGestureRecognizer.m in Sources */,
 				C9A21286189C230A00D85E55 /* NSMutableArray+Shuffle.m in Sources */,
+				C980CECD189D5E5400A9DFA4 /* RouteDataManager.m in Sources */,
 				C98584AD189A178C00D52B7F /* SWCellScrollView.m in Sources */,
 				C985849C189A106A00D52B7F /* UIView+Positioning.m in Sources */,
 				C985846D1899F79100D52B7F /* main.m in Sources */,
@@ -394,6 +405,7 @@
 				C9017754189B5AB500692598 /* MediaItemTableViewCell.m in Sources */,
 				C93D9427189AFCAD00D1A336 /* PlayPauseButton.m in Sources */,
 				C98584B0189A178C00D52B7F /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
+				C980CECA189D5A9100A9DFA4 /* RouteManager.m in Sources */,
 				C93D9424189AFC4A00D1A336 /* MusicView.m in Sources */,
 				A75409E5189B4747000F6B8C /* RouteTableViewModel.m in Sources */,
 				A75409DA189B45FC000F6B8C /* RouteViewController.m in Sources */,
