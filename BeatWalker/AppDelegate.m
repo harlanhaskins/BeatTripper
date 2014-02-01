@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PlaylistViewController.h"
+#import "RouteViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @implementation AppDelegate
@@ -16,19 +17,22 @@
 {
     
     UINavigationController *navController = [UINavigationController new];
+    navController.navigationBarHidden = YES;
     
     // Stop playback if music is playing.
     [[MPMusicPlayerController iPodMusicPlayer] stop];
     
     PlaylistViewController *playlistVC = [PlaylistViewController new];
-    navController.viewControllers = @[playlistVC];
+    RouteViewController *routeVC = [RouteViewController new];
+    
+    [navController setViewControllers:@[routeVC]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor beatWalkerBackgroundColor];
     
-    self.window.rootViewController = playlistVC;
+    self.window.rootViewController = navController;
     
     [self.window makeKeyAndVisible];
     return YES;

@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor beatWalkerBackgroundColor];
     [self addParallax];
 	// Do any additional setup after loading the view.
 }
@@ -60,6 +61,11 @@
     
     // Add both effects to your view
     [self.view addMotionEffect:group];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

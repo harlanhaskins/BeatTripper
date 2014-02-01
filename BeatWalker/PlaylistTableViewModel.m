@@ -10,6 +10,7 @@
 #import "MPMediaItem-Properties.h"
 #import "MediaItemTableViewCell.h"
 #import "NSMutableArray+Shuffle.h"
+#import "RouteManager.h"
 
 @interface PlaylistTableViewModel ()
 
@@ -21,7 +22,7 @@
 
 @property (nonatomic) NSUInteger currentPlayingSongIndex;
 
-@property (nonatomic) double totalSongsPlayed;
+@property (nonatomic) double totalSongPlayTime;
 @property (nonatomic) double currentSongPlayTime;
 
 @property (nonatomic) double totalSongAmount;
@@ -138,7 +139,7 @@
 }
 
 - (double) totalTimeWithCurrentTime {
-    return self.currentSongPlayTime + self.totalSongsPlayed;
+    return self.currentSongPlayTime + self.totalSongPlayTime;
 }
 
 - (double) totalSongAmountWithCurrentSongAmount {
@@ -244,7 +245,7 @@
 }
 
 - (void) adjustInternalMusicRepresentationForNextSong {
-    self.totalSongsPlayed += self.currentSongPlayTime;
+    self.totalSongPlayTime += self.currentSongPlayTime;
     self.totalSongAmount += self.currentSongAmount;
 }
 
@@ -274,6 +275,13 @@
 
 - (void) reloadTable {
     self.refreshTableViewBlock();
+}
+
+- (void) finish {
+    [self adjustInternalMusicRepresentationForNextSong];
+    [self resetCurrentItem];
+    [[RouteManager sharedManager] addSongAmount:self.totalSongAmount toRoute:self.route];
+    [[RouteManager sharedManager] addTime:self.totalSongPlayTime toRoute:self.route];
 }
 
 @end

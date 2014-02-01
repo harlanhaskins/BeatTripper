@@ -7,6 +7,7 @@
 //
 
 #import "RouteTableViewModel.h"
+#import "RouteManager.h"
 #import "RouteCell.h"
 
 @interface RouteTableViewModel ()
@@ -20,28 +21,23 @@
 + (instancetype) model
 {
     RouteTableViewModel *model = [RouteTableViewModel new];
-    [model loadRoutes];
     return model;
 }
 
-- (void) loadRoutes
-{
-}
-
-- (void) setRoutes:(NSMutableArray *)routes
-{
-    
-}
-
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.routes.count;
+    return [[RouteManager sharedManager] numberOfRoutes];
 }
 
 - (UITableViewCell*) tableView:(UITableView*) tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [RouteCell cellWithRoute:self.routes[indexPath.row]];
+    Route* route = [[RouteManager sharedManager] routeAtIndex:indexPath.row];
+    UITableViewCell *cell = [RouteCell cellWithRoute:route];
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = tableView.backgroundColor;
 }
 
 @end

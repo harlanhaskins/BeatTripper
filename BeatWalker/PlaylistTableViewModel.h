@@ -11,7 +11,7 @@
 #import "MusicView.h"
 #import "PlayPauseButton.h"
 
-@class MPMediaItem;
+@class MPMediaItem, Route;
 
 @interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, MusicViewDelegate>
 
@@ -22,6 +22,8 @@
 
 @property (nonatomic) UITableView *tableView;
 
+@property (nonatomic) Route *route;
+
 @property (nonatomic, copy) void (^refreshTableViewBlock)();
 
 @property (nonatomic, copy) void (^playbackTimeUpdated)(double playbackTime);
@@ -31,5 +33,7 @@
 
 - (void) popSong;
 - (void) unPopSong;
+
+- (void) finish;
 
 @end

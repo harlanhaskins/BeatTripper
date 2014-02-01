@@ -23,7 +23,9 @@
     
     cell.route = route;
     cell.textLabel.text = route.name;
+    cell.textLabel.textColor = [UIColor beatWalkerTextColor];
     cell.detailTextLabel.text = route.details;
+    cell.detailTextLabel.textColor = [UIColor beatWalkerTextColor];
     
     return cell;
 }

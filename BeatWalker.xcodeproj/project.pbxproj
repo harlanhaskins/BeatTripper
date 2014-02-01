@@ -17,6 +17,7 @@
 		C9017755189B5AB500692598 /* PlaylistTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9017751189B5AB500692598 /* PlaylistTableViewModel.m */; };
 		C9017756189B5AB500692598 /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9017753189B5AB500692598 /* PlaylistViewController.m */; };
 		C9017759189B5C5B00692598 /* InformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9017758189B5C5B00692598 /* InformationView.m */; };
+		C920851D189D91E2000B1ED7 /* NewRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C920851C189D91E2000B1ED7 /* NewRouteViewController.m */; };
 		C93D9421189AEEFD00D1A336 /* UIColor+BeatWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */; };
 		C93D9424189AFC4A00D1A336 /* MusicView.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9423189AFC4A00D1A336 /* MusicView.m */; };
 		C93D9427189AFCAD00D1A336 /* PlayPauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9426189AFCAD00D1A336 /* PlayPauseButton.m */; };
@@ -75,6 +76,8 @@
 		C9017753189B5AB500692598 /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
 		C9017757189B5C5B00692598 /* InformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationView.h; sourceTree = "<group>"; };
 		C9017758189B5C5B00692598 /* InformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationView.m; sourceTree = "<group>"; };
+		C920851B189D91E2000B1ED7 /* NewRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRouteViewController.h; sourceTree = "<group>"; };
+		C920851C189D91E2000B1ED7 /* NewRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRouteViewController.m; sourceTree = "<group>"; };
 		C93D941F189AEEFD00D1A336 /* UIColor+BeatWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BeatWalker.h"; sourceTree = "<group>"; };
 		C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BeatWalker.m"; sourceTree = "<group>"; };
 		C93D9422189AFC4A00D1A336 /* MusicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicView.h; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				C980CECC189D5E5400A9DFA4 /* RouteDataManager.m */,
 				A75409D8189B45FC000F6B8C /* RouteViewController.h */,
 				A75409D9189B45FC000F6B8C /* RouteViewController.m */,
+				C920851B189D91E2000B1ED7 /* NewRouteViewController.h */,
+				C920851C189D91E2000B1ED7 /* NewRouteViewController.m */,
 				A75409E3189B4747000F6B8C /* RouteTableViewModel.h */,
 				A75409E4189B4747000F6B8C /* RouteTableViewModel.m */,
 				A75409DE189B4637000F6B8C /* RouteCell.h */,
@@ -400,6 +405,7 @@
 				C98584B1189A178C00D52B7F /* SWUtilityButtonView.m in Sources */,
 				A75409E0189B4637000F6B8C /* RouteCell.m in Sources */,
 				C98584AF189A178C00D52B7F /* SWTableViewCell.m in Sources */,
+				C920851D189D91E2000B1ED7 /* NewRouteViewController.m in Sources */,
 				C93D9421189AEEFD00D1A336 /* UIColor+BeatWalker.m in Sources */,
 				04208E44189C4848006E54D6 /* BWDynamicViewController.m in Sources */,
 				C9017754189B5AB500692598 /* MediaItemTableViewCell.m in Sources */,
@@ -531,8 +537,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeatWalker/BeatWalker-Prefix.pch";
 				INFOPLIST_FILE = "BeatWalker/BeatWalker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -545,8 +552,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeatWalker/BeatWalker-Prefix.pch";
 				INFOPLIST_FILE = "BeatWalker/BeatWalker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

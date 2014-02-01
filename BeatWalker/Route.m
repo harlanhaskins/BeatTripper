@@ -47,7 +47,7 @@
 
 -(NSString*) details
 {
-    return [NSString stringWithFormat:@"~%lu Songs | %@",[[self songNumberAverage] longValue], [self stringForTimeAverage]];
+    return [NSString stringWithFormat:@"%lu Songs | %@",[[self songNumberAverage] longValue], [self stringForTimeAverage]];
 }
 
 - (NSString*) stringForTimeAverage {

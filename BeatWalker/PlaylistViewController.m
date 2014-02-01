@@ -12,6 +12,8 @@
 #import "InformationView.h"
 #import "MusicView.h"
 #import "BWDynamicViewController.h"
+#import "RouteManager.h"
+#import "Route.h"
 
 @interface PlaylistViewController ()
 
@@ -22,14 +24,16 @@
 @property (nonatomic) InformationView *songsLabel;
 @property (nonatomic) InformationView *timeLabel;
 
+@property (nonatomic) Route *route;
+
 @property (nonatomic) UIView *informationContainer;
 
 @property (nonatomic) MusicView *musicView;
 
 @property (nonatomic) UIView *tableViewTopBorderCoverView;
 @property (nonatomic) UIView *tableViewBottomBorderCoverView;
-@property (nonatomic) UIButton *checkButton;
-@property (nonatomic) UIButton *xButton;
+@property (nonatomic) UIButton *finishButton;
+@property (nonatomic) UIButton *cancelButton;
 
 @end
 
@@ -87,17 +91,17 @@
     [self.view addSubview:self.tableViewTopBorderCoverView];
     [self.view addSubview:self.tableViewBottomBorderCoverView];
     
-    self.checkButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.checkButton setImage:[UIImage imageNamed:@"CheckButton"] forState:UIControlStateNormal];
-    [self.checkButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
-    [self.checkButton sizeToFit];
-    [self.view addSubview:self.checkButton];
+    self.finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.finishButton setImage:[UIImage imageNamed:@"finishButton"] forState:UIControlStateNormal];
+    [self.finishButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
+    [self.finishButton sizeToFit];
+    [self.view addSubview:self.finishButton];
     
-    self.xButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.xButton setImage:[UIImage imageNamed:@"XButton"] forState:UIControlStateNormal];
-    [self.xButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-    [self.xButton sizeToFit];
-    [self.view addSubview:self.xButton];
+    self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.cancelButton setImage:[UIImage imageNamed:@"cancelButton"] forState:UIControlStateNormal];
+    [self.cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    [self.cancelButton sizeToFit];
+    [self.view addSubview:self.cancelButton];
     
     [self.model loadSongs];
 }
@@ -107,7 +111,6 @@
 }
 
 - (void) finish {
-    
 }
 
 - (UITableView*) createTableViewWithRefreshControl {
@@ -119,14 +122,14 @@
     return tableVCForRefreshControl.tableView;
 }
 
+- (void) setRoute:(Route *)route {
+    _route = route;
+    self.model.route = route;
+}
+
 - (void) reloadTableView {
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
 }
 
 - (void) viewDidLayoutSubviews {
@@ -143,9 +146,9 @@
     self.musicView.frame = musicViewRect;
     
     CGRect informationViewRect;
-    informationViewRect.origin = CGPointMake(5.0, 0.0);
+    informationViewRect.origin = CGPointMake(5.0, 0);
     informationViewRect.size.width = self.view.width;
-    informationViewRect.size.height = self.tableView.y;
+    informationViewRect.size.height = self.tableView.y - self.informationContainer.y;
     self.informationContainer.frame = informationViewRect;
     
     CGFloat infoContainerAdjuster = self.informationContainer.width / 3;
@@ -160,19 +163,19 @@
     
     [self setTableViewBorderCovers];
     
-    CGSize buttonSize = self.checkButton.size;
+    CGSize buttonSize = self.finishButton.size;
     buttonSize = CGSizeApplyAffineTransform(buttonSize, CGAffineTransformMakeScale(0.85, 0.85));
     
-    self.checkButton.size =
-    self.xButton.size = buttonSize;
+    self.finishButton.size =
+    self.cancelButton.size = buttonSize;
     
     CGFloat buttonSidePadding = 15.0;
-    self.checkButton.centerY =
-    self.xButton.centerY =
+    self.finishButton.centerY =
+    self.cancelButton.centerY =
     self.informationContainer.centerY + 5.0;
     
-    self.checkButton.right = self.view.width - buttonSidePadding;
-    self.xButton.x = buttonSidePadding;
+    self.finishButton.right = self.view.width - buttonSidePadding;
+    self.cancelButton.x = buttonSidePadding;
 }
 
 - (void) setTableViewBorderCovers {
