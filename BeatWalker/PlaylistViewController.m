@@ -24,8 +24,6 @@
 @property (nonatomic) InformationView *songsLabel;
 @property (nonatomic) InformationView *timeLabel;
 
-@property (nonatomic) Route *route;
-
 @property (nonatomic) UIView *informationContainer;
 
 @property (nonatomic) MusicView *musicView;
@@ -39,17 +37,8 @@
 
 @implementation PlaylistViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self setNeedsStatusBarAppearanceUpdate];
-    
+- (void) initializeModel {
     self.model = [PlaylistTableViewModel model];
-    
-    self.tableView = [self createTableViewWithRefreshControl];
-    
-    self.model.tableView = self.tableView;
     
     __weak PlaylistViewController *weakSelf = self;
     self.model.refreshTableViewBlock = ^{
@@ -61,6 +50,23 @@
     self.model.songNumberUpdated = ^(double songNumber) {
         [weakSelf.songsLabel setInformation:songNumber];
     };
+    
+    [self.model loadSongs];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+    
+    self.tableView = [self createTableViewWithRefreshControl];
+    
+    if (!self.model) {
+        [self initializeModel];
+    }
+    
+    self.model.tableView = self.tableView;
     
     self.tableView.backgroundColor =
     self.view.backgroundColor = [UIColor beatWalkerBackgroundColor];
@@ -92,25 +98,25 @@
     [self.view addSubview:self.tableViewBottomBorderCoverView];
     
     self.finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.finishButton setImage:[UIImage imageNamed:@"finishButton"] forState:UIControlStateNormal];
+    [self.finishButton setImage:[UIImage imageNamed:@"CheckButton"] forState:UIControlStateNormal];
     [self.finishButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
     [self.finishButton sizeToFit];
     [self.view addSubview:self.finishButton];
     
     self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.cancelButton setImage:[UIImage imageNamed:@"cancelButton"] forState:UIControlStateNormal];
+    [self.cancelButton setImage:[UIImage imageNamed:@"XButton"] forState:UIControlStateNormal];
     [self.cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [self.cancelButton sizeToFit];
     [self.view addSubview:self.cancelButton];
-    
-    [self.model loadSongs];
 }
 
 - (void) dismiss {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) finish {
+    [self.model finish];
+    [self dismiss];
 }
 
 - (UITableView*) createTableViewWithRefreshControl {
@@ -140,6 +146,7 @@
     self.tableView.y += 25.0;
     
     CGRect musicViewRect;
+    musicViewRect.origin.x = 0;
     musicViewRect.origin.y = self.tableView.bottom;
     musicViewRect.size.width = self.view.width;
     musicViewRect.size.height = self.view.height - musicViewRect.origin.y;
@@ -161,8 +168,6 @@
     self.songsLabel.y -= 35.0;
     self.songsLabel.centerX = infoContainerAdjuster * 2;
     
-    [self setTableViewBorderCovers];
-    
     CGSize buttonSize = self.finishButton.size;
     buttonSize = CGSizeApplyAffineTransform(buttonSize, CGAffineTransformMakeScale(0.85, 0.85));
     
@@ -176,6 +181,8 @@
     
     self.finishButton.right = self.view.width - buttonSidePadding;
     self.cancelButton.x = buttonSidePadding;
+    
+    [self setTableViewBorderCovers];
 }
 
 - (void) setTableViewBorderCovers {
@@ -192,7 +199,7 @@
     [self.tableViewTopBorderCoverView centerToParent];
     [self.tableViewBottomBorderCoverView centerToParent];
     
-    self.tableViewTopBorderCoverView.y = self.tableView.y - 0.5;
+    self.tableViewTopBorderCoverView.y = self.tableView.y + self.topLayoutGuide.length - 0.5;
     self.tableViewBottomBorderCoverView.y = self.tableView.bottom;
 }
 

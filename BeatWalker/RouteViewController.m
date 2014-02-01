@@ -15,6 +15,9 @@
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) RouteTableViewModel *model;
+
+@property (nonatomic) UIRefreshControl *refreshControl;
+
 @property (nonatomic) UILabel *pickRouteLabel;
 
 @property (nonatomic) UIButton *addRouteButton;
@@ -43,7 +46,11 @@
         [weakSelf.tableView reloadData];
     };
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    self.model.pushRouteAtIndex = ^(NSInteger index){
+        [weakSelf pushRouteAtIndex:index];
+    };
+    
+    self.tableView = [self createTableViewWithRefreshControl];
     self.tableView.backgroundColor = self.view.backgroundColor;
     self.tableView.dataSource = self.model;
     self.tableView.delegate = self.model;
@@ -60,6 +67,31 @@
     if ([RouteManager sharedManager].routes.count == 0) {
         [self showNewRouteViewController];
     }
+}
+
+- (void) reloadTableView {
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+- (UITableView*) createTableViewWithRefreshControl {
+    UITableViewController *tableVCForRefreshControl = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    tableVCForRefreshControl.refreshControl = [UIRefreshControl new];
+    [tableVCForRefreshControl.refreshControl addTarget:self action:@selector(reloadTableView) forControlEvents:UIControlEventAllEvents];
+    self.refreshControl = tableVCForRefreshControl.refreshControl;
+    
+    return tableVCForRefreshControl.tableView;
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
+- (void) pushRouteAtIndex:(NSInteger)index {
+    Route *route = [[RouteManager sharedManager] routeAtIndex:index];
+    [self.playlistVC setRoute:route];
+    [self.navigationController pushViewController:self.playlistVC animated:YES];
 }
 
 - (void) showNewRouteViewController {

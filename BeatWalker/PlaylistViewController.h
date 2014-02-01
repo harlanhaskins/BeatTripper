@@ -10,6 +10,12 @@
 #import "MusicView.h"
 #import "BWDynamicViewController.h"
 
+@class Route;
+
 @interface PlaylistViewController : BWDynamicViewController
+
+- (void) initializeModel;
+
+@property (nonatomic) Route *route;
 
 @end

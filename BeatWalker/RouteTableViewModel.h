@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PlaylistViewController.h"
 
 @interface RouteTableViewModel : NSObject<
     UITableViewDataSource, UITableViewDelegate>
@@ -14,5 +15,6 @@
 + (instancetype) model;
 
 @property (nonatomic, copy) void (^reloadTableViewCell)();
+@property (nonatomic, copy) void (^pushRouteAtIndex)(NSInteger index);
 
 @end
