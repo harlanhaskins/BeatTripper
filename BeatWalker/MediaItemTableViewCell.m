@@ -11,7 +11,7 @@
 
 @interface MediaItemTableViewCell ()
 
-@property (nonatomic) MPMediaItem *item;
+@property (nonatomic, readwrite) MPMediaItem *mediaItem;
 
 @end
 
@@ -26,7 +26,7 @@
     MediaItemTableViewCell *cell = [[MediaItemTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SongCell" containingTableView:tableView leftUtilityButtons:nil rightUtilityButtons:utilityButtons];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.item = item;
+    cell.mediaItem = item;
     cell.textLabel.text = item.title;
     cell.detailTextLabel.text = item.artist;
     

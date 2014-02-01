@@ -13,6 +13,7 @@
 
 @interface MediaItemTableViewCell : SWTableViewCell
 
-+ (instancetype) cellWithMediaItem:(MPMediaItem*)item containingTableView:(UITableView*)tableView;
+@property (nonatomic, readonly) MPMediaItem *mediaItem;
++ (instancetype) cellWithMediaItem:(MPMediaItem*)mediaItem containingTableView:(UITableView*)tableView;
 
 @end
