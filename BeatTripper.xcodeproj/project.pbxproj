@@ -34,7 +34,7 @@
 		C985847B1899F79100D52B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584601899F79100D52B7F /* Foundation.framework */; };
 		C985847C1899F79100D52B7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584641899F79100D52B7F /* UIKit.framework */; };
 		C98584841899F79100D52B7F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C98584821899F79100D52B7F /* InfoPlist.strings */; };
-		C98584861899F79100D52B7F /* BeatTripperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584851899F79100D52B7F /* BeatTripperTests.m */; };
+		C98584861899F79100D52B7F /* BeatWalkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584851899F79100D52B7F /* BeatWalkerTests.m */; };
 		C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */; };
 		C985849C189A106A00D52B7F /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = C985849B189A106A00D52B7F /* UIView+Positioning.m */; };
 		C98584AC189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584A1189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m */; };
@@ -103,7 +103,7 @@
 		C98584791899F79100D52B7F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C98584811899F79100D52B7F /* BeatTripperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeatTripperTests-Info.plist"; sourceTree = "<group>"; };
 		C98584831899F79100D52B7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C98584851899F79100D52B7F /* BeatTripperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatTripperTests.m; sourceTree = "<group>"; };
+		C98584851899F79100D52B7F /* BeatWalkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatWalkerTests.m; sourceTree = "<group>"; };
 		C98584951899FBC400D52B7F /* MPMediaItem-Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem-Properties.h"; sourceTree = "<group>"; };
 		C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem-Properties.m"; sourceTree = "<group>"; };
 		C985849B189A106A00D52B7F /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 		C985847F1899F79100D52B7F /* BeatTripperTests */ = {
 			isa = PBXGroup;
 			children = (
-				C98584851899F79100D52B7F /* BeatTripperTests.m */,
+				C98584851899F79100D52B7F /* BeatWalkerTests.m */,
 				C98584801899F79100D52B7F /* Supporting Files */,
 			);
 			name = BeatTripperTests;
@@ -425,7 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C98584861899F79100D52B7F /* BeatTripperTests.m in Sources */,
+				C98584861899F79100D52B7F /* BeatWalkerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
