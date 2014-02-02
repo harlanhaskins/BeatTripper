@@ -30,7 +30,7 @@
     self.routeLabel.textColor = [UIColor beatWalkerTextColor];
     self.routeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:26.0];
     [self.routeLabel sizeToFit];
-    [self.view addSubview:self.routeLabel];
+    [self.contentView addSubview:self.routeLabel];
     
     self.routeNameTextField = [UITextField new];
     
@@ -39,20 +39,20 @@
                                                                                     attributes:@{NSForegroundColorAttributeName: color}];
     self.routeNameTextField.textColor = [UIColor beatWalkerTextColor];
     self.routeNameTextField.delegate = self;
-    [self.view addSubview:self.routeNameTextField];
+    [self.contentView addSubview:self.routeNameTextField];
     
     self.finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.finishButton setImage:[UIImage imageNamed:@"CheckButton"] forState:UIControlStateNormal];
     [self.finishButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
     [self.finishButton sizeToFit];
     self.finishButton.enabled = NO;
-    [self.view addSubview:self.finishButton];
+    [self.contentView addSubview:self.finishButton];
     
     self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.cancelButton setImage:[UIImage imageNamed:@"XButton"] forState:UIControlStateNormal];
     [self.cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [self.cancelButton sizeToFit];
-    [self.view addSubview:self.cancelButton];
+    [self.contentView addSubview:self.cancelButton];
 }
 
 - (void) dismiss {
@@ -71,11 +71,11 @@
     self.routeLabel.y = 50.0;
     
     self.routeNameTextField.height = 44.0;
-    self.routeNameTextField.width = self.view.width * 0.75;
+    self.routeNameTextField.width = self.contentView.width * 0.75;
     [self.routeNameTextField centerToParent];
     self.routeNameTextField.y = self.routeLabel.bottom + padding;
     
-    CGSize buttonSize = self.finishButton.size;
+    CGSize buttonSize = self.finishButton.imageView.image.size;
     buttonSize = CGSizeApplyAffineTransform(buttonSize, CGAffineTransformMakeScale(0.85, 0.85));
     
     self.finishButton.size =

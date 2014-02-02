@@ -18,6 +18,7 @@
 - (NSInteger) numberOfRoutes;
 - (void) addTime:(NSTimeInterval)time toRoute:(Route*)route;
 - (void) addSongAmount:(double)songAmount toRoute:(Route*)route;
+- (void) deleteRouteAtIndex:(NSInteger)index;
 
 @property (nonatomic, readonly) NSMutableArray *routes;
 

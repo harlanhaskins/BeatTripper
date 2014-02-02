@@ -70,7 +70,12 @@
 - (void) setInformation:(double)information {
     switch (self.informationType) {
         case InformationTypeNumber:
-            self.numberLabel.text = [NSString stringWithFormat:@"%02.1f", information];
+            if (information == information || information > 0 || information != (-0.0)) {
+                self.numberLabel.text = [NSString stringWithFormat:@"%02.1f", information];
+            }
+            else {
+                self.numberLabel.text = @"0.0";
+            }
             break;
         case InformationTypeTimeInterval:
             self.numberLabel.text = [self stringForTimeInterval:information];

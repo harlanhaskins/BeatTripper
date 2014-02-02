@@ -31,6 +31,8 @@
 
 @property (nonatomic, readonly) MPMediaItem *currentSong;
 
+@property (nonatomic) NSTimer *musicCheckTimer;
+
 - (void) popSong;
 - (void) unPopSong;
 

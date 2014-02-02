@@ -17,13 +17,23 @@
 
 @implementation RouteCell
 
-+ (instancetype) cellWithRoute:(Route *)route
++ (instancetype) cellWithRoute:(Route *)route containingTableView:(UITableView*)tableView
 {
-    RouteCell *cell = [[RouteCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"RouteCell"];
+    UIColor *deleteColor = [UIColor colorWithRed:239.0/255.0 green:41.0/255.0 blue:41.0/255.0 alpha:1.0];
+    NSMutableArray *utilityButtons = [NSMutableArray array];
+    [utilityButtons sw_addUtilityButtonWithColor:deleteColor title:@"Delete"];
+    
+    RouteCell *cell = [[RouteCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                       reuseIdentifier:@"RouteCell"
+                                   containingTableView:tableView
+                                    leftUtilityButtons:nil
+                                   rightUtilityButtons:utilityButtons];
     
     cell.route = route;
     cell.textLabel.text = route.name;
     cell.textLabel.textColor = [UIColor beatWalkerTextColor];
+    cell.contentView.backgroundColor =
+    cell.backgroundColor = cell.containingTableView.backgroundColor;
     cell.detailTextLabel.text = route.details;
     cell.detailTextLabel.textColor = [UIColor beatWalkerTextColor];
     

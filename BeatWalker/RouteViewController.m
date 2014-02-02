@@ -22,6 +22,8 @@
 
 @property (nonatomic) UIButton *addRouteButton;
 
+@property (nonatomic) UIView *tableViewTopBorderCoverView;
+
 @end
 
 @implementation RouteViewController
@@ -30,8 +32,6 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor beatWalkerBackgroundColor];
-    
     self.model = [RouteTableViewModel model];
     
     self.pickRouteLabel = [UILabel new];
@@ -39,7 +39,7 @@
     self.pickRouteLabel.textColor = [UIColor beatWalkerTextColor];
     self.pickRouteLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:26.0];
     [self.pickRouteLabel sizeToFit];
-    [self.view addSubview:self.pickRouteLabel];
+    [self.contentView addSubview:self.pickRouteLabel];
     
     __weak RouteViewController *weakSelf = self;
     self.model.reloadTableViewCell = ^{
@@ -51,19 +51,23 @@
     };
     
     self.tableView = [self createTableViewWithRefreshControl];
-    self.tableView.backgroundColor = self.view.backgroundColor;
+    self.tableView.backgroundColor = self.contentView.backgroundColor;
     self.tableView.dataSource = self.model;
     self.tableView.delegate = self.model;
     self.tableView.separatorColor = [UIColor beatWalkerSubtleTextColor];
     
-    [self.view addSubview:self.tableView];
+    self.tableViewTopBorderCoverView = [UIView new];
+    
+    [self.contentView addSubview:self.tableViewTopBorderCoverView];
+    
+    [self.contentView addSubview:self.tableView];
     
     self.addRouteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.addRouteButton setImage:[UIImage imageNamed:@"PlusButton"] forState:UIControlStateNormal];
     [self.addRouteButton addTarget:self action:@selector(showNewRouteViewController) forControlEvents:UIControlEventTouchUpInside];
     [self.addRouteButton sizeToFit];
-    self.addRouteButton.size = CGSizeApplyAffineTransform(self.addRouteButton.size, CGAffineTransformMakeScale(0.65, 0.65));
-    [self.view addSubview:self.addRouteButton];
+    self.addRouteButton.size = CGSizeApplyAffineTransform(self.addRouteButton.size, CGAffineTransformMakeScale(0.85, 0.85));
+    [self.contentView addSubview:self.addRouteButton];
     
     if ([RouteManager sharedManager].routes.count == 0) {
         [self showNewRouteViewController];
@@ -90,9 +94,10 @@
 }
 
 - (void) pushRouteAtIndex:(NSInteger)index {
+    PlaylistViewController *playlistVC = [PlaylistViewController new];
     Route *route = [[RouteManager sharedManager] routeAtIndex:index];
-    [self.playlistVC setRoute:route];
-    [self.navigationController pushViewController:self.playlistVC animated:YES];
+    [playlistVC setRoute:route];
+    [self.navigationController pushViewController:playlistVC animated:YES];
 }
 
 - (void) showNewRouteViewController {
@@ -110,20 +115,32 @@
 - (void) viewDidLayoutSubviews {
     self.tableView.frame = self.view.frame;
     self.tableView.height *= 0.75;
-    self.tableView.bottom = self.view.height;
+    self.tableView.bottom = self.contentView.height;
+    
+    CGFloat sidePadding = 25.0;
     
     [self.pickRouteLabel centerToParent];
+    self.pickRouteLabel.x = sidePadding;
     self.pickRouteLabel.centerY = (self.tableView.y / 2);
     
     [self.addRouteButton centerToParent];
-    self.addRouteButton.right = self.view.right - 15.0;
+    self.addRouteButton.right = self.contentView.right - sidePadding;
     self.addRouteButton.centerY = self.pickRouteLabel.centerY;
+    
+    [self setTableViewBorderCovers];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (void) setTableViewBorderCovers {
+    self.tableViewTopBorderCoverView.backgroundColor = [UIColor beatWalkerSubtleTextColor];
+    
+    self.tableViewTopBorderCoverView.width = self.contentView.width; // * 1.5;
+    
+    self.tableViewTopBorderCoverView.height = 0.5;
+    
+    [self.tableViewTopBorderCoverView centerToParent];
+    
+    self.tableViewTopBorderCoverView.y = self.tableView.y - 0.5;
 }
 
 @end

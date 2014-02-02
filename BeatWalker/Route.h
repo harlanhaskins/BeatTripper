@@ -13,10 +13,10 @@
 + (instancetype) routeWithName:(NSString*)name;
 
 -(void) addTime:(NSTimeInterval)time;
--(NSNumber*) timeAverage;
+-(NSTimeInterval) timeAverage;
 
 -(void) addSongNumber:(NSNumber*)number;
--(NSNumber*) songNumberAverage;
+-(double) songNumberAverage;
 
 @property (nonatomic, readonly) NSString *details;
 @property (nonatomic, readonly) NSString *name;

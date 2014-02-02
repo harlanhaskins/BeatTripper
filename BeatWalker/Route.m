@@ -10,7 +10,7 @@
 
 @interface Route ()
 
-@property (nonatomic) NSMutableArray *numberOfSongs;
+@property (nonatomic) NSMutableArray *songAmounts;
 @property (nonatomic) NSMutableArray *times;
 
 @property (nonatomic) NSString *name;
@@ -21,14 +21,14 @@
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.name forKey:@"name"];
-    [aCoder encodeObject:self.numberOfSongs forKey:@"numberOfSongs"];
+    [aCoder encodeObject:self.songAmounts forKey:@"numberOfSongs"];
     [aCoder encodeObject:self.times forKey:@"times"];
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
         self.name = [aDecoder decodeObjectForKey:@"name"];
-        self.numberOfSongs = [aDecoder decodeObjectForKey:@"numberOfSongs"];
+        self.songAmounts = [aDecoder decodeObjectForKey:@"numberOfSongs"];
         self.times = [aDecoder decodeObjectForKey:@"times"];
     }
     return self;
@@ -39,7 +39,7 @@
     Route *newRoute = [Route new];
     
     newRoute.name = name;
-    newRoute.numberOfSongs = [NSMutableArray array];
+    newRoute.songAmounts = [NSMutableArray array];
     newRoute.times = [NSMutableArray array];
     
     return newRoute;
@@ -47,11 +47,11 @@
 
 -(NSString*) details
 {
-    return [NSString stringWithFormat:@"%lu Songs | %@",[[self songNumberAverage] longValue], [self stringForTimeAverage]];
+    return [NSString stringWithFormat:@"%.1f Songs | %@", [self songNumberAverage], [self stringForTimeAverage]];
 }
 
 - (NSString*) stringForTimeAverage {
-    return [self stringForTimeInterval:[[self timeAverage] doubleValue]];
+    return [self stringForTimeInterval:[self timeAverage]];
 }
 
 -(NSString*)stringForTimeInterval:(NSTimeInterval)timeInterval{
@@ -75,37 +75,51 @@
     [self.times addObject:@(time)];
 }
 
-- (NSNumber*) timeAverage
+- (NSTimeInterval) timeAverage
 {
     CGFloat sum = 0;
-    const NSInteger numberOfItemsToCheck = 5;
+    const NSUInteger numberOfItemsToCheck = 5;
     
-    for (NSUInteger time = self.times.count; time > (self.times.count - numberOfItemsToCheck); time--)
-    {
-        sum += [self.times[time] doubleValue];
-        
-        if (time == 0) break;
+    NSInteger time = self.times.count - numberOfItemsToCheck;
+    if (time < 0) {
+        time = 0;
     }
-    return @(sum/numberOfItemsToCheck);
+    
+    while (time < self.times.count)
+    {
+        NSInteger timeIndex = self.times.count - time - 1;
+        if (timeIndex <= 0) break;
+        
+        sum += [self.times[time] doubleValue];
+        time++;
+    }
+    return sum/numberOfItemsToCheck;
 }
 
 -(void) addSongNumber:(NSNumber*)number
 {
-    [self.numberOfSongs addObject:number];
+    [self.songAmounts addObject:number];
 }
 
--(NSNumber*) songNumberAverage
+-(double) songNumberAverage
 {
     CGFloat sum = 0;
     const NSInteger numberOfItemsToCheck = 5;
     
-    for (NSUInteger songNumber = self.numberOfSongs.count; songNumber > (self.numberOfSongs.count - 5); songNumber--)
-    {
-        sum += [self.numberOfSongs[songNumber] doubleValue];
-        
-        if (songNumber == 0) break;
+    NSInteger time = self.times.count - numberOfItemsToCheck;
+    if (time < 0) {
+        time = 0;
     }
-    return @(sum/numberOfItemsToCheck);
+    
+    while (time < self.songAmounts.count)
+    {
+        NSInteger timeIndex = self.times.count - time - 1;
+        if (timeIndex <= 0) break;
+        
+        sum += [self.songAmounts[time] doubleValue];
+        time++;
+    }
+    return sum/numberOfItemsToCheck;
 }
 
 @end

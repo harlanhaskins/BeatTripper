@@ -96,6 +96,11 @@
     }
 }
 
+- (void) deleteRouteAtIndex:(NSInteger)index {
+    Route *route = [self routeAtIndex:index];
+    [self deleteRoute:route];
+}
+
 - (void) saveRoutes {
     [RouteDataManager saveRoutes:self.routes];
 }

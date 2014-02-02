@@ -10,6 +10,8 @@
 
 @interface BWDynamicViewController ()
 
+@property (nonatomic) UIDynamicAnimator *animator;
+
 @end
 
 @implementation BWDynamicViewController
@@ -26,9 +28,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor beatWalkerBackgroundColor];
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.contentView];
+    
+    CGRect contentFrame = self.view.frame;
+    contentFrame.origin.x += contentFrame.size.width;
+    contentFrame.origin.y += contentFrame.size.height;
+    self.contentView = [[UIView alloc] initWithFrame:contentFrame];
+    self.contentView.backgroundColor = [UIColor beatWalkerBackgroundColor];
+    self.view.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.contentView];
     [self addParallax];
 	// Do any additional setup after loading the view.
+}
+
+- (void) viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    CGRect contentFrame = self.view.frame;
+    contentFrame.origin.x += contentFrame.size.width;
+    contentFrame.origin.y += contentFrame.size.height;
+    self.contentView.frame = contentFrame;
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self addSnapBehavior];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,30 +60,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) addSnapBehavior {
+    UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:self.contentView snapToPoint:self.view.center];
+    [self.animator addBehavior:snapBehavior];
+}
+
 - (void) addParallax {
+    
+    NSInteger relativeAbsoluteValue = 15;
     
     // Set vertical effect
     UIInterpolatingMotionEffect *verticalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
      initWithKeyPath:@"center.y"
      type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-    verticalMotionEffect.minimumRelativeValue = @(-10);
-    verticalMotionEffect.maximumRelativeValue = @(10);
+    verticalMotionEffect.minimumRelativeValue = @(-relativeAbsoluteValue);
+    verticalMotionEffect.maximumRelativeValue = @(relativeAbsoluteValue);
     
     // Set horizontal effect
     UIInterpolatingMotionEffect *horizontalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
      initWithKeyPath:@"center.x"
      type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    horizontalMotionEffect.minimumRelativeValue = @(-10);
-    horizontalMotionEffect.maximumRelativeValue = @(10);
+    horizontalMotionEffect.minimumRelativeValue = @(-relativeAbsoluteValue);
+    horizontalMotionEffect.maximumRelativeValue = @(relativeAbsoluteValue);
     
     // Create group to combine both
     UIMotionEffectGroup *group = [UIMotionEffectGroup new];
     group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
     
     // Add both effects to your view
-    [self.view addMotionEffect:group];
+    [self.contentView addMotionEffect:group];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

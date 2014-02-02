@@ -22,10 +22,7 @@
     // Stop playback if music is playing.
     [[MPMusicPlayerController iPodMusicPlayer] stop];
     
-    PlaylistViewController *playlistVC = [PlaylistViewController new];
-    [playlistVC initializeModel];
     RouteViewController *routeVC = [RouteViewController new];
-    routeVC.playlistVC = playlistVC;
     
     [navController setViewControllers:@[routeVC]];
     

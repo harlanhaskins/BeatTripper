@@ -28,13 +28,14 @@
 @property (nonatomic) double totalSongAmount;
 @property (nonatomic) double currentSongAmount;
 
-@property (nonatomic) NSTimer *musicCheckTimer;
+@property (nonatomic) BOOL manuallySentNewSong;
 
 @end
 
 @implementation PlaylistTableViewModel
 
 + (instancetype) model {
+    
     PlaylistTableViewModel *model = [PlaylistTableViewModel new];
     model.musicController = [MPMusicPlayerController applicationMusicPlayer];
     model.musicCheckTimer = [NSTimer timerWithTimeInterval:1.0
@@ -50,6 +51,8 @@
     
     [model.musicController beginGeneratingPlaybackNotifications];
     model.musicController.shuffleMode = MPMusicShuffleModeOff;
+    
+    model.manuallySentNewSong = YES;
     
     [[NSRunLoop currentRunLoop] addTimer:model.musicCheckTimer forMode:NSDefaultRunLoopMode];
     
@@ -70,7 +73,7 @@
         [self.musicController setQueueWithItemCollection:collection];
         
         self.currentIndices = [NSMutableArray array];
-        for (int i = 0; i < 40; ++i) {
+        for (int i = 0; i < 15; ++i) {
             [self.currentIndices addObject:@(i)];
         }
         
@@ -85,11 +88,16 @@
     NSArray *collectionsArray = [query collections];
     
     NSMutableArray *songsArray = [NSMutableArray array];
-    for (MPMediaItemCollection *collection in collectionsArray) {
+//    for (MPMediaItemCollection *collection in collectionsArray) {
+    
+    NSInteger numberOfCollections = [query collections].count;
+    NSInteger numberOfItems = numberOfCollections >= 300 ? 300 : numberOfCollections;
+    for (int i = 0; i < numberOfItems; i++) {
+        NSInteger randomIndex = arc4random_uniform((u_int32_t)[collectionsArray count]);
+        MPMediaItemCollection *collection = collectionsArray[randomIndex];
         MPMediaItem *song = [collection items][0];
         [songsArray addObject:song];
     }
-    [songsArray shuffle];
     
     MPMediaItemCollection *collection = [MPMediaItemCollection collectionWithItems:songsArray];
     return collection;
@@ -126,6 +134,10 @@
     return cell;
 }
 
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 - (void) swipeableTableViewCell:(MediaItemTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
@@ -154,7 +166,7 @@
 - (void) removeSongAtIndexPath:(NSIndexPath*)indexPath {
     [self.currentIndices removeObjectAtIndex:indexPath.row];
     
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+//    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     
     NSUInteger lastIndex = [self.currentIndices.lastObject integerValue];
     NSUInteger indexToAdd = [self nextPlayableIndexAfterIndex:lastIndex];
@@ -162,7 +174,7 @@
         [self.currentIndices addObject:@(indexToAdd)];
     }
     
-    [self performSelector:@selector(reloadTable) withObject:nil afterDelay:0.075];
+    [self performSelector:@selector(reloadTable) withObject:nil afterDelay:0.0];
 }
 
 - (void) unPopSong {
@@ -170,14 +182,14 @@
     if (indexToAdd != NSNotFound) {
         [self.currentIndices insertObject:@(indexToAdd) atIndex:0];
         
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         
         [self.currentIndices removeLastObject];
         
         [self resetCurrentItem];
         
-        [self performSelector:@selector(reloadTable) withObject:nil afterDelay:0.075];
+        [self performSelector:@selector(reloadTable) withObject:nil afterDelay:0.0];
     }
     
 }
@@ -240,6 +252,7 @@
 
 - (void) playSongAtIndex:(NSInteger)index {
     MPMediaItem *song = self.collection.items[index];
+    self.manuallySentNewSong = YES;
     [self.musicController setNowPlayingItem:song];
     [self adjustInternalMusicRepresentationForNextSong];
 }
@@ -269,7 +282,15 @@
 - (void) handleNowPlayingItemChange {
     NSUInteger musicControllerSongIndex = [self.musicController indexOfNowPlayingItem];
     if (musicControllerSongIndex != NSNotFound) {
+        if (self.manuallySentNewSong) {
+            self.manuallySentNewSong = NO;
+        }
+        else {
+            [self advanceToNextSong];
+        }
         self.currentPlayingSongIndex = musicControllerSongIndex;
+        
+        NSLog(@"Current Index: %li", (long)self.currentPlayingSongIndex);
     }
 }
 
@@ -280,6 +301,9 @@
 - (void) finish {
     [self adjustInternalMusicRepresentationForNextSong];
     [self resetCurrentItem];
+    [self.musicCheckTimer invalidate];
+    self.totalSongAmount = 0.0;
+    self.totalSongPlayTime = 0.0;
     [[RouteManager sharedManager] addSongAmount:self.totalSongAmount toRoute:self.route];
     [[RouteManager sharedManager] addTime:self.totalSongPlayTime toRoute:self.route];
 }
