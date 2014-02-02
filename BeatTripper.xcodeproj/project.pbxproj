@@ -34,7 +34,7 @@
 		C985847B1899F79100D52B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584601899F79100D52B7F /* Foundation.framework */; };
 		C985847C1899F79100D52B7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584641899F79100D52B7F /* UIKit.framework */; };
 		C98584841899F79100D52B7F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C98584821899F79100D52B7F /* InfoPlist.strings */; };
-		C98584861899F79100D52B7F /* BeatWalkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584851899F79100D52B7F /* BeatWalkerTests.m */; };
+		C98584861899F79100D52B7F /* BeatTripperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584851899F79100D52B7F /* BeatTripperTests.m */; };
 		C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */; };
 		C985849C189A106A00D52B7F /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = C985849B189A106A00D52B7F /* UIView+Positioning.m */; };
 		C98584AC189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584A1189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m */; };
@@ -88,22 +88,22 @@
 		C980CEC9189D5A9100A9DFA4 /* RouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteManager.m; sourceTree = "<group>"; };
 		C980CECB189D5E5400A9DFA4 /* RouteDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteDataManager.h; sourceTree = "<group>"; };
 		C980CECC189D5E5400A9DFA4 /* RouteDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDataManager.m; sourceTree = "<group>"; };
-		C985845D1899F79100D52B7F /* BeatWalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatWalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C985845D1899F79100D52B7F /* BeatTripper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatTripper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98584601899F79100D52B7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C98584621899F79100D52B7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C98584641899F79100D52B7F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C98584681899F79100D52B7F /* BeatWalker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeatWalker-Info.plist"; sourceTree = "<group>"; };
+		C98584681899F79100D52B7F /* BeatTripper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeatTripper-Info.plist"; sourceTree = "<group>"; };
 		C985846A1899F79100D52B7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C985846C1899F79100D52B7F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C985846E1899F79100D52B7F /* BeatWalker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BeatWalker-Prefix.pch"; sourceTree = "<group>"; };
+		C985846E1899F79100D52B7F /* BeatTripper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BeatTripper-Prefix.pch"; sourceTree = "<group>"; };
 		C985846F1899F79100D52B7F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C98584701899F79100D52B7F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C98584721899F79100D52B7F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C98584781899F79100D52B7F /* BeatWalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatWalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C98584781899F79100D52B7F /* BeatTripperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatTripperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98584791899F79100D52B7F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C98584811899F79100D52B7F /* BeatWalkerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeatWalkerTests-Info.plist"; sourceTree = "<group>"; };
+		C98584811899F79100D52B7F /* BeatTripperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeatTripperTests-Info.plist"; sourceTree = "<group>"; };
 		C98584831899F79100D52B7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C98584851899F79100D52B7F /* BeatWalkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatWalkerTests.m; sourceTree = "<group>"; };
+		C98584851899F79100D52B7F /* BeatTripperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatTripperTests.m; sourceTree = "<group>"; };
 		C98584951899FBC400D52B7F /* MPMediaItem-Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem-Properties.h"; sourceTree = "<group>"; };
 		C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem-Properties.m"; sourceTree = "<group>"; };
 		C985849B189A106A00D52B7F /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
@@ -195,8 +195,8 @@
 		C98584541899F79100D52B7F = {
 			isa = PBXGroup;
 			children = (
-				C98584661899F79100D52B7F /* BeatWalker */,
-				C985847F1899F79100D52B7F /* BeatWalkerTests */,
+				C98584661899F79100D52B7F /* BeatTripper */,
+				C985847F1899F79100D52B7F /* BeatTripperTests */,
 				C985845F1899F79100D52B7F /* Frameworks */,
 				C985845E1899F79100D52B7F /* Products */,
 			);
@@ -205,8 +205,8 @@
 		C985845E1899F79100D52B7F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C985845D1899F79100D52B7F /* BeatWalker.app */,
-				C98584781899F79100D52B7F /* BeatWalkerTests.xctest */,
+				C985845D1899F79100D52B7F /* BeatTripper.app */,
+				C98584781899F79100D52B7F /* BeatTripperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,7 +223,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C98584661899F79100D52B7F /* BeatWalker */ = {
+		C98584661899F79100D52B7F /* BeatTripper */ = {
 			isa = PBXGroup;
 			children = (
 				C985846F1899F79100D52B7F /* AppDelegate.h */,
@@ -235,6 +235,7 @@
 				C98584721899F79100D52B7F /* Images.xcassets */,
 				C98584671899F79100D52B7F /* Supporting Files */,
 			);
+			name = BeatTripper;
 			path = BeatWalker;
 			sourceTree = "<group>";
 		};
@@ -242,10 +243,10 @@
 			isa = PBXGroup;
 			children = (
 				C985849E189A178C00D52B7F /* SWTableViewCell */,
-				C98584681899F79100D52B7F /* BeatWalker-Info.plist */,
+				C98584681899F79100D52B7F /* BeatTripper-Info.plist */,
 				C98584691899F79100D52B7F /* InfoPlist.strings */,
 				C985846C1899F79100D52B7F /* main.m */,
-				C985846E1899F79100D52B7F /* BeatWalker-Prefix.pch */,
+				C985846E1899F79100D52B7F /* BeatTripper-Prefix.pch */,
 				C98584951899FBC400D52B7F /* MPMediaItem-Properties.h */,
 				C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */,
 				C985849D189A107100D52B7F /* UIView+Positioning.h */,
@@ -256,19 +257,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C985847F1899F79100D52B7F /* BeatWalkerTests */ = {
+		C985847F1899F79100D52B7F /* BeatTripperTests */ = {
 			isa = PBXGroup;
 			children = (
-				C98584851899F79100D52B7F /* BeatWalkerTests.m */,
+				C98584851899F79100D52B7F /* BeatTripperTests.m */,
 				C98584801899F79100D52B7F /* Supporting Files */,
 			);
+			name = BeatTripperTests;
 			path = BeatWalkerTests;
 			sourceTree = "<group>";
 		};
 		C98584801899F79100D52B7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C98584811899F79100D52B7F /* BeatWalkerTests-Info.plist */,
+				C98584811899F79100D52B7F /* BeatTripperTests-Info.plist */,
 				C98584821899F79100D52B7F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -298,9 +300,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C985845C1899F79100D52B7F /* BeatWalker */ = {
+		C985845C1899F79100D52B7F /* BeatTripper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C98584891899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatWalker" */;
+			buildConfigurationList = C98584891899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatTripper" */;
 			buildPhases = (
 				C98584591899F79100D52B7F /* Sources */,
 				C985845A1899F79100D52B7F /* Frameworks */,
@@ -310,14 +312,14 @@
 			);
 			dependencies = (
 			);
-			name = BeatWalker;
+			name = BeatTripper;
 			productName = BeatWalker;
-			productReference = C985845D1899F79100D52B7F /* BeatWalker.app */;
+			productReference = C985845D1899F79100D52B7F /* BeatTripper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C98584771899F79100D52B7F /* BeatWalkerTests */ = {
+		C98584771899F79100D52B7F /* BeatTripperTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C985848C1899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatWalkerTests" */;
+			buildConfigurationList = C985848C1899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatTripperTests" */;
 			buildPhases = (
 				C98584741899F79100D52B7F /* Sources */,
 				C98584751899F79100D52B7F /* Frameworks */,
@@ -328,9 +330,9 @@
 			dependencies = (
 				C985847E1899F79100D52B7F /* PBXTargetDependency */,
 			);
-			name = BeatWalkerTests;
+			name = BeatTripperTests;
 			productName = BeatWalkerTests;
-			productReference = C98584781899F79100D52B7F /* BeatWalkerTests.xctest */;
+			productReference = C98584781899F79100D52B7F /* BeatTripperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -347,7 +349,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C98584581899F79100D52B7F /* Build configuration list for PBXProject "BeatWalker" */;
+			buildConfigurationList = C98584581899F79100D52B7F /* Build configuration list for PBXProject "BeatTripper" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -359,8 +361,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C985845C1899F79100D52B7F /* BeatWalker */,
-				C98584771899F79100D52B7F /* BeatWalkerTests */,
+				C985845C1899F79100D52B7F /* BeatTripper */,
+				C98584771899F79100D52B7F /* BeatTripperTests */,
 			);
 		};
 /* End PBXProject section */
@@ -423,7 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C98584861899F79100D52B7F /* BeatWalkerTests.m in Sources */,
+				C98584861899F79100D52B7F /* BeatTripperTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +434,7 @@
 /* Begin PBXTargetDependency section */
 		C985847E1899F79100D52B7F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C985845C1899F79100D52B7F /* BeatWalker */;
+			target = C985845C1899F79100D52B7F /* BeatTripper */;
 			targetProxy = C985847D1899F79100D52B7F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -535,10 +537,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BeatWalker/BeatWalker-Prefix.pch";
-				INFOPLIST_FILE = "BeatWalker/BeatWalker-Info.plist";
+				GCC_PREFIX_HEADER = "BeatWalker/BeatTripper-Prefix.pch";
+				INFOPLIST_FILE = "BeatWalker/BeatTripper-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BeatTripper;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -550,10 +552,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BeatWalker/BeatWalker-Prefix.pch";
-				INFOPLIST_FILE = "BeatWalker/BeatWalker-Info.plist";
+				GCC_PREFIX_HEADER = "BeatWalker/BeatTripper-Prefix.pch";
+				INFOPLIST_FILE = "BeatWalker/BeatTripper-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BeatTripper;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -575,9 +577,9 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "BeatWalkerTests/BeatWalkerTests-Info.plist";
+				INFOPLIST_FILE = "BeatWalkerTests/BeatTripperTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BeatTripperTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -595,9 +597,9 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeatWalker/BeatWalker-Prefix.pch";
-				INFOPLIST_FILE = "BeatWalkerTests/BeatWalkerTests-Info.plist";
+				INFOPLIST_FILE = "BeatWalkerTests/BeatTripperTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BeatTripperTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -606,7 +608,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C98584581899F79100D52B7F /* Build configuration list for PBXProject "BeatWalker" */ = {
+		C98584581899F79100D52B7F /* Build configuration list for PBXProject "BeatTripper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C98584871899F79100D52B7F /* Debug */,
@@ -615,7 +617,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C98584891899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatWalker" */ = {
+		C98584891899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatTripper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C985848A1899F79100D52B7F /* Debug */,
@@ -624,7 +626,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C985848C1899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatWalkerTests" */ = {
+		C985848C1899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatTripperTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C985848D1899F79100D52B7F /* Debug */,

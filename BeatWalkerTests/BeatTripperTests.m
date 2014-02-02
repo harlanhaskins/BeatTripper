@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface BeatWalkerTests : XCTestCase
+@interface BeatTripperTests : XCTestCase
 
 @end
 
-@implementation BeatWalkerTests
+@implementation BeatTripperTests
 
 - (void)setUp
 {

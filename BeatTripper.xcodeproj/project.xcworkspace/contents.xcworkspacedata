@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:BeatWalker.xcodeproj">
+      location = "self:BeatTripper.xcodeproj">
    </FileRef>
 </Workspace>

@@ -69,9 +69,9 @@
     self.addRouteButton.size = CGSizeApplyAffineTransform(self.addRouteButton.size, CGAffineTransformMakeScale(0.85, 0.85));
     [self.contentView addSubview:self.addRouteButton];
     
-    if ([RouteManager sharedManager].routes.count == 0) {
-        [self showNewRouteViewController];
-    }
+//    if ([RouteManager sharedManager].routes.count == 0) {
+//        [self showNewRouteViewController];
+//    }
 }
 
 - (void) reloadTableView {

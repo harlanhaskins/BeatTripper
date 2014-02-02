@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C985845C1899F79100D52B7F"
-               BuildableName = "BeatWalker.app"
-               BlueprintName = "BeatWalker"
-               ReferencedContainer = "container:BeatWalker.xcodeproj">
+               BuildableName = "BeatTripper.app"
+               BlueprintName = "BeatTripper"
+               ReferencedContainer = "container:BeatTripper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C98584771899F79100D52B7F"
-               BuildableName = "BeatWalkerTests.xctest"
-               BlueprintName = "BeatWalkerTests"
-               ReferencedContainer = "container:BeatWalker.xcodeproj">
+               BuildableName = "BeatTripperTests.xctest"
+               BlueprintName = "BeatTripperTests"
+               ReferencedContainer = "container:BeatTripper.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C985845C1899F79100D52B7F"
-            BuildableName = "BeatWalker.app"
-            BlueprintName = "BeatWalker"
-            ReferencedContainer = "container:BeatWalker.xcodeproj">
+            BuildableName = "BeatTripper.app"
+            BlueprintName = "BeatTripper"
+            ReferencedContainer = "container:BeatTripper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C985845C1899F79100D52B7F"
-            BuildableName = "BeatWalker.app"
-            BlueprintName = "BeatWalker"
-            ReferencedContainer = "container:BeatWalker.xcodeproj">
+            BuildableName = "BeatTripper.app"
+            BlueprintName = "BeatTripper"
+            ReferencedContainer = "container:BeatTripper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -87,9 +87,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C985845C1899F79100D52B7F"
-            BuildableName = "BeatWalker.app"
-            BlueprintName = "BeatWalker"
-            ReferencedContainer = "container:BeatWalker.xcodeproj">
+            BuildableName = "BeatTripper.app"
+            BlueprintName = "BeatTripper"
+            ReferencedContainer = "container:BeatTripper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
