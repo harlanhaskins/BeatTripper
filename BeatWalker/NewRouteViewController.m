@@ -58,11 +58,19 @@
 
 - (void) dismiss {
     self.finishedCreatingRouteBlock(nil);
+    [self close];
 }
 
 - (void) finish {
     Route *route = [Route routeWithName:self.routeNameTextField.text];
     self.finishedCreatingRouteBlock(route);
+    [self close];
+}
+
+- (void) close {
+    [self resignFirstResponder];
+    [self addOuterSnapBehavior];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) viewDidLayoutSubviews {

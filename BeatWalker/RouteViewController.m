@@ -97,19 +97,18 @@
     PlaylistViewController *playlistVC = [PlaylistViewController new];
     Route *route = [[RouteManager sharedManager] routeAtIndex:index];
     [playlistVC setRoute:route];
-    [self presentViewController:playlistVC animated:YES completion:nil];
+    [self presentViewController:playlistVC animated:NO completion:nil];
 }
 
 - (void) showNewRouteViewController {
     NewRouteViewController *newRouteVC = [NewRouteViewController new];
     newRouteVC.finishedCreatingRouteBlock = ^(Route* route) {
-        [self dismissViewControllerAnimated:YES completion:nil];
         if (route) {
             [[RouteManager sharedManager] addRoute:route];
             [self.tableView reloadData];
         }
     };
-    [self presentViewController:newRouteVC animated:YES completion:nil];
+    [self presentViewController:newRouteVC animated:NO completion:nil];
 }
 
 - (void) viewDidLayoutSubviews {

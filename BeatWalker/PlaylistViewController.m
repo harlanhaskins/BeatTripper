@@ -108,6 +108,7 @@
 }
 
 - (void) dismiss {
+    [self addOuterSnapBehavior];
     [self dismissViewControllerAnimated:YES completion:nil];
     [[MPMusicPlayerController applicationMusicPlayer] stop];
 }

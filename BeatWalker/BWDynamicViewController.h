@@ -12,6 +12,7 @@
 
 - (void) addParallax;
 - (void) addInnerSnapBehavior;
+- (void) addOuterSnapBehavior;
 @property (nonatomic) UIView *contentView;
 
 @end

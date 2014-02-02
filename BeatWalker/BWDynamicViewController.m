@@ -54,10 +54,6 @@
     [self addInnerSnapBehavior];
 }
 
-- (void) viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -66,6 +62,15 @@
 
 - (void) addInnerSnapBehavior {
     UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:self.contentView snapToPoint:self.view.center];
+    [self.animator addBehavior:snapBehavior];
+}
+
+- (void) addOuterSnapBehavior {
+    [self.animator removeAllBehaviors];
+    CGPoint outerSnap;
+    outerSnap.x = self.view.centerX - self.view.width;
+    outerSnap.y = self.view.centerY;
+    UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:self.contentView snapToPoint:outerSnap];
     [self.animator addBehavior:snapBehavior];
 }
 
