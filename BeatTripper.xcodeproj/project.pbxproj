@@ -30,11 +30,6 @@
 		C985846D1899F79100D52B7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C985846C1899F79100D52B7F /* main.m */; };
 		C98584711899F79100D52B7F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584701899F79100D52B7F /* AppDelegate.m */; };
 		C98584731899F79100D52B7F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C98584721899F79100D52B7F /* Images.xcassets */; };
-		C985847A1899F79100D52B7F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584791899F79100D52B7F /* XCTest.framework */; };
-		C985847B1899F79100D52B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584601899F79100D52B7F /* Foundation.framework */; };
-		C985847C1899F79100D52B7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584641899F79100D52B7F /* UIKit.framework */; };
-		C98584841899F79100D52B7F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C98584821899F79100D52B7F /* InfoPlist.strings */; };
-		C98584861899F79100D52B7F /* BeatWalkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584851899F79100D52B7F /* BeatWalkerTests.m */; };
 		C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */; };
 		C985849C189A106A00D52B7F /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = C985849B189A106A00D52B7F /* UIView+Positioning.m */; };
 		C98584AC189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584A1189A178C00D52B7F /* NSMutableArray+SWUtilityButtons.m */; };
@@ -45,16 +40,6 @@
 		C98584B1189A178C00D52B7F /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584AB189A178C00D52B7F /* SWUtilityButtonView.m */; };
 		C9A21286189C230A00D85E55 /* NSMutableArray+Shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A21285189C230A00D85E55 /* NSMutableArray+Shuffle.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C985847D1899F79100D52B7F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C98584551899F79100D52B7F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C985845C1899F79100D52B7F;
-			remoteInfo = BeatWalker;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		04208E42189C4848006E54D6 /* BWDynamicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWDynamicViewController.h; sourceTree = "<group>"; };
@@ -99,11 +84,7 @@
 		C985846F1899F79100D52B7F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C98584701899F79100D52B7F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C98584721899F79100D52B7F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C98584781899F79100D52B7F /* BeatTripperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatTripperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98584791899F79100D52B7F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C98584811899F79100D52B7F /* BeatTripperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeatTripperTests-Info.plist"; sourceTree = "<group>"; };
-		C98584831899F79100D52B7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C98584851899F79100D52B7F /* BeatWalkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatWalkerTests.m; sourceTree = "<group>"; };
 		C98584951899FBC400D52B7F /* MPMediaItem-Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem-Properties.h"; sourceTree = "<group>"; };
 		C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem-Properties.m"; sourceTree = "<group>"; };
 		C985849B189A106A00D52B7F /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
@@ -137,41 +118,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C98584751899F79100D52B7F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C985847A1899F79100D52B7F /* XCTest.framework in Frameworks */,
-				C985847C1899F79100D52B7F /* UIKit.framework in Frameworks */,
-				C985847B1899F79100D52B7F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		A75409E1189B4644000F6B8C /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				A735178E189A0A11006D58F6 /* Route.h */,
-				A735178F189A0A11006D58F6 /* Route.m */,
-				C980CEC8189D5A9100A9DFA4 /* RouteManager.h */,
-				C980CEC9189D5A9100A9DFA4 /* RouteManager.m */,
-				C980CECB189D5E5400A9DFA4 /* RouteDataManager.h */,
-				C980CECC189D5E5400A9DFA4 /* RouteDataManager.m */,
-				A75409D8189B45FC000F6B8C /* RouteViewController.h */,
-				A75409D9189B45FC000F6B8C /* RouteViewController.m */,
-				C920851B189D91E2000B1ED7 /* NewRouteViewController.h */,
-				C920851C189D91E2000B1ED7 /* NewRouteViewController.m */,
-				A75409E3189B4747000F6B8C /* RouteTableViewModel.h */,
-				A75409E4189B4747000F6B8C /* RouteTableViewModel.m */,
-				A75409DE189B4637000F6B8C /* RouteCell.h */,
-				A75409DF189B4637000F6B8C /* RouteCell.m */,
+				C943E889189EC4A50051F943 /* Objects */,
+				C943E88A189EC4AD0051F943 /* View Controllers */,
+				C943E888189EC4990051F943 /* TableView Models */,
+				C943E887189EC48E0051F943 /* Accessories/Views */,
 			);
 			name = Routes;
 			sourceTree = "<group>";
 		};
 		A75409E2189B4652000F6B8C /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				C943E884189EC4690051F943 /* Accessories/Views */,
+				C943E886189EC47A0051F943 /* View Controllers */,
+				C943E885189EC4730051F943 /* Models */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
+		C943E884189EC4690051F943 /* Accessories/Views */ = {
 			isa = PBXGroup;
 			children = (
 				C93D9422189AFC4A00D1A336 /* MusicView.h */,
@@ -180,21 +151,85 @@
 				C93D9426189AFCAD00D1A336 /* PlayPauseButton.m */,
 				C901774E189B5AB500692598 /* MediaItemTableViewCell.h */,
 				C901774F189B5AB500692598 /* MediaItemTableViewCell.m */,
-				C9017752189B5AB500692598 /* PlaylistViewController.h */,
-				C9017753189B5AB500692598 /* PlaylistViewController.m */,
-				C9017750189B5AB500692598 /* PlaylistTableViewModel.h */,
-				C9017751189B5AB500692598 /* PlaylistTableViewModel.m */,
 				C9017757189B5C5B00692598 /* InformationView.h */,
 				C9017758189B5C5B00692598 /* InformationView.m */,
 			);
-			name = Music;
+			name = Accessories/Views;
+			sourceTree = "<group>";
+		};
+		C943E885189EC4730051F943 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C9017750189B5AB500692598 /* PlaylistTableViewModel.h */,
+				C9017751189B5AB500692598 /* PlaylistTableViewModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C943E886189EC47A0051F943 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C9017752189B5AB500692598 /* PlaylistViewController.h */,
+				C9017753189B5AB500692598 /* PlaylistViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C943E887189EC48E0051F943 /* Accessories/Views */ = {
+			isa = PBXGroup;
+			children = (
+				A75409DE189B4637000F6B8C /* RouteCell.h */,
+				A75409DF189B4637000F6B8C /* RouteCell.m */,
+			);
+			name = Accessories/Views;
+			sourceTree = "<group>";
+		};
+		C943E888189EC4990051F943 /* TableView Models */ = {
+			isa = PBXGroup;
+			children = (
+				A75409E3189B4747000F6B8C /* RouteTableViewModel.h */,
+				A75409E4189B4747000F6B8C /* RouteTableViewModel.m */,
+			);
+			name = "TableView Models";
+			sourceTree = "<group>";
+		};
+		C943E889189EC4A50051F943 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A735178E189A0A11006D58F6 /* Route.h */,
+				A735178F189A0A11006D58F6 /* Route.m */,
+				C980CEC8189D5A9100A9DFA4 /* RouteManager.h */,
+				C980CEC9189D5A9100A9DFA4 /* RouteManager.m */,
+				C980CECB189D5E5400A9DFA4 /* RouteDataManager.h */,
+				C980CECC189D5E5400A9DFA4 /* RouteDataManager.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		C943E88A189EC4AD0051F943 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A75409D8189B45FC000F6B8C /* RouteViewController.h */,
+				A75409D9189B45FC000F6B8C /* RouteViewController.m */,
+				C920851B189D91E2000B1ED7 /* NewRouteViewController.h */,
+				C920851C189D91E2000B1ED7 /* NewRouteViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C943E88B189EC4B70051F943 /* Dynamic View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04208E42189C4848006E54D6 /* BWDynamicViewController.h */,
+				04208E43189C4848006E54D6 /* BWDynamicViewController.m */,
+			);
+			name = "Dynamic View Controller";
 			sourceTree = "<group>";
 		};
 		C98584541899F79100D52B7F = {
 			isa = PBXGroup;
 			children = (
 				C98584661899F79100D52B7F /* BeatTripper */,
-				C985847F1899F79100D52B7F /* BeatTripperTests */,
 				C985845F1899F79100D52B7F /* Frameworks */,
 				C985845E1899F79100D52B7F /* Products */,
 			);
@@ -204,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				C985845D1899F79100D52B7F /* BeatTripper.app */,
-				C98584781899F79100D52B7F /* BeatTripperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,8 +260,7 @@
 			children = (
 				C985846F1899F79100D52B7F /* AppDelegate.h */,
 				C98584701899F79100D52B7F /* AppDelegate.m */,
-				04208E42189C4848006E54D6 /* BWDynamicViewController.h */,
-				04208E43189C4848006E54D6 /* BWDynamicViewController.m */,
+				C943E88B189EC4B70051F943 /* Dynamic View Controller */,
 				A75409E2189B4652000F6B8C /* Music */,
 				A75409E1189B4644000F6B8C /* Routes */,
 				C98584721899F79100D52B7F /* Images.xcassets */,
@@ -240,8 +273,6 @@
 		C98584671899F79100D52B7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9A21284189C230A00D85E55 /* NSMutableArray+Shuffle.h */,
-				C9A21285189C230A00D85E55 /* NSMutableArray+Shuffle.m */,
 				C985849E189A178C00D52B7F /* SWTableViewCell */,
 				C98584681899F79100D52B7F /* BeatTripper-Info.plist */,
 				C98584691899F79100D52B7F /* InfoPlist.strings */,
@@ -253,25 +284,8 @@
 				C985849B189A106A00D52B7F /* UIView+Positioning.m */,
 				C93D941F189AEEFD00D1A336 /* UIColor+BeatWalker.h */,
 				C93D9420189AEEFD00D1A336 /* UIColor+BeatWalker.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C985847F1899F79100D52B7F /* BeatTripperTests */ = {
-			isa = PBXGroup;
-			children = (
-				C98584851899F79100D52B7F /* BeatWalkerTests.m */,
-				C98584801899F79100D52B7F /* Supporting Files */,
-			);
-			name = BeatTripperTests;
-			path = BeatWalkerTests;
-			sourceTree = "<group>";
-		};
-		C98584801899F79100D52B7F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C98584811899F79100D52B7F /* BeatTripperTests-Info.plist */,
-				C98584821899F79100D52B7F /* InfoPlist.strings */,
+				C9A21284189C230A00D85E55 /* NSMutableArray+Shuffle.h */,
+				C9A21285189C230A00D85E55 /* NSMutableArray+Shuffle.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -317,24 +331,6 @@
 			productReference = C985845D1899F79100D52B7F /* BeatTripper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C98584771899F79100D52B7F /* BeatTripperTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C985848C1899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatTripperTests" */;
-			buildPhases = (
-				C98584741899F79100D52B7F /* Sources */,
-				C98584751899F79100D52B7F /* Frameworks */,
-				C98584761899F79100D52B7F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C985847E1899F79100D52B7F /* PBXTargetDependency */,
-			);
-			name = BeatTripperTests;
-			productName = BeatWalkerTests;
-			productReference = C98584781899F79100D52B7F /* BeatTripperTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -343,11 +339,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = BeatWalker;
-				TargetAttributes = {
-					C98584771899F79100D52B7F = {
-						TestTargetID = C985845C1899F79100D52B7F;
-					};
-				};
 			};
 			buildConfigurationList = C98584581899F79100D52B7F /* Build configuration list for PBXProject "BeatTripper" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -362,7 +353,6 @@
 			projectRoot = "";
 			targets = (
 				C985845C1899F79100D52B7F /* BeatTripper */,
-				C98584771899F79100D52B7F /* BeatTripperTests */,
 			);
 		};
 /* End PBXProject section */
@@ -374,14 +364,6 @@
 			files = (
 				C985846B1899F79100D52B7F /* InfoPlist.strings in Resources */,
 				C98584731899F79100D52B7F /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C98584761899F79100D52B7F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C98584841899F79100D52B7F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,37 +403,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C98584741899F79100D52B7F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C98584861899F79100D52B7F /* BeatWalkerTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C985847E1899F79100D52B7F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C985845C1899F79100D52B7F /* BeatTripper */;
-			targetProxy = C985847D1899F79100D52B7F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C98584691899F79100D52B7F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C985846A1899F79100D52B7F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		C98584821899F79100D52B7F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C98584831899F79100D52B7F /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -561,50 +519,6 @@
 			};
 			name = Release;
 		};
-		C985848D1899F79100D52B7F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BeatWalker.app/BeatWalker";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BeatWalker/BeatWalker-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "BeatWalkerTests/BeatTripperTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = BeatTripperTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		C985848E1899F79100D52B7F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BeatWalker.app/BeatWalker";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BeatWalker/BeatWalker-Prefix.pch";
-				INFOPLIST_FILE = "BeatWalkerTests/BeatTripperTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = BeatTripperTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -622,15 +536,6 @@
 			buildConfigurations = (
 				C985848A1899F79100D52B7F /* Debug */,
 				C985848B1899F79100D52B7F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C985848C1899F79100D52B7F /* Build configuration list for PBXNativeTarget "BeatTripperTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C985848D1899F79100D52B7F /* Debug */,
-				C985848E1899F79100D52B7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

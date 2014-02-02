@@ -37,7 +37,7 @@
 + (instancetype) model {
     
     PlaylistTableViewModel *model = [PlaylistTableViewModel new];
-    model.musicController = [MPMusicPlayerController applicationMusicPlayer];
+    model.musicController = [MPMusicPlayerController iPodMusicPlayer];
     model.musicCheckTimer = [NSTimer timerWithTimeInterval:1.0
                                                     target:model
                                                   selector:@selector(updatePlayedSongsCount)
