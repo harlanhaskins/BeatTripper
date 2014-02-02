@@ -97,7 +97,7 @@
     PlaylistViewController *playlistVC = [PlaylistViewController new];
     Route *route = [[RouteManager sharedManager] routeAtIndex:index];
     [playlistVC setRoute:route];
-    [self.navigationController pushViewController:playlistVC animated:YES];
+    [self presentViewController:playlistVC animated:YES completion:nil];
 }
 
 - (void) showNewRouteViewController {

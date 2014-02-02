@@ -66,8 +66,7 @@
     
     self.model.tableView = self.tableView;
     
-    self.tableView.backgroundColor =
-    self.view.backgroundColor = [UIColor beatWalkerBackgroundColor];
+    self.tableView.backgroundColor = [UIColor beatWalkerBackgroundColor];
     
     self.tableView.separatorColor = [UIColor beatWalkerSeparatorColor];
     
@@ -109,7 +108,7 @@
 }
 
 - (void) dismiss {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [[MPMusicPlayerController applicationMusicPlayer] stop];
 }
 

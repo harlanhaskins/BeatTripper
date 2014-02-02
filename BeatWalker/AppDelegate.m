@@ -16,22 +16,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    UINavigationController *navController = [UINavigationController new];
-    navController.navigationBarHidden = YES;
-    
     // Stop playback if music is playing.
     [[MPMusicPlayerController iPodMusicPlayer] stop];
     
     RouteViewController *routeVC = [RouteViewController new];
-    
-    [navController setViewControllers:@[routeVC]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor beatWalkerBackgroundColor];
     
-    self.window.rootViewController = navController;
+    self.window.rootViewController = routeVC;
     
     [self.window makeKeyAndVisible];
     return YES;
