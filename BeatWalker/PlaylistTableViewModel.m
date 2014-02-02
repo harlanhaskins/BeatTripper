@@ -1,9 +1,9 @@
 //
 //  PlaylistTableViewModel.m
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Harlan Haskins on 1/29/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "PlaylistTableViewModel.h"
@@ -134,7 +134,8 @@
     MPMediaItem *song = [self.collection items][songIndex];
     
     MediaItemTableViewCell *cell = [MediaItemTableViewCell cellWithMediaItem:song
-                                                         containingTableView:tableView];
+                                                         containingTableView:tableView
+                                                               isCurrentSong:(indexPath.row == 0)];
     cell.delegate = self;
     
     return cell;
@@ -159,6 +160,8 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSNumber *index = self.currentIndices[indexPath.row];
     [self playSongAtIndex:[index integerValue]];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 - (double) totalTimeWithCurrentTime {
@@ -197,7 +200,6 @@
             [self reloadTable];
         }
     }
-    
 }
 
 - (NSUInteger) nextPlayableIndexAfterIndex:(NSUInteger)index {
@@ -309,7 +311,6 @@
 - (void) finish {
     [self adjustInternalMusicRepresentationForNextSong];
     [self.musicCheckTimer invalidate];
-    [self.musicController stop];
     self.updatedRouteBlock(self.totalSongPlayTime, self.totalSongAmount);
 }
 

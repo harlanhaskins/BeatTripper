@@ -1,9 +1,9 @@
 //
 //  RouteCell.m
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Oliver Barnum on 1/30/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "RouteCell.h"
@@ -31,11 +31,11 @@
     
     cell.route = route;
     cell.textLabel.text = route.name;
-    cell.textLabel.textColor = [UIColor beatWalkerTextColor];
+    cell.textLabel.textColor = [UIColor beatTripperTextColor];
     cell.contentView.backgroundColor =
     cell.backgroundColor = cell.containingTableView.backgroundColor;
     cell.detailTextLabel.text = route.details;
-    cell.detailTextLabel.textColor = [UIColor beatWalkerTextColor];
+    cell.detailTextLabel.textColor = [UIColor beatTripperTextColor];
     
     return cell;
 }

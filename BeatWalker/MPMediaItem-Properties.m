@@ -130,7 +130,7 @@
     UILabel *label = [UILabel new];
     label.text = [self stringForTimeInterval:[self playbackDuration]];
     label.font = [UIFont systemFontOfSize:10.0];
-    label.textColor = [UIColor beatWalkerSubtleTextColor];
+    label.textColor = [UIColor beatTripperSubtleTextColor];
     label.textAlignment = NSTextAlignmentCenter;
     [label sizeToFit];
     return label;

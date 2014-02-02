@@ -1,9 +1,9 @@
 //
 //  MusicView.m
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Harlan Haskins on 1/30/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "MusicView.h"
@@ -38,6 +38,7 @@
         }
         button.tag = i;
         [button sizeToFit];
+        button.enabled = NO;
         [self addSubview:button];
         [self.buttons addObject:button];
     }
@@ -66,6 +67,18 @@
         default:
             return nil;
             break;
+    }
+}
+
+- (void) enableButtons {
+    for (UIButton *button in self.buttons) {
+        button.enabled = YES;
+    }
+}
+
+- (void) disableButtons {
+    for (UIButton *button in self.buttons) {
+        button.enabled = NO;
     }
 }
 

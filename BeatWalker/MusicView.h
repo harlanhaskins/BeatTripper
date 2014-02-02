@@ -1,9 +1,9 @@
 //
 //  MusicView.h
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Harlan Haskins on 1/30/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -23,6 +23,7 @@
 
 @property (nonatomic) id<MusicViewDelegate> delegate;
 
+- (void) enableButtons;
 - (SEL) selectorForButtonIndex:(NSInteger)index;
 
 @end

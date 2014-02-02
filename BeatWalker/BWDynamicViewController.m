@@ -1,9 +1,9 @@
 //
 //  BWDynamicViewController.m
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Mihir Singh on 1/31/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "BWDynamicViewController.h"
@@ -34,7 +34,7 @@
     contentFrame.origin.x += contentFrame.size.width;
     contentFrame.origin.y += contentFrame.size.height;
     self.contentView = [[UIView alloc] initWithFrame:contentFrame];
-    self.contentView.backgroundColor = [UIColor beatWalkerBackgroundColor];
+    self.contentView.backgroundColor = [UIColor beatTripperBackgroundColor];
     self.view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.contentView];
     [self addParallax];

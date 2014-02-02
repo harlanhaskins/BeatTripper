@@ -1,9 +1,9 @@
 //
 //  InformationView.m
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Harlan Haskins on 1/30/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "InformationView.h"
@@ -28,7 +28,7 @@
     view.typeLabel = [UILabel new];
     
     view.numberLabel.textColor =
-    view.typeLabel.textColor = [UIColor beatWalkerTextColor];
+    view.typeLabel.textColor = [UIColor beatTripperTextColor];
     
     [view setType:[view stringFromInformationType:view.informationType]];
     
@@ -70,12 +70,7 @@
 - (void) setInformation:(double)information {
     switch (self.informationType) {
         case InformationTypeNumber:
-            if (information == information || information > 0 || information != (-0.0)) {
-                self.numberLabel.text = [NSString stringWithFormat:@"%02.1f", information];
-            }
-            else {
-                self.numberLabel.text = @"0.0";
-            }
+            self.numberLabel.text = [NSString stringWithFormat:@"%.1f", [self normalizedDoubleFromDouble:information]];
             break;
         case InformationTypeTimeInterval:
             self.numberLabel.text = [self stringForTimeInterval:information];
@@ -83,6 +78,14 @@
     }
     [self.numberLabel sizeToFit];
     [self layoutSubviews];
+}
+
+- (double) normalizedDoubleFromDouble:(double)number {
+    // Check for NaN.
+    if (number != number) {
+        return 0.0;
+    }
+    return fabs(number);
 }
 
 -(NSString*)stringForTimeInterval:(NSTimeInterval)timeInterval{

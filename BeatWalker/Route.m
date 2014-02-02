@@ -1,9 +1,9 @@
 //
 //  Route.m
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Oliver Barnum on 1/29/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "Route.h"
@@ -78,11 +78,13 @@
 
 - (double) movingAverageOfArray:(NSArray*)array withNumberOfItems:(NSInteger)items {
     NSInteger numberOfItems = MIN(array.count, items);
-    double average = 0;
+    double average = 0.0;
     for (int i = 0; i < numberOfItems; i++) {
         average += [array[array.count - 1 - i] doubleValue];
     }
-    average /= numberOfItems;
+    if (numberOfItems > 0) {
+        average /= numberOfItems;
+    }
     return average;
 }
 

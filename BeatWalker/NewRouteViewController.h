@@ -1,9 +1,9 @@
 //
 //  NewRouteViewController.h
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Harlan Haskins on 2/1/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "BWDynamicViewController.h"

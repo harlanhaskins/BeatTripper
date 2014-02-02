@@ -1,9 +1,9 @@
 //
 //  NewRouteViewController.m
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Harlan Haskins on 2/1/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "NewRouteViewController.h"
@@ -27,17 +27,17 @@
     
     self.routeLabel = [UILabel new];
     self.routeLabel.text = @"Name your New Route";
-    self.routeLabel.textColor = [UIColor beatWalkerTextColor];
+    self.routeLabel.textColor = [UIColor beatTripperTextColor];
     self.routeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:26.0];
     [self.routeLabel sizeToFit];
     [self.contentView addSubview:self.routeLabel];
     
     self.routeNameTextField = [UITextField new];
     
-    UIColor *color = [UIColor beatWalkerSubtleTextColor];
+    UIColor *color = [UIColor beatTripperSubtleTextColor];
     self.routeNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"New Route"
                                                                                     attributes:@{NSForegroundColorAttributeName: color}];
-    self.routeNameTextField.textColor = [UIColor beatWalkerTextColor];
+    self.routeNameTextField.textColor = [UIColor beatTripperTextColor];
     self.routeNameTextField.delegate = self;
     [self.routeNameTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:1];
     [self.contentView addSubview:self.routeNameTextField];

@@ -1,9 +1,9 @@
 //
 //  RouteTableViewModel.h
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Oliver Barnum on 1/30/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

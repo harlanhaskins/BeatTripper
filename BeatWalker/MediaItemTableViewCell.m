@@ -1,9 +1,9 @@
 //
 //  MediaItemTableViewCell.m
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Harlan Haskins on 1/29/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "MediaItemTableViewCell.h"
@@ -17,21 +17,21 @@
 
 @implementation MediaItemTableViewCell
 
-+ (instancetype) cellWithMediaItem:(MPMediaItem*)item containingTableView:(UITableView*)tableView {
++ (instancetype) cellWithMediaItem:(MPMediaItem*)item containingTableView:(UITableView*)tableView isCurrentSong:(BOOL)currentSong {
     
     UIColor *deleteColor = [UIColor colorWithRed:239.0/255.0 green:41.0/255.0 blue:41.0/255.0 alpha:1.0];
     NSMutableArray *utilityButtons = [NSMutableArray array];
     [utilityButtons sw_addUtilityButtonWithColor:deleteColor title:@"Delete"];
     
     MediaItemTableViewCell *cell = [[MediaItemTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SongCell" containingTableView:tableView leftUtilityButtons:nil rightUtilityButtons:utilityButtons];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     
     cell.mediaItem = item;
     cell.textLabel.text = item.title;
     cell.detailTextLabel.text = item.artist;
     
     cell.textLabel.textColor =
-    cell.detailTextLabel.textColor = [UIColor beatWalkerTextColor];
+    cell.detailTextLabel.textColor = currentSong ? [UIColor beatTripperTextColor] : [UIColor beatTripperUnhighlightedTextColor];
     
     cell.imageView.image = item.artwork;
     [cell.imageView setClipsToBounds:YES];

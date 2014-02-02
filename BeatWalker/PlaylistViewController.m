@@ -1,9 +1,9 @@
 //
 //  PlaylistViewController.m
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Harlan Haskins on 1/29/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "PlaylistViewController.h"
@@ -71,9 +71,9 @@
     self.model.tableView = self.tableView;
     self.model.updatedRouteBlock = self.updatedRouteBlock;
     
-    self.tableView.backgroundColor = [UIColor beatWalkerBackgroundColor];
+    self.tableView.backgroundColor = [UIColor beatTripperBackgroundColor];
     
-    self.tableView.separatorColor = [UIColor beatWalkerSeparatorColor];
+    self.tableView.separatorColor = [UIColor beatTripperSeparatorColor];
     
     self.tableView.dataSource = self.model;
     self.tableView.delegate = self.model;
@@ -114,6 +114,8 @@
 
 - (void) dismiss {
     [self addOuterSnapBehavior];
+    [[MPMusicPlayerController iPodMusicPlayer] stop];
+    [[MPMusicPlayerController iPodMusicPlayer] setQueueWithItemCollection:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -134,6 +136,7 @@
 - (void) reloadTableView {
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
+    [self.musicView enableButtons];
 }
 
 - (void) viewDidLayoutSubviews {
@@ -186,7 +189,7 @@
 
 - (void) setTableViewBorderCovers {
     self.tableViewTopBorderCoverView.backgroundColor =
-    self.tableViewBottomBorderCoverView.backgroundColor = [UIColor beatWalkerSubtleTextColor];
+    self.tableViewBottomBorderCoverView.backgroundColor = [UIColor beatTripperSubtleTextColor];
     
     self.tableViewTopBorderCoverView.width =
     self.tableViewBottomBorderCoverView.width = self.contentView.width; // * 1.05;

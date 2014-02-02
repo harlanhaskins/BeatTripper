@@ -1,9 +1,9 @@
 //
 //  RouteViewController.m
-//  BeatWalker
+//  BeatTripper
 //
 //  Created by Oliver Barnum on 1/30/14.
-//  Copyright (c) 2014 BeatWalker. All rights reserved.
+//  Copyright (c) 2014 BeatTripper. All rights reserved.
 //
 
 #import "RouteViewController.h"
@@ -35,7 +35,7 @@
     
     self.pickRouteLabel = [UILabel new];
     self.pickRouteLabel.text = @"Your Routes";
-    self.pickRouteLabel.textColor = [UIColor beatWalkerTextColor];
+    self.pickRouteLabel.textColor = [UIColor beatTripperTextColor];
     self.pickRouteLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:26.0];
     [self.pickRouteLabel sizeToFit];
     [self.contentView addSubview:self.pickRouteLabel];
@@ -53,7 +53,7 @@
     self.tableView.backgroundColor = self.contentView.backgroundColor;
     self.tableView.dataSource = self.model;
     self.tableView.delegate = self.model;
-    self.tableView.separatorColor = [UIColor beatWalkerSubtleTextColor];
+    self.tableView.separatorColor = [UIColor beatTripperSubtleTextColor];
     
     self.tableViewTopBorderCoverView = [UIView new];
     
@@ -130,7 +130,7 @@
 
 
 - (void) setTableViewBorderCovers {
-    self.tableViewTopBorderCoverView.backgroundColor = [UIColor beatWalkerSubtleTextColor];
+    self.tableViewTopBorderCoverView.backgroundColor = [UIColor beatTripperSubtleTextColor];
     
     self.tableViewTopBorderCoverView.width = self.contentView.width; // * 1.5;
     
