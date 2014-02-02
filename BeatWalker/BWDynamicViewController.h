@@ -11,6 +11,7 @@
 @interface BWDynamicViewController : UIViewController
 
 - (void) addParallax;
+- (void) addInnerSnapBehavior;
 @property (nonatomic) UIView *contentView;
 
 @end

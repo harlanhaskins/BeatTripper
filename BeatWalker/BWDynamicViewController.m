@@ -44,14 +44,18 @@
 - (void) viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     CGRect contentFrame = self.view.frame;
-    contentFrame.origin.x += contentFrame.size.width;
-    contentFrame.origin.y += contentFrame.size.height;
+    contentFrame.origin.x -= contentFrame.size.width;
+    contentFrame.origin.y -= contentFrame.size.height;
     self.contentView.frame = contentFrame;
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self addSnapBehavior];
+    [self addInnerSnapBehavior];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,7 +64,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) addSnapBehavior {
+- (void) addInnerSnapBehavior {
     UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:self.contentView snapToPoint:self.view.center];
     [self.animator addBehavior:snapBehavior];
 }

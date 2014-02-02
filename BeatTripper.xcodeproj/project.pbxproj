@@ -180,12 +180,10 @@
 				C93D9426189AFCAD00D1A336 /* PlayPauseButton.m */,
 				C901774E189B5AB500692598 /* MediaItemTableViewCell.h */,
 				C901774F189B5AB500692598 /* MediaItemTableViewCell.m */,
-				C9017750189B5AB500692598 /* PlaylistTableViewModel.h */,
-				C9017751189B5AB500692598 /* PlaylistTableViewModel.m */,
-				C9A21284189C230A00D85E55 /* NSMutableArray+Shuffle.h */,
-				C9A21285189C230A00D85E55 /* NSMutableArray+Shuffle.m */,
 				C9017752189B5AB500692598 /* PlaylistViewController.h */,
 				C9017753189B5AB500692598 /* PlaylistViewController.m */,
+				C9017750189B5AB500692598 /* PlaylistTableViewModel.h */,
+				C9017751189B5AB500692598 /* PlaylistTableViewModel.m */,
 				C9017757189B5C5B00692598 /* InformationView.h */,
 				C9017758189B5C5B00692598 /* InformationView.m */,
 			);
@@ -242,6 +240,8 @@
 		C98584671899F79100D52B7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C9A21284189C230A00D85E55 /* NSMutableArray+Shuffle.h */,
+				C9A21285189C230A00D85E55 /* NSMutableArray+Shuffle.m */,
 				C985849E189A178C00D52B7F /* SWTableViewCell */,
 				C98584681899F79100D52B7F /* BeatTripper-Info.plist */,
 				C98584691899F79100D52B7F /* InfoPlist.strings */,
@@ -539,7 +539,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeatWalker/BeatTripper-Prefix.pch";
 				INFOPLIST_FILE = "BeatWalker/BeatTripper-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = BeatTripper;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -554,7 +554,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeatWalker/BeatTripper-Prefix.pch";
 				INFOPLIST_FILE = "BeatWalker/BeatTripper-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = BeatTripper;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
