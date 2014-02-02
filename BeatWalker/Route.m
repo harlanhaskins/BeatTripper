@@ -34,8 +34,7 @@
     return self;
 }
 
-+ (instancetype) routeWithName:(NSString *)name
-{
++ (instancetype) routeWithName:(NSString *)name {
     Route *newRoute = [Route new];
     
     newRoute.name = name;
@@ -45,8 +44,7 @@
     return newRoute;
 }
 
--(NSString*) details
-{
+-(NSString*) details {
     return [NSString stringWithFormat:@"%.1f Songs | %@", [self songNumberAverage], [self stringForTimeAverage]];
 }
 
@@ -54,7 +52,7 @@
     return [self stringForTimeInterval:[self timeAverage]];
 }
 
--(NSString*)stringForTimeInterval:(NSTimeInterval)timeInterval{
+-(NSString*)stringForTimeInterval:(NSTimeInterval)timeInterval {
     NSInteger hours = floor(timeInterval /  (60 * 60) );
     
     CGFloat minute_divisor = (NSInteger)timeInterval % (60 * 60);
@@ -70,13 +68,11 @@
     return intervalString;
 }
 
--(void) addTime:(NSTimeInterval)time
-{
+-(void) addTime:(NSTimeInterval)time {
     [self.times addObject:@(time)];
 }
 
-- (NSTimeInterval) timeAverage
-{
+- (NSTimeInterval) timeAverage {
     return [self movingAverageOfArray:self.times withNumberOfItems:5];
 }
 
@@ -90,13 +86,11 @@
     return average;
 }
 
--(void) addSongNumber:(NSNumber*)number
-{
+-(void) addSongNumber:(NSNumber*)number {
     [self.songAmounts addObject:number];
 }
 
--(double) songNumberAverage
-{
+-(double) songNumberAverage {
     return [self movingAverageOfArray:self.songAmounts withNumberOfItems:5];
 }
 
