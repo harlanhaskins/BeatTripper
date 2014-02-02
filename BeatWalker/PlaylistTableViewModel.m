@@ -88,7 +88,7 @@
     NSArray *collectionsArray = [query collections];
     
     NSMutableArray *songsArray = [NSMutableArray array];
-//    for (MPMediaItemCollection *collection in collectionsArray) {
+    //    for (MPMediaItemCollection *collection in collectionsArray) {
     
     NSInteger numberOfCollections = [query collections].count;
     NSInteger numberOfItems = numberOfCollections >= 300 ? 300 : numberOfCollections;
@@ -172,30 +172,28 @@
 - (void) removeSongAtIndexPath:(NSIndexPath*)indexPath {
     [self.currentIndices removeObjectAtIndex:indexPath.row];
     
-//    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-    
     NSUInteger lastIndex = [self.currentIndices.lastObject integerValue];
     NSUInteger indexToAdd = [self nextPlayableIndexAfterIndex:lastIndex];
     if (indexToAdd != NSNotFound) {
         [self.currentIndices addObject:@(indexToAdd)];
     }
     
-    [self performSelector:@selector(reloadTable) withObject:nil afterDelay:0.0];
+    [self reloadTable];
 }
 
 - (void) unPopSong {
     NSUInteger indexToAdd = [self previousPlayableIndexInCollection];
     if (indexToAdd != NSNotFound) {
-        [self.currentIndices insertObject:@(indexToAdd) atIndex:0];
-        
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-        
-        [self.currentIndices removeLastObject];
-        
-        [self resetCurrentItem];
-        
-        [self performSelector:@selector(reloadTable) withObject:nil afterDelay:0.0];
+        NSNumber *indexToAddNumber = @(indexToAdd);
+        if ([self.currentIndices indexOfObject:indexToAddNumber] == NSNotFound) {
+            [self.currentIndices insertObject:indexToAddNumber atIndex:0];
+            
+            [self.currentIndices removeLastObject];
+            
+            [self resetCurrentItem];
+            
+            [self reloadTable];
+        }
     }
     
 }
@@ -244,7 +242,6 @@
     NSUInteger index = [self nextPlayableIndexInCollection];
     if (index != NSNotFound) {
         [self playSongAtIndex:index];
-        [self popSong];
     }
 }
 
@@ -258,9 +255,17 @@
 
 - (void) playSongAtIndex:(NSInteger)index {
     MPMediaItem *song = self.collection.items[index];
-    self.manuallySentNewSong = YES;
     [self.musicController setNowPlayingItem:song];
     [self adjustInternalMusicRepresentationForNextSong];
+}
+
+- (void) setCurrentPlayingSongIndex:(NSUInteger)currentPlayingSongIndex {
+    _currentPlayingSongIndex = currentPlayingSongIndex;
+    NSInteger index = [self.currentIndices indexOfObject:@(self.currentPlayingSongIndex)];
+    while (index > 0 && index != NSNotFound) {
+        [self popSong];
+        --index;
+    }
 }
 
 - (void) adjustInternalMusicRepresentationForNextSong {
@@ -288,14 +293,7 @@
 - (void) handleNowPlayingItemChange {
     NSUInteger musicControllerSongIndex = [self.musicController indexOfNowPlayingItem];
     if (musicControllerSongIndex != NSNotFound) {
-        if (self.manuallySentNewSong) {
-            self.manuallySentNewSong = NO;
-        }
-        else {
-            [self advanceToNextSong];
-        }
         self.currentPlayingSongIndex = musicControllerSongIndex;
-        
         NSLog(@"Current Index: %li", (long)self.currentPlayingSongIndex);
     }
 }

@@ -47,7 +47,7 @@
     
     [self setNeedsStatusBarAppearanceUpdate];
     
-    self.tableView = [self createTableViewWithRefreshControl];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];//[self createTableViewWithRefreshControl];
     
     self.model = [PlaylistTableViewModel model];
     
