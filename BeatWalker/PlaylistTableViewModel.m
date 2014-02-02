@@ -93,9 +93,15 @@
     NSInteger numberOfCollections = [query collections].count;
     NSInteger numberOfItems = numberOfCollections >= 300 ? 300 : numberOfCollections;
     for (int i = 0; i < numberOfItems; i++) {
-        NSInteger randomIndex = arc4random_uniform((u_int32_t)[collectionsArray count]);
-        MPMediaItemCollection *collection = collectionsArray[randomIndex];
-        MPMediaItem *song = [collection items][0];
+        MPMediaItem *song;
+        
+        do {
+            NSInteger randomIndex = arc4random_uniform((u_int32_t)[collectionsArray count]);
+            MPMediaItemCollection *collection = collectionsArray[randomIndex];
+            song = [collection items][0];
+        }
+        while ([songsArray indexOfObject:song] != NSNotFound);
+        
         [songsArray addObject:song];
     }
     
