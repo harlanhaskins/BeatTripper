@@ -110,11 +110,11 @@
 
 - (void) dismiss {
     [self.navigationController popViewControllerAnimated:YES];
+    [[MPMusicPlayerController applicationMusicPlayer] stop];
 }
 
 - (void) finish {
     [self.model finish];
-    [[MPMusicPlayerController applicationMusicPlayer] stop];
     [self dismiss];
 }
 
