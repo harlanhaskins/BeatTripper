@@ -156,6 +156,11 @@
     }
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSNumber *index = self.currentIndices[indexPath.row];
+    [self playSongAtIndex:[index integerValue]];
+}
+
 - (double) totalTimeWithCurrentTime {
     return self.currentSongPlayTime + self.totalSongPlayTime;
 }

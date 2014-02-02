@@ -61,10 +61,6 @@
     
     [self.contentView addSubview:self.tableView];
     
-    [UIView animateWithDuration:1.0 animations:^{
-        self.tableView.height *= 2;
-    }];
-    
     self.addRouteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.addRouteButton setImage:[UIImage imageNamed:@"PlusButton"] forState:UIControlStateNormal];
     [self.addRouteButton addTarget:self action:@selector(showNewRouteViewController) forControlEvents:UIControlEventTouchUpInside];
