@@ -166,7 +166,7 @@
 
 - (void) popSong {
     [self removeSongAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [self resetCurrentItem];
+    [self adjustInternalMusicRepresentationForNextSong];
 }
 
 - (void) removeSongAtIndexPath:(NSIndexPath*)indexPath {
@@ -187,11 +187,8 @@
         NSNumber *indexToAddNumber = @(indexToAdd);
         if ([self.currentIndices indexOfObject:indexToAddNumber] == NSNotFound) {
             [self.currentIndices insertObject:indexToAddNumber atIndex:0];
-            
             [self.currentIndices removeLastObject];
-            
-            [self resetCurrentItem];
-            
+            [self adjustInternalMusicRepresentationForNextSong];
             [self reloadTable];
         }
     }
@@ -261,6 +258,7 @@
 
 - (void) setCurrentPlayingSongIndex:(NSUInteger)currentPlayingSongIndex {
     _currentPlayingSongIndex = currentPlayingSongIndex;
+    [self adjustInternalMusicRepresentationForNextSong];
     NSInteger index = [self.currentIndices indexOfObject:@(self.currentPlayingSongIndex)];
     while (index > 0 && index != NSNotFound) {
         [self popSong];
@@ -271,6 +269,7 @@
 - (void) adjustInternalMusicRepresentationForNextSong {
     self.totalSongPlayTime += self.currentSongPlayTime;
     self.totalSongAmount += self.currentSongAmount;
+    [self resetCurrentItem];
 }
 
 - (void) resetCurrentItem {
@@ -304,10 +303,7 @@
 
 - (void) finish {
     [self adjustInternalMusicRepresentationForNextSong];
-    [self resetCurrentItem];
     [self.musicCheckTimer invalidate];
-    self.totalSongAmount = 0.0;
-    self.totalSongPlayTime = 0.0;
     [[RouteManager sharedManager] addSongAmount:self.totalSongAmount toRoute:self.route];
     [[RouteManager sharedManager] addTime:self.totalSongPlayTime toRoute:self.route];
 }
