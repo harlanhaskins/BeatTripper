@@ -304,8 +304,8 @@
 - (void) finish {
     [self adjustInternalMusicRepresentationForNextSong];
     [self.musicCheckTimer invalidate];
-    [[RouteManager sharedManager] addSongAmount:self.totalSongAmount toRoute:self.route];
-    [[RouteManager sharedManager] addTime:self.totalSongPlayTime toRoute:self.route];
+    [self.musicController stop];
+    self.updatedRouteBlock(self.totalSongPlayTime, self.totalSongAmount);
 }
 
 @end

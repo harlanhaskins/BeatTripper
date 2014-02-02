@@ -14,8 +14,7 @@
 
 @interface PlaylistViewController : BWDynamicViewController
 
-- (void) initializeModel;
-
++ (instancetype) controllerWithCompletionBlock:(void (^)(NSTimeInterval time, double songAmount))completion;
 @property (nonatomic) Route *route;
 
 @end

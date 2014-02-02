@@ -28,14 +28,13 @@
 
 @implementation RouteViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.model = [RouteTableViewModel model];
     
     self.pickRouteLabel = [UILabel new];
-    self.pickRouteLabel.text = @"Choose your Route";
+    self.pickRouteLabel.text = @"Your Routes";
     self.pickRouteLabel.textColor = [UIColor beatWalkerTextColor];
     self.pickRouteLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:26.0];
     [self.pickRouteLabel sizeToFit];
@@ -62,16 +61,16 @@
     
     [self.contentView addSubview:self.tableView];
     
+    [UIView animateWithDuration:1.0 animations:^{
+        self.tableView.height *= 2;
+    }];
+    
     self.addRouteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.addRouteButton setImage:[UIImage imageNamed:@"PlusButton"] forState:UIControlStateNormal];
     [self.addRouteButton addTarget:self action:@selector(showNewRouteViewController) forControlEvents:UIControlEventTouchUpInside];
     [self.addRouteButton sizeToFit];
-    self.addRouteButton.size = CGSizeApplyAffineTransform(self.addRouteButton.size, CGAffineTransformMakeScale(0.85, 0.85));
+    self.addRouteButton.size = CGSizeApplyAffineTransform(self.addRouteButton.size, CGAffineTransformMakeScale(0.9, 0.9));
     [self.contentView addSubview:self.addRouteButton];
-    
-//    if ([RouteManager sharedManager].routes.count == 0) {
-//        [self showNewRouteViewController];
-//    }
 }
 
 - (void) reloadTableView {
@@ -94,9 +93,13 @@
 }
 
 - (void) pushRouteAtIndex:(NSInteger)index {
-    PlaylistViewController *playlistVC = [PlaylistViewController new];
     Route *route = [[RouteManager sharedManager] routeAtIndex:index];
-    [playlistVC setRoute:route];
+    void (^updatedRouteBlock)(NSTimeInterval, double) = ^(NSTimeInterval time, double songAmount) {
+        [[RouteManager sharedManager] addTime:time toRoute:route];
+        [[RouteManager sharedManager] addSongAmount:songAmount toRoute:route];
+        [self.tableView reloadData];
+    };
+    PlaylistViewController *playlistVC = [PlaylistViewController controllerWithCompletionBlock:updatedRouteBlock];
     [self presentViewController:playlistVC animated:NO completion:nil];
 }
 

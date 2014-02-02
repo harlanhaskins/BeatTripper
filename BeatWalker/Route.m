@@ -77,23 +77,17 @@
 
 - (NSTimeInterval) timeAverage
 {
-    CGFloat sum = 0;
-    const NSUInteger numberOfItemsToCheck = 5;
-    
-    NSInteger time = self.times.count - numberOfItemsToCheck;
-    if (time < 0) {
-        time = 0;
+    return [self movingAverageOfArray:self.times withNumberOfItems:5];
+}
+
+- (double) movingAverageOfArray:(NSArray*)array withNumberOfItems:(NSInteger)items {
+    NSInteger numberOfItems = MIN(array.count, items);
+    double average = 0;
+    for (int i = 0; i < numberOfItems; i++) {
+        average += [array[array.count - 1 - i] doubleValue];
     }
-    
-    while (time < self.times.count)
-    {
-        NSInteger timeIndex = self.times.count - time - 1;
-        if (timeIndex <= 0) break;
-        
-        sum += [self.times[time] doubleValue];
-        time++;
-    }
-    return sum/numberOfItemsToCheck;
+    average /= numberOfItems;
+    return average;
 }
 
 -(void) addSongNumber:(NSNumber*)number
@@ -103,23 +97,7 @@
 
 -(double) songNumberAverage
 {
-    CGFloat sum = 0;
-    const NSInteger numberOfItemsToCheck = 5;
-    
-    NSInteger time = self.times.count - numberOfItemsToCheck;
-    if (time < 0) {
-        time = 0;
-    }
-    
-    while (time < self.songAmounts.count)
-    {
-        NSInteger timeIndex = self.times.count - time - 1;
-        if (timeIndex <= 0) break;
-        
-        sum += [self.songAmounts[time] doubleValue];
-        time++;
-    }
-    return sum/numberOfItemsToCheck;
+    return [self movingAverageOfArray:self.songAmounts withNumberOfItems:5];
 }
 
 @end

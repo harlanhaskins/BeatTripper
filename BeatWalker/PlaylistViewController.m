@@ -33,12 +33,16 @@
 @property (nonatomic) UIButton *finishButton;
 @property (nonatomic) UIButton *cancelButton;
 
+@property (nonatomic, copy) void (^updatedRouteBlock)(NSTimeInterval time, double songAmount);
+
 @end
 
 @implementation PlaylistViewController
 
-- (void) initializeModel {
-    [self.model loadSongs];
++ (instancetype) controllerWithCompletionBlock:(void (^)(NSTimeInterval time, double songAmount))completion {
+    PlaylistViewController *controller = [PlaylistViewController new];
+    controller.updatedRouteBlock = completion;
+    return controller;
 }
 
 - (void)viewDidLoad
@@ -65,6 +69,7 @@
     [self.model loadSongs];
     
     self.model.tableView = self.tableView;
+    self.model.updatedRouteBlock = self.updatedRouteBlock;
     
     self.tableView.backgroundColor = [UIColor beatWalkerBackgroundColor];
     
@@ -110,7 +115,6 @@
 - (void) dismiss {
     [self addOuterSnapBehavior];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [[MPMusicPlayerController applicationMusicPlayer] stop];
 }
 
 - (void) finish {
@@ -125,11 +129,6 @@
     self.refreshControl = tableVCForRefreshControl.refreshControl;
     
     return tableVCForRefreshControl.tableView;
-}
-
-- (void) setRoute:(Route *)route {
-    _route = route;
-    self.model.route = route;
 }
 
 - (void) reloadTableView {

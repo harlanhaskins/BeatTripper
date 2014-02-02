@@ -84,11 +84,11 @@
     [self.routeNameTextField centerToParent];
     self.routeNameTextField.y = self.routeLabel.bottom + padding;
     
-    CGSize buttonSize = self.finishButton.imageView.image.size;
-    buttonSize = CGSizeApplyAffineTransform(buttonSize, CGAffineTransformMakeScale(0.85, 0.85));
-    
-    self.finishButton.size =
-    self.cancelButton.size = buttonSize;
+//    CGSize buttonSize = self.finishButton.imageView.image.size;
+//    buttonSize = CGSizeApplyAffineTransform(buttonSize, CGAffineTransformMakeScale(0.85, 0.85));
+//
+//    self.finishButton.size =
+//    self.cancelButton.size = buttonSize;
     
     [self.finishButton centerToParent];
     [self.cancelButton centerToParent];
