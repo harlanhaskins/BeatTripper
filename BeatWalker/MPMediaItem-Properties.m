@@ -109,21 +109,7 @@
         artworkImage = [UIImage imageNamed:@"BlankArtwork"];
     }
     
-	return [self imageByCropping:artworkImage toSize:imageSize];
-}
-
-- (UIImage *)imageByCropping:(UIImage *)image toSize:(CGSize)size
-{
-    double x = (image.size.width - size.width) / 2.0;
-    double y = (image.size.height - size.height) / 2.0;
-    
-    CGRect cropRect = CGRectMake(x, y, size.height, size.width);
-    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
-    
-    UIImage *cropped = [UIImage imageWithCGImage:imageRef];
-    CGImageRelease(imageRef);
-    
-    return cropped;
+	return artworkImage;
 }
 
 - (UILabel*) cellTimeStampLabel {

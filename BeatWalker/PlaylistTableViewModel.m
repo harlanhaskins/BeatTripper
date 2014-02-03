@@ -74,8 +74,7 @@
         for (int i = 0; i < songLimit; ++i) {
             [self.currentIndices addObject:@(i)];
         }
-        
-        [self togglePlayback:PlayStatePlaying];
+//        [self togglePlayback:PlayStatePlaying];
     });
 }
 
@@ -85,7 +84,7 @@
     NSMutableArray *songsArray = [NSMutableArray array];
     
     NSInteger numberOfCollections = [query items].count;
-    NSInteger highestNumberOfItems = 300;
+    NSInteger highestNumberOfItems = 20;
     NSInteger numberOfItems = numberOfCollections >= highestNumberOfItems ? highestNumberOfItems : numberOfCollections;
     for (int i = 0; i < numberOfItems; i++) {
         MPMediaItem *song;
@@ -123,7 +122,8 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger songIndex = [self.currentIndices[indexPath.row] integerValue];
-    MPMediaItem *song = [self.collection items][songIndex];
+    NSArray *songs = [self.collection items];
+    MPMediaItem *song = songs[songIndex];
     
     MediaItemTableViewCell *cell = [MediaItemTableViewCell cellWithMediaItem:song
                                                                isCurrentSong:(indexPath.row == 0)];

@@ -23,23 +23,30 @@
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     
     cell.mediaItem = item;
-    cell.textLabel.text = item.title;
-    cell.detailTextLabel.text = item.artist;
     
     cell.textLabel.textColor =
     cell.detailTextLabel.textColor = currentSong ? [UIColor beatTripperTextColor] : [UIColor beatTripperUnhighlightedTextColor];
-    
-    cell.imageView.image = item.artwork;
     [cell.imageView setClipsToBounds:YES];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     cell.textLabel.width -= 15.0;
     
     cell.accessoryView = [UIView new];
-    
-    UILabel *timeStampLabel = [item cellTimeStampLabel];
-    timeStampLabel.center = CGPointMake(cell.width - 20.0, 44.0 / 2.0);
-    
-    [cell.contentView addSubview:timeStampLabel];
+
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *artwork = item.artwork;
+        NSString *artist = item.artist;
+        NSString *title = item.title;
+        
+        UILabel *timeStampLabel = [item cellTimeStampLabel];
+        timeStampLabel.center = CGPointMake(cell.width - 20.0, 44.0 / 2.0);
+        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.textLabel.text = title;
+            cell.detailTextLabel.text = artist;
+            cell.imageView.image = artwork;
+            [cell.contentView addSubview:timeStampLabel];
+//        });
+//    });
     
     return cell;
 }
