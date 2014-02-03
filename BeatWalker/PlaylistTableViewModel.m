@@ -9,7 +9,6 @@
 #import "PlaylistTableViewModel.h"
 #import "MPMediaItem-Properties.h"
 #import "MediaItemTableViewCell.h"
-#import "NSMutableArray+Shuffle.h"
 #import "RouteManager.h"
 
 @interface PlaylistTableViewModel ()

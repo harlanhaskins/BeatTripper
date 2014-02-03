@@ -6,7 +6,6 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
-
 @interface MPMediaItem (Properties)
 @property (nonatomic, readonly) NSNumber *persistentID;
 
