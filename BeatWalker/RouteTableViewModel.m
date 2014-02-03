@@ -32,15 +32,17 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Route* route = [[RouteManager sharedManager] routeAtIndex:indexPath.row];
-    RouteCell *cell = [RouteCell cellWithRoute:route containingTableView:tableView];
-    cell.delegate = self;
+    RouteCell *cell = [RouteCell cellWithRoute:route];
     return cell;
 }
 
-- (void) swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
-    NSIndexPath *routeIndexPath = [cell.containingTableView indexPathForCell:cell];
-    [[RouteManager sharedManager] deleteRouteAtIndex:routeIndexPath.row];
-    [cell.containingTableView deleteRowsAtIndexPaths:@[routeIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[RouteManager sharedManager] deleteRouteAtIndex:indexPath.row];
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

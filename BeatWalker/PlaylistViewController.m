@@ -42,6 +42,7 @@
 + (instancetype) controllerWithCompletionBlock:(void (^)(NSTimeInterval time, double songAmount))completion {
     PlaylistViewController *controller = [PlaylistViewController new];
     controller.updatedRouteBlock = completion;
+    controller.model = [PlaylistTableViewModel model];
     return controller;
 }
 
@@ -52,8 +53,6 @@
     [self setNeedsStatusBarAppearanceUpdate];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];//[self createTableViewWithRefreshControl];
-    
-    self.model = [PlaylistTableViewModel model];
     
     __weak PlaylistViewController *weakSelf = self;
     self.model.refreshTableViewBlock = ^{
@@ -116,6 +115,7 @@
     [self addOuterSnapBehavior];
     [[MPMusicPlayerController iPodMusicPlayer] stop];
     [[MPMusicPlayerController iPodMusicPlayer] setQueueWithItemCollection:nil];
+    [[MPMusicPlayerController iPodMusicPlayer] endGeneratingPlaybackNotifications];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -136,7 +136,6 @@
 - (void) reloadTableView {
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
-    [self.musicView enableButtons];
 }
 
 - (void) viewDidLayoutSubviews {

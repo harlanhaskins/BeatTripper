@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SWTableViewCell.h"
 #import "MusicView.h"
 #import "PlayPauseButton.h"
 
 @class MPMediaItem, Route;
 
-@interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, MusicViewDelegate>
+@interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, MusicViewDelegate>
 
 + (instancetype) model;
 - (void) loadSongs;

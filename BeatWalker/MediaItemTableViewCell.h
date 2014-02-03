@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWTableViewCell.h"
 
 @class MPMediaItem;
 
-@interface MediaItemTableViewCell : SWTableViewCell
+@interface MediaItemTableViewCell : UITableViewCell
 
 @property (nonatomic, readonly) MPMediaItem *mediaItem;
-+ (instancetype) cellWithMediaItem:(MPMediaItem*)item containingTableView:(UITableView*)tableView isCurrentSong:(BOOL)currentSong;
++ (instancetype) cellWithMediaItem:(MPMediaItem*)item isCurrentSong:(BOOL)currentSong;
 
 @end

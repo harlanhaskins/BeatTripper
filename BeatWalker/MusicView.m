@@ -38,7 +38,6 @@
         }
         button.tag = i;
         [button sizeToFit];
-        button.enabled = NO;
         [self addSubview:button];
         [self.buttons addObject:button];
     }

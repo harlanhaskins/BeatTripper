@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "PlaylistViewController.h"
-#import "SWTableViewCell.h"
 
-@interface RouteTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate>
+@interface RouteTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate>
 
 + (instancetype) model;
 

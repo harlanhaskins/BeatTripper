@@ -17,13 +17,9 @@
 
 @implementation MediaItemTableViewCell
 
-+ (instancetype) cellWithMediaItem:(MPMediaItem*)item containingTableView:(UITableView*)tableView isCurrentSong:(BOOL)currentSong {
++ (instancetype) cellWithMediaItem:(MPMediaItem*)item isCurrentSong:(BOOL)currentSong {
+    MediaItemTableViewCell *cell = [[MediaItemTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     
-    UIColor *deleteColor = [UIColor colorWithRed:239.0/255.0 green:41.0/255.0 blue:41.0/255.0 alpha:1.0];
-    NSMutableArray *utilityButtons = [NSMutableArray array];
-    [utilityButtons sw_addUtilityButtonWithColor:deleteColor title:@"Delete"];
-    
-    MediaItemTableViewCell *cell = [[MediaItemTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SongCell" containingTableView:tableView leftUtilityButtons:nil rightUtilityButtons:utilityButtons];
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     
     cell.mediaItem = item;
@@ -41,7 +37,7 @@
     cell.accessoryView = [UIView new];
     
     UILabel *timeStampLabel = [item cellTimeStampLabel];
-    timeStampLabel.center = CGPointMake(tableView.width - 20.0, 44.0 / 2.0);
+    timeStampLabel.center = CGPointMake(cell.width - 20.0, 44.0 / 2.0);
     
     [cell.contentView addSubview:timeStampLabel];
     

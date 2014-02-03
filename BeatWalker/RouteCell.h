@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWTableViewCell.h"
 
 @class Route;
 
-@interface RouteCell : SWTableViewCell
+@interface RouteCell : UITableViewCell
 
-+ (instancetype) cellWithRoute:(Route *)route containingTableView:(UITableView*)tableView;
++ (instancetype) cellWithRoute:(Route *)route;
 
 @end

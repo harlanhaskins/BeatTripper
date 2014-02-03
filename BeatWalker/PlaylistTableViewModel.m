@@ -50,6 +50,7 @@
                                                object:model.musicController];
     
     [model.musicController beginGeneratingPlaybackNotifications];
+    
     model.musicController.shuffleMode = MPMusicShuffleModeOff;
     
     model.manuallySentNewSong = YES;
@@ -76,32 +77,25 @@
         for (int i = 0; i < 15; ++i) {
             [self.currentIndices addObject:@(i)];
         }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Update the UI
-            self.refreshTableViewBlock();
-        });
     });
 }
 
 - (MPMediaItemCollection*) shuffledCollectionWithMediaQuery:(MPMediaQuery*)query {
-    NSArray *collectionsArray = [query collections];
+    NSArray *querySongsArray = [query items];
     
     NSMutableArray *songsArray = [NSMutableArray array];
     //    for (MPMediaItemCollection *collection in collectionsArray) {
     
-    NSInteger numberOfCollections = [query collections].count;
-    NSInteger numberOfItems = numberOfCollections >= 300 ? 300 : numberOfCollections;
+    NSInteger numberOfCollections = [query items].count;
+    NSInteger highestNumberOfItems = 300;
+    NSInteger numberOfItems = numberOfCollections >= highestNumberOfItems ? highestNumberOfItems : numberOfCollections;
     for (int i = 0; i < numberOfItems; i++) {
         MPMediaItem *song;
-        
         do {
-            NSInteger randomIndex = arc4random_uniform((u_int32_t)[collectionsArray count]);
-            MPMediaItemCollection *collection = collectionsArray[randomIndex];
-            song = [collection items][0];
+            NSInteger randomIndex = arc4random_uniform((u_int32_t)[querySongsArray count]);
+            song = querySongsArray[randomIndex];
         }
         while ([songsArray indexOfObject:song] != NSNotFound);
-        
         [songsArray addObject:song];
     }
     
@@ -134,9 +128,7 @@
     MPMediaItem *song = [self.collection items][songIndex];
     
     MediaItemTableViewCell *cell = [MediaItemTableViewCell cellWithMediaItem:song
-                                                         containingTableView:tableView
                                                                isCurrentSong:(indexPath.row == 0)];
-    cell.delegate = self;
     
     return cell;
 }
@@ -147,17 +139,11 @@
 
 - (void) swipeableTableViewCell:(MediaItemTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    [self.deletedIndices addObject:@([[self.collection items] indexOfObject:cell.mediaItem])];
-    if (cell.mediaItem == self.musicController.nowPlayingItem) {
-        [self advanceToNextSong];
-    }
-    else {
-        [self removeSongAtIndexPath:indexPath];
-    }
+    
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSNumber *index = self.currentIndices[indexPath.row];
     [self playSongAtIndex:[index integerValue]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -178,15 +164,19 @@
 }
 
 - (void) removeSongAtIndexPath:(NSIndexPath*)indexPath {
+    [self.tableView beginUpdates];
     [self.currentIndices removeObjectAtIndex:indexPath.row];
-    
     NSUInteger lastIndex = [self.currentIndices.lastObject integerValue];
     NSUInteger indexToAdd = [self nextPlayableIndexAfterIndex:lastIndex];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    NSIndexPath *indexPathOfSecondRow = [NSIndexPath indexPathForRow:1 inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPathOfSecondRow] withRowAnimation:UITableViewRowAnimationAutomatic];
     if (indexToAdd != NSNotFound) {
         [self.currentIndices addObject:@(indexToAdd)];
+        NSIndexPath *indexPathOfLastRow = [NSIndexPath indexPathForRow:(self.currentIndices.count - 1) inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[indexPathOfLastRow] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-    
-    [self reloadTable];
+    [self.tableView endUpdates];
 }
 
 - (void) unPopSong {
@@ -194,10 +184,21 @@
     if (indexToAdd != NSNotFound) {
         NSNumber *indexToAddNumber = @(indexToAdd);
         if ([self.currentIndices indexOfObject:indexToAddNumber] == NSNotFound) {
+            [self.tableView beginUpdates];
+            
             [self.currentIndices insertObject:indexToAddNumber atIndex:0];
+            [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+            NSIndexPath *indexPathOfSecondRow = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self.tableView reloadRowsAtIndexPaths:@[indexPathOfSecondRow] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+            NSIndexPath *indexPathOfLastRow = [NSIndexPath indexPathForRow:(self.currentIndices.count - 2) inSection:0];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPathOfLastRow] withRowAnimation:UITableViewRowAnimationAutomatic];
             [self.currentIndices removeLastObject];
+            
+            [self.tableView endUpdates];
+            
             [self adjustInternalMusicRepresentationForNextSong];
-            [self reloadTable];
         }
     }
 }
@@ -293,6 +294,21 @@
     }
     else if (state == PlayStatePlaying) {
         [self.musicController play];
+    }
+}
+
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger songIndex = [self.currentIndices[indexPath.row] integerValue];
+    [self.deletedIndices addObject:@(songIndex)];
+    if (songIndex == self.musicController.indexOfNowPlayingItem) {
+        [self advanceToNextSong];
+    }
+    else {
+        [self removeSongAtIndexPath:indexPath];
     }
 }
 

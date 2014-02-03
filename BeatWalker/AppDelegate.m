@@ -19,6 +19,8 @@
     // Stop playback if music is playing.
     [[MPMusicPlayerController iPodMusicPlayer] stop];
     
+    [self cacheMediaItems];
+    
     RouteViewController *routeVC = [RouteViewController new];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -30,6 +32,14 @@
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void) cacheMediaItems {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        MPMediaQuery *songQuery = [MPMediaQuery songsQuery];
+        [songQuery items];
+        songQuery = nil;
+    });
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
