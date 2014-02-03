@@ -50,7 +50,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self addInnerSnapBehavior];
+    [self performSelector:@selector(addInnerSnapBehavior) withObject:nil afterDelay:0.25];
 }
 
 - (void)didReceiveMemoryWarning
