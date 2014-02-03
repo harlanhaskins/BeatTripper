@@ -4,6 +4,7 @@
 //
 //  Created by Mihir Singh on 1/31/14.
 //  Copyright (c) 2014 BeatTripper. All rights reserved.
+//  Distributed under the MIT license.
 //
 
 #import "BWDynamicViewController.h"
