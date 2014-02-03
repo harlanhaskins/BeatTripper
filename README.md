@@ -4,7 +4,7 @@ Imagine with me for a moment.
 
 You're walking to class, listening to your favorite songs.
 
-Upon arrival, you think to yourself `Hmm. That was about a 3 or 4 song walk.`
+Upon arrival, you think to yourself *"Hmm. That was about a 3 or 4 song walk."*
 
 It's an unscientific measurement, yes, but everyone thinks it at some point.
 
