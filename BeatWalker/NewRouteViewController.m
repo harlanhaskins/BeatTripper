@@ -102,12 +102,11 @@
 }
 
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (textField.text.length > 1 || (string.length > 0 && ![string isEqualToString:@""])) {
-        self.finishButton.enabled = YES;
+    string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (string.length > 0) {
+        return NO;
     }
-    else {
-        self.finishButton.enabled = NO;
-    }
+    self.finishButton.enabled = (textField.text.length > 1);
     return YES;
 }
 

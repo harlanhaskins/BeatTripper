@@ -10,10 +10,11 @@
 
 @interface UIColor (BeatTripper)
 
-+ (UIColor*) beatTripperBackgroundColor;
-+ (UIColor*) beatTripperSeparatorColor;
-+ (UIColor*) beatTripperTextColor;
-+ (UIColor*) beatTripperUnhighlightedTextColor;
-+ (UIColor*) beatTripperSubtleTextColor;
++ (instancetype) beatTripperBackgroundColor;
++ (instancetype) beatTripperSeparatorColor;
++ (instancetype) beatTripperTextColor;
++ (instancetype) beatTripperUnhighlightedTextColor;
++ (instancetype) beatTripperSubtleTextColor;
++ (instancetype) beatTripperGreenColor;
 
 @end

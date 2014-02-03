@@ -35,7 +35,6 @@
     contentFrame.origin.y += contentFrame.size.height;
     self.contentView = [[UIView alloc] initWithFrame:contentFrame];
     self.contentView.backgroundColor = [UIColor beatTripperBackgroundColor];
-    self.view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.contentView];
     [self addParallax];
 	// Do any additional setup after loading the view.

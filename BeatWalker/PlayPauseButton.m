@@ -7,6 +7,7 @@
 //
 
 #import "PlayPauseButton.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface PlayPauseButton ()
 
@@ -21,9 +22,25 @@
     button.playState = PlayStatePaused;
     [button setBackgroundImage:[button imageForCurrentPlayState] forState:UIControlStateNormal];
     [button addTarget:button action:@selector(didTouchButton) forControlEvents:UIControlEventTouchUpInside];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:button
+                                             selector:@selector(playBackChanged)
+                                                 name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:nil];
+    
     return button;
 }
 
+- (void) playBackChanged {
+    MPMusicPlaybackState state = [[MPMusicPlayerController iPodMusicPlayer] playbackState];
+    self.playState = (state == MPMusicPlaybackStatePlaying) ? PlayStatePlaying : PlayStatePaused;
+}
+
+- (void) setPlayState:(PlayState)playState {
+    _playState = playState;
+    [self setBackgroundImage:[self imageForCurrentPlayState] forState:UIControlStateNormal];
+}
+        
+        
 - (void) didTouchButton {
     if (self.playState == PlayStatePaused) {
         self.playState = PlayStatePlaying;
@@ -31,8 +48,13 @@
     else {
         self.playState = PlayStatePaused;
     }
-    [self setBackgroundImage:[self imageForCurrentPlayState] forState:UIControlStateNormal];
     self.playBackBlock(self.playState);
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMusicPlayerControllerPlaybackStateDidChangeNotification
+                                                  object:nil];
 }
 
 - (UIImage*) imageForCurrentPlayState {

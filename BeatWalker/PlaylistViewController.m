@@ -199,12 +199,12 @@
     self.tableViewBottomBorderCoverView.width = self.contentView.width; // * 1.05;
     
     self.tableViewTopBorderCoverView.height =
-    self.tableViewBottomBorderCoverView.height = 0.5;
+    self.tableViewBottomBorderCoverView.height = (1.0 / [[UIScreen mainScreen] scale]);
     
     [self.tableViewTopBorderCoverView centerToParent];
     [self.tableViewBottomBorderCoverView centerToParent];
     
-    self.tableViewTopBorderCoverView.y = self.tableView.y - 0.5;
+    self.tableViewTopBorderCoverView.y = self.tableView.y - (1.0 / [[UIScreen mainScreen] scale]);
     self.tableViewBottomBorderCoverView.y = self.tableView.bottom;
 }
 

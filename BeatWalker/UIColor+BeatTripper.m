@@ -10,24 +10,28 @@
 
 @implementation UIColor (BeatTripper)
 
-+ (UIColor*) beatTripperBackgroundColor {
++ (instancetype) beatTripperBackgroundColor {
     return [UIColor colorWithWhite:0.075 alpha:1.0];
 }
 
-+ (UIColor*) beatTripperSeparatorColor {
++ (instancetype) beatTripperSeparatorColor {
     return [UIColor colorWithWhite:0.15 alpha:1.0];
 }
 
-+ (UIColor*) beatTripperTextColor {
++ (instancetype) beatTripperTextColor {
     return [UIColor colorWithWhite:0.95 alpha:1.0];
 }
 
-+ (UIColor*) beatTripperUnhighlightedTextColor {
++ (instancetype) beatTripperUnhighlightedTextColor {
     return [UIColor colorWithWhite:0.5 alpha:1.0];
 }
 
-+ (UIColor*) beatTripperSubtleTextColor {
++ (instancetype) beatTripperSubtleTextColor {
     return [UIColor colorWithWhite:0.35 alpha:1.0];
+}
+
++ (instancetype) beatTripperGreenColor {
+    return [UIColor colorWithRed:0.00/255.0 green:166.0/255.0 blue:81.0/255.0 alpha:1.000];
 }
 
 @end

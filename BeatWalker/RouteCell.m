@@ -26,19 +26,14 @@
     cell.textLabel.text = route.name;
     cell.detailTextLabel.text = route.details;
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     cell.textLabel.textColor = [UIColor beatTripperTextColor];
     cell.contentView.backgroundColor =
     cell.backgroundColor = [UIColor beatTripperBackgroundColor];
     cell.detailTextLabel.textColor = [UIColor beatTripperTextColor];
     
     return cell;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

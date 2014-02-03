@@ -45,6 +45,7 @@
     [[RouteManager sharedManager] deleteRouteAtIndex:indexPath.row];
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [tableView endUpdates];
+    self.didDeleteRoute(indexPath.row);
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

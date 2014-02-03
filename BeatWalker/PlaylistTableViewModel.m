@@ -28,8 +28,6 @@
 @property (nonatomic) double totalSongAmount;
 @property (nonatomic) double currentSongAmount;
 
-@property (nonatomic) BOOL manuallySentNewSong;
-
 @end
 
 @implementation PlaylistTableViewModel
@@ -53,8 +51,6 @@
     
     model.musicController.shuffleMode = MPMusicShuffleModeOff;
     
-    model.manuallySentNewSong = YES;
-    
     [[NSRunLoop currentRunLoop] addTimer:model.musicCheckTimer forMode:NSDefaultRunLoopMode];
     
     return model;
@@ -74,9 +70,12 @@
         [self.musicController setQueueWithItemCollection:collection];
         
         self.currentIndices = [NSMutableArray array];
-        for (int i = 0; i < 15; ++i) {
+        NSInteger songLimit = MIN(collection.items.count, 25);
+        for (int i = 0; i < songLimit; ++i) {
             [self.currentIndices addObject:@(i)];
         }
+        
+        [self togglePlayback:PlayStatePlaying];
     });
 }
 
@@ -84,7 +83,6 @@
     NSArray *querySongsArray = [query items];
     
     NSMutableArray *songsArray = [NSMutableArray array];
-    //    for (MPMediaItemCollection *collection in collectionsArray) {
     
     NSInteger numberOfCollections = [query items].count;
     NSInteger highestNumberOfItems = 300;
