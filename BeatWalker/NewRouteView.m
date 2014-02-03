@@ -20,31 +20,30 @@
 
 @implementation NewRouteView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {UIColor *color = [UIColor beatTripperSubtleTextColor];
-        self.routeNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"New Route Name"
-                                                                                        attributes:@{NSForegroundColorAttributeName: color}];
-        self.routeNameTextField.textColor = [UIColor beatTripperTextColor];
-        self.routeNameTextField.delegate = self;
-        [self.routeNameTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:1];
-        [self addSubview:self.routeNameTextField];
-        
-        self.finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.finishButton setImage:[UIImage imageNamed:@"CheckButton"] forState:UIControlStateNormal];
-        [self.finishButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
-        [self.finishButton sizeToFit];
-        self.finishButton.enabled = NO;
-        [self addSubview:self.finishButton];
-        
-        self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.cancelButton setImage:[UIImage imageNamed:@"XButton"] forState:UIControlStateNormal];
-        [self.cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-        [self.cancelButton sizeToFit];
-        [self addSubview:self.cancelButton];
-    }
-    return self;
++ (instancetype) new {
+    NewRouteView *view = [[NewRouteView alloc] init];
+    UIColor *color = [UIColor beatTripperSubtleTextColor];
+    view.routeNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"New Route Name"
+                                                                                    attributes:@{NSForegroundColorAttributeName: color}];
+    view.routeNameTextField.textColor = [UIColor beatTripperTextColor];
+    view.routeNameTextField.delegate = view;
+    [view.routeNameTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:1];
+    [view addSubview:view.routeNameTextField];
+    
+    view.finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [view.finishButton setImage:[UIImage imageNamed:@"CheckButton"] forState:UIControlStateNormal];
+    [view.finishButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
+    [view.finishButton sizeToFit];
+    view.finishButton.enabled = NO;
+    [view addSubview:view.finishButton];
+    
+    view.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [view.cancelButton setImage:[UIImage imageNamed:@"XButton"] forState:UIControlStateNormal];
+    [view.cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    [view.cancelButton sizeToFit];
+    [view addSubview:view.cancelButton];
+    
+    return view;
 }
 
 - (void) layoutSubviews {
@@ -55,12 +54,6 @@
     [self.routeNameTextField centerToParent];
     
     self.routeNameTextField.y -= (self.finishButton.height / 2) - padding;
-    
-    //    CGSize buttonSize = self.finishButton.imageView.image.size;
-    //    buttonSize = CGSizeApplyAffineTransform(buttonSize, CGAffineTransformMakeScale(0.85, 0.85));
-    //
-    //    self.finishButton.size =
-    //    self.cancelButton.size = buttonSize;
     
     [self.finishButton centerToParent];
     [self.cancelButton centerToParent];
@@ -96,6 +89,10 @@
         self.finishButton.enabled = NO;
     }
     return YES;
+}
+
+- (BOOL) becomeFirstResponder {
+    return [self.routeNameTextField becomeFirstResponder];
 }
 
 @end

@@ -41,8 +41,10 @@
 }
 
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView beginUpdates];
     [[RouteManager sharedManager] deleteRouteAtIndex:indexPath.row];
-    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [tableView endUpdates];
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -52,6 +54,19 @@
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = tableView.backgroundColor;
+}
+
+- (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *cellCover = [[UIView alloc] initWithFrame:CGRectZero];
+    cellCover.backgroundColor = tableView.backgroundColor;
+    UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.width, 1.0 / [UIScreen mainScreen].scale)];
+    separator.backgroundColor = tableView.separatorColor;
+    [cellCover addSubview:separator];
+    return cellCover;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 44.0;
 }
 
 @end

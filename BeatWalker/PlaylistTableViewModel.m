@@ -47,7 +47,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:model
                                              selector:@selector(handleNowPlayingItemChange)
                                                  name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
-                                               object:model.musicController];
+                                               object:nil];
     
     [model.musicController beginGeneratingPlaybackNotifications];
     
@@ -135,11 +135,6 @@
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
-}
-
-- (void) swipeableTableViewCell:(MediaItemTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
-{
-    
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

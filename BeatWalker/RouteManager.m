@@ -34,7 +34,7 @@
 
 - (void) addRoute:(Route*)route {
     if ([self.routes indexOfObject:route] == NSNotFound) {
-        [self.routes addObject:route];
+        [self.routes insertObject:route atIndex:0];
         [self saveRoutes];
     }
 }

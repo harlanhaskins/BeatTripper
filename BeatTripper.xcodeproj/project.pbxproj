@@ -155,8 +155,6 @@
 			children = (
 				C9017752189B5AB500692598 /* PlaylistViewController.h */,
 				C9017753189B5AB500692598 /* PlaylistViewController.m */,
-				C999A20F189F04AB00A55A54 /* NewRouteView.h */,
-				C999A210189F04AB00A55A54 /* NewRouteView.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -164,6 +162,8 @@
 		C943E887189EC48E0051F943 /* Accessories/Views */ = {
 			isa = PBXGroup;
 			children = (
+				C999A20F189F04AB00A55A54 /* NewRouteView.h */,
+				C999A210189F04AB00A55A54 /* NewRouteView.m */,
 				A75409DE189B4637000F6B8C /* RouteCell.h */,
 				A75409DF189B4637000F6B8C /* RouteCell.m */,
 			);

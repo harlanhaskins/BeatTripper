@@ -116,6 +116,11 @@
     [[MPMusicPlayerController iPodMusicPlayer] stop];
     [[MPMusicPlayerController iPodMusicPlayer] setQueueWithItemCollection:nil];
     [[MPMusicPlayerController iPodMusicPlayer] endGeneratingPlaybackNotifications];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self.model
+                                                    name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+                                                  object:nil];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
