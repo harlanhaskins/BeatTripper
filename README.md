@@ -1,12 +1,10 @@
 ## BeatTripper
 
-Imagine with me for a moment.
-
-You're walking to class, listening to your favorite songs.
+Imagine for a moment, you're walking to class, listening to your favorite songs.
 
 Upon arrival, you think to yourself *"Hmm. That was about a 3 or 4 song walk."*
 
-It's an unscientific measurement, yes, but everyone thinks it at some point.
+It's not a scientific measurement, but everyone thinks it at some point.
 
 That's why we wrote BeatTripper, to help you track that metric.
 
