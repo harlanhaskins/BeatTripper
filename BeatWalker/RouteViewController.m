@@ -10,7 +10,6 @@
 #import "RouteTableViewModel.h"
 #import "RouteManager.h"
 #import "NewRouteViewController.h"
-#import "NewRouteView.h"
 
 @interface RouteViewController ()
 
@@ -24,8 +23,6 @@
 @property (nonatomic) UIButton *addRouteButton;
 
 @property (nonatomic) UIView *tableViewTopBorderCoverView;
-
-@property (nonatomic) NewRouteView *routeInputView;
 
 @end
 

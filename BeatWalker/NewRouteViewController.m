@@ -39,7 +39,7 @@
                                                                                     attributes:@{NSForegroundColorAttributeName: color}];
     self.routeNameTextField.textColor = [UIColor beatTripperTextColor];
     self.routeNameTextField.delegate = self;
-    [self.routeNameTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:1];
+    [self.routeNameTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.5];
     [self.contentView addSubview:self.routeNameTextField];
     
     self.finishButton = [UIButton buttonWithType:UIButtonTypeCustom];

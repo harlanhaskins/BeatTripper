@@ -24,10 +24,11 @@
     
     cell.route = route;
     cell.textLabel.text = route.name;
+    cell.detailTextLabel.text = route.details;
+    
     cell.textLabel.textColor = [UIColor beatTripperTextColor];
     cell.contentView.backgroundColor =
     cell.backgroundColor = [UIColor beatTripperBackgroundColor];
-    cell.detailTextLabel.text = route.details;
     cell.detailTextLabel.textColor = [UIColor beatTripperTextColor];
     
     return cell;

@@ -32,7 +32,6 @@
 		C98584731899F79100D52B7F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C98584721899F79100D52B7F /* Images.xcassets */; };
 		C98584971899FBC400D52B7F /* MPMediaItem-Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */; };
 		C985849C189A106A00D52B7F /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = C985849B189A106A00D52B7F /* UIView+Positioning.m */; };
-		C999A211189F04AB00A55A54 /* NewRouteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C999A210189F04AB00A55A54 /* NewRouteView.m */; };
 		C9A21286189C230A00D85E55 /* NSMutableArray+Shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A21285189C230A00D85E55 /* NSMutableArray+Shuffle.m */; };
 /* End PBXBuildFile section */
 
@@ -84,8 +83,6 @@
 		C98584961899FBC400D52B7F /* MPMediaItem-Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "MPMediaItem-Properties.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C985849B189A106A00D52B7F /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
 		C985849D189A107100D52B7F /* UIView+Positioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Positioning.h"; sourceTree = "<group>"; };
-		C999A20F189F04AB00A55A54 /* NewRouteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRouteView.h; sourceTree = "<group>"; };
-		C999A210189F04AB00A55A54 /* NewRouteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRouteView.m; sourceTree = "<group>"; };
 		C9A21284189C230A00D85E55 /* NSMutableArray+Shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffle.h"; sourceTree = "<group>"; };
 		C9A21285189C230A00D85E55 /* NSMutableArray+Shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffle.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,8 +159,6 @@
 		C943E887189EC48E0051F943 /* Accessories/Views */ = {
 			isa = PBXGroup;
 			children = (
-				C999A20F189F04AB00A55A54 /* NewRouteView.h */,
-				C999A210189F04AB00A55A54 /* NewRouteView.m */,
 				A75409DE189B4637000F6B8C /* RouteCell.h */,
 				A75409DF189B4637000F6B8C /* RouteCell.m */,
 			);
@@ -356,7 +351,6 @@
 				C980CECA189D5A9100A9DFA4 /* RouteManager.m in Sources */,
 				C93D9424189AFC4A00D1A336 /* MusicView.m in Sources */,
 				A75409E5189B4747000F6B8C /* RouteTableViewModel.m in Sources */,
-				C999A211189F04AB00A55A54 /* NewRouteView.m in Sources */,
 				A75409DA189B45FC000F6B8C /* RouteViewController.m in Sources */,
 				A7351790189A0A11006D58F6 /* Route.m in Sources */,
 			);
