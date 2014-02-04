@@ -32,10 +32,12 @@
 
 @implementation PlaylistTableViewModel
 
-+ (instancetype) model {
++ (instancetype) modelWithCollection:(MPMediaItemCollection*)collection {
     
     PlaylistTableViewModel *model = [PlaylistTableViewModel new];
     model.musicController = [MPMusicPlayerController iPodMusicPlayer];
+    model.collection = collection;
+    [model.musicController setQueueWithItemCollection:model.collection];
     model.musicCheckTimer = [NSTimer timerWithTimeInterval:1.0
                                                     target:model
                                                   selector:@selector(updatePlayedSongsCount)

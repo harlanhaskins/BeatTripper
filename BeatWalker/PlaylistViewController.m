@@ -40,10 +40,10 @@
 
 @implementation PlaylistViewController
 
-+ (instancetype) controllerWithCompletionBlock:(void (^)(NSTimeInterval time, double songAmount))completion {
++ (instancetype) controllerWithCompletionBlock:(void (^)(NSTimeInterval time, double songAmount))completion musicCollection:(MPMediaItemCollection*)collection {
     PlaylistViewController *controller = [PlaylistViewController new];
     controller.updatedRouteBlock = completion;
-    controller.model = [PlaylistTableViewModel model];
+    controller.model = [PlaylistTableViewModel modelWithCollection:(MPMediaItemCollection*)collection];
     return controller;
 }
 
@@ -65,8 +65,6 @@
     self.model.songNumberUpdated = ^(double songNumber) {
         [weakSelf.songsLabel setInformation:songNumber];
     };
-    
-    [self.model loadSongs];
     
     self.model.tableView = self.tableView;
     self.model.updatedRouteBlock = self.updatedRouteBlock;

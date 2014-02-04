@@ -79,4 +79,18 @@
     return collection;
 }
 
+- (MPMediaItemCollection*)collection {
+    if (_collection) {
+        return _collection;
+    }
+    [self loadQueueWithCompletion:^(MPMediaItemCollection *collection) {
+        _collection = collection;
+    }];
+    return _collection;
+}
+
+- (void) reset {
+    self.collection = nil;
+}
+
 @end

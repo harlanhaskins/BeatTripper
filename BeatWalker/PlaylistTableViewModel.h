@@ -11,11 +11,11 @@
 #import "MusicView.h"
 #import "PlayPauseButton.h"
 
-@class MPMediaItem, Route;
+@class MPMediaItem, Route, MPMediaItemCollection;
 
 @interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, MusicViewDelegate>
 
-+ (instancetype) model;
++ (instancetype) modelWithCollection:(MPMediaItemCollection*)collection;
 
 @property (nonatomic) UIRefreshControl *refreshControl;
 
