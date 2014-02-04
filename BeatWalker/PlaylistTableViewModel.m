@@ -70,7 +70,7 @@
         [self.musicController setQueueWithItemCollection:collection];
         
         self.currentIndices = [NSMutableArray array];
-        NSInteger songLimit = MIN(collection.items.count, 25);
+        NSInteger songLimit = MIN(collection.items.count, 400);
         for (int i = 0; i < songLimit; ++i) {
             [self.currentIndices addObject:@(i)];
         }
@@ -84,7 +84,7 @@
     NSMutableArray *songsArray = [NSMutableArray array];
     
     NSInteger numberOfCollections = [query items].count;
-    NSInteger highestNumberOfItems = 20;
+    NSInteger highestNumberOfItems = 400;
     NSInteger numberOfItems = numberOfCollections >= highestNumberOfItems ? highestNumberOfItems : numberOfCollections;
     for (int i = 0; i < numberOfItems; i++) {
         MPMediaItem *song;
@@ -158,17 +158,26 @@
 
 - (void) removeSongAtIndexPath:(NSIndexPath*)indexPath {
     [self.tableView beginUpdates];
-    [self.currentIndices removeObjectAtIndex:indexPath.row];
+    
     NSUInteger lastIndex = [self.currentIndices.lastObject integerValue];
     NSUInteger indexToAdd = [self nextPlayableIndexAfterIndex:lastIndex];
+    
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    NSIndexPath *indexPathOfSecondRow = [NSIndexPath indexPathForRow:1 inSection:0];
-//    [self.tableView reloadRowsAtIndexPaths:@[indexPathOfSecondRow] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self.currentIndices removeObjectAtIndex:indexPath.row];
+    
     if (indexToAdd != NSNotFound) {
         [self.currentIndices addObject:@(indexToAdd)];
-        NSIndexPath *indexPathOfLastRow = [NSIndexPath indexPathForRow:(self.currentIndices.count - 1) inSection:0];
+        
+        NSIndexPath *indexPathOfLastRow = [NSIndexPath indexPathForRow:(self.currentIndices.count - 2) inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[indexPathOfLastRow] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+    
+    if ([self.tableView numberOfRowsInSection:0] >= (indexPath.row + 1)) {
+        NSIndexPath *secondRowIndexPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:0];
+        [self.tableView reloadRowsAtIndexPaths:@[secondRowIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    
     [self.tableView endUpdates];
 }
 
@@ -182,12 +191,14 @@
             [self.currentIndices insertObject:indexToAddNumber atIndex:0];
             [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
             
-//            NSIndexPath *indexPathOfSecondRow = [NSIndexPath indexPathForRow:0 inSection:0];
-//            [self.tableView reloadRowsAtIndexPaths:@[indexPathOfSecondRow] withRowAnimation:UITableViewRowAnimationAutomatic];
-            
+            [self.currentIndices removeLastObject];
             NSIndexPath *indexPathOfLastRow = [NSIndexPath indexPathForRow:(self.currentIndices.count - 2) inSection:0];
             [self.tableView deleteRowsAtIndexPaths:@[indexPathOfLastRow] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [self.currentIndices removeLastObject];
+            
+            NSIndexPath *indexPathOfSecondRow = [NSIndexPath indexPathForRow:0 inSection:0];
+            if ([self.tableView numberOfRowsInSection:0] > 0) {
+                [self.tableView reloadRowsAtIndexPaths:@[indexPathOfSecondRow] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
             
             [self.tableView endUpdates];
             

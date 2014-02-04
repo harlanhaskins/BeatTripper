@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>B08FEC66-EB5D-4458-BE6C-CCE10C96D5C7</string>
+	<string>5ABDC588-572B-4CF2-AFF9-19A81837BB37</string>
 	<key>IDESourceControlProjectName</key>
 	<string>BeatTripper</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F7886354-FB00-4237-91DA-36CC8E247A36</key>
-		<string>ssh://bitbucket.org/harlanhaskins/beatwalker.git</string>
+		<key>FA84839E-4CC4-436B-9323-831AC106B0B6</key>
+		<string>https://github.com/harlanhaskins/BeatTripper.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>BeatTripper.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F7886354-FB00-4237-91DA-36CC8E247A36</key>
+		<key>FA84839E-4CC4-436B-9323-831AC106B0B6</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://bitbucket.org/harlanhaskins/beatwalker.git</string>
+	<string>https://github.com/harlanhaskins/BeatTripper.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F7886354-FB00-4237-91DA-36CC8E247A36</string>
+	<string>FA84839E-4CC4-436B-9323-831AC106B0B6</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F7886354-FB00-4237-91DA-36CC8E247A36</string>
+			<string>FA84839E-4CC4-436B-9323-831AC106B0B6</string>
 			<key>IDESourceControlWCCName</key>
-			<string>BeatWalker</string>
+			<string>BeatTripper</string>
 		</dict>
 	</array>
 </dict>
