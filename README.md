@@ -1,6 +1,6 @@
 ## BeatTripper
 
-![BeatTripper Screenshots](http://i.imgur.com/NZLjO1A.png)
+![BeatTripper Screenshots](http://i.imgur.com/DwGtxwA.png)
 
 Imagine for a moment, you're walking to class, listening to your favorite songs.
 
