@@ -16,7 +16,6 @@
 @interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, MusicViewDelegate>
 
 + (instancetype) model;
-- (void) loadSongs;
 
 @property (nonatomic) UIRefreshControl *refreshControl;
 
