@@ -1,5 +1,7 @@
 ## BeatTripper
 
+![BeatTripper Screenshots](http://i.imgur.com/DwGtxwA.png)
+
 Imagine for a moment, you're walking to class, listening to your favorite songs.
 
 Upon arrival, you think to yourself *"Hmm. That was about a 3 or 4 song walk."*
