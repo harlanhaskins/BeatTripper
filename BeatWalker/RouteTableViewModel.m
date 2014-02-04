@@ -61,7 +61,11 @@
 - (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *cellCover = [[UIView alloc] initWithFrame:CGRectZero];
     cellCover.backgroundColor = tableView.backgroundColor;
-    UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.width, 1.0 / [UIScreen mainScreen].scale)];
+    UIView *separator = [UIView new];
+    separator.width = tableView.width;
+    separator.height = 1.0 / [UIScreen mainScreen].scale;
+    // Correct for double bars.
+    separator.y = -separator.height;
     separator.backgroundColor = tableView.separatorColor;
     [cellCover addSubview:separator];
     return cellCover;
