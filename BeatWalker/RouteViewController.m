@@ -128,7 +128,7 @@
         [self performSelector:@selector(flashCheck) withObject:nil afterDelay:0.2];
     };
     PlaylistViewController *playlistVC = [PlaylistViewController controllerWithCompletionBlock:updatedRouteBlock];
-    [self presentViewController:playlistVC animated:NO completion:nil];
+    [self presentViewController:playlistVC animated:YES completion:nil];
 }
 
 - (void) flashCheck {
@@ -150,7 +150,7 @@
         }
         [self showNoItemsMessageIfNecessary];
     };
-    [self presentViewController:newRouteVC animated:NO completion:nil];
+    [self presentViewController:newRouteVC animated:YES completion:nil];
 }
 
 - (void) showNoItemsMessageIfNecessary {

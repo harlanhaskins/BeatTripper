@@ -161,8 +161,8 @@
     NSUInteger lastIndex = [self.currentIndices.lastObject integerValue];
     NSUInteger indexToAdd = [self nextPlayableIndexAfterIndex:lastIndex];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    NSIndexPath *indexPathOfSecondRow = [NSIndexPath indexPathForRow:1 inSection:0];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPathOfSecondRow] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    NSIndexPath *indexPathOfSecondRow = [NSIndexPath indexPathForRow:1 inSection:0];
+//    [self.tableView reloadRowsAtIndexPaths:@[indexPathOfSecondRow] withRowAnimation:UITableViewRowAnimationAutomatic];
     if (indexToAdd != NSNotFound) {
         [self.currentIndices addObject:@(indexToAdd)];
         NSIndexPath *indexPathOfLastRow = [NSIndexPath indexPathForRow:(self.currentIndices.count - 1) inSection:0];
@@ -181,8 +181,8 @@
             [self.currentIndices insertObject:indexToAddNumber atIndex:0];
             [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
             
-            NSIndexPath *indexPathOfSecondRow = [NSIndexPath indexPathForRow:0 inSection:0];
-            [self.tableView reloadRowsAtIndexPaths:@[indexPathOfSecondRow] withRowAnimation:UITableViewRowAnimationAutomatic];
+//            NSIndexPath *indexPathOfSecondRow = [NSIndexPath indexPathForRow:0 inSection:0];
+//            [self.tableView reloadRowsAtIndexPaths:@[indexPathOfSecondRow] withRowAnimation:UITableViewRowAnimationAutomatic];
             
             NSIndexPath *indexPathOfLastRow = [NSIndexPath indexPathForRow:(self.currentIndices.count - 2) inSection:0];
             [self.tableView deleteRowsAtIndexPaths:@[indexPathOfLastRow] withRowAnimation:UITableViewRowAnimationAutomatic];

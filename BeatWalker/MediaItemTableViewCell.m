@@ -25,7 +25,7 @@
     cell.mediaItem = item;
     
     cell.textLabel.textColor =
-    cell.detailTextLabel.textColor = currentSong ? [UIColor beatTripperTextColor] : [UIColor beatTripperUnhighlightedTextColor];
+    cell.detailTextLabel.textColor = YES ? [UIColor beatTripperTextColor] : [UIColor beatTripperUnhighlightedTextColor];
     [cell.imageView setClipsToBounds:YES];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     cell.textLabel.width -= 15.0;
