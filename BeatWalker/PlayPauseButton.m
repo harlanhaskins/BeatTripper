@@ -21,13 +21,17 @@
 + (instancetype) new {
     PlayPauseButton *button = [[PlayPauseButton alloc] init];
     button.playState = PlayStatePaused;
-    [button setBackgroundImage:[button imageForCurrentPlayState] forState:UIControlStateNormal];
-    [button addTarget:button action:@selector(didTouchButton) forControlEvents:UIControlEventTouchUpInside];
+    [button setBackgroundImage:[button imageForCurrentPlayState]
+                      forState:UIControlStateNormal];
+    [button addTarget:button action:@selector(didTouchButton)
+     forControlEvents:UIControlEventTouchUpInside];
     
-    [[NSNotificationCenter defaultCenter] addObserver:button
-                                             selector:@selector(playBackChanged)
-                                                 name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:nil];
-    
+    if (!TARGET_IPHONE_SIMULATOR) {
+        [[NSNotificationCenter defaultCenter] addObserver:button
+                                                 selector:@selector(playBackChanged)
+                                                     name:MPMusicPlayerControllerPlaybackStateDidChangeNotification
+                                                   object:nil];
+    }
     return button;
 }
 

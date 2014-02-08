@@ -18,9 +18,10 @@
 {
     
     // Stop playback if music is playing.
-    [[MPMusicPlayerController iPodMusicPlayer] stop];
-    
-    [self cacheMediaItems];
+    if (!TARGET_IPHONE_SIMULATOR) {
+        [[MPMusicPlayerController iPodMusicPlayer] stop];
+        [self cacheMediaItems];
+    }
     
     RouteViewController *routeVC = [RouteViewController new];
     
@@ -69,5 +70,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

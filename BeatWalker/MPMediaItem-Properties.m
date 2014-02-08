@@ -152,6 +152,10 @@
 	return [[self valueForProperty:MPMediaItemPropertyIsCompilation] boolValue];
 }
 
+- (BOOL) isStoredOniCloud {
+    return [[self valueForProperty:MPMediaItemPropertyIsCloudItem] boolValue];
+}
+
 - (NSString *) podcastTitle
 {
 	return [self valueForProperty:MPMediaItemPropertyPodcastTitle];

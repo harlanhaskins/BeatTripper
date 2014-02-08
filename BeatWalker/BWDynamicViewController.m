@@ -17,15 +17,6 @@
 
 @implementation BWDynamicViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,24 +25,31 @@
     CGRect contentFrame = self.view.frame;
     contentFrame.origin.x += contentFrame.size.width;
     contentFrame.origin.y += contentFrame.size.height;
-    self.contentView = [[UIView alloc] initWithFrame:contentFrame];
+    self.contentView = self.supportsPhysics ? [[UIView alloc] initWithFrame:contentFrame] : self.view;
     self.contentView.backgroundColor = [UIColor beatTripperBackgroundColor];
-    [self.view addSubview:self.contentView];
+    if (self.contentView != self.view) {
+        [self.view addSubview:self.contentView];
+    }
+    
     [self addParallax];
 	// Do any additional setup after loading the view.
 }
 
 - (void) viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    CGRect contentFrame = self.view.frame;
-    contentFrame.origin.x -= contentFrame.size.width;
-    contentFrame.origin.y -= contentFrame.size.height;
-    self.contentView.frame = contentFrame;
+    if (self.supportsPhysics) {
+        CGRect contentFrame = self.view.frame;
+        contentFrame.origin.x -= contentFrame.size.width;
+        contentFrame.origin.y -= contentFrame.size.height;
+        self.contentView.frame = contentFrame;
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self performSelector:@selector(addInnerSnapBehavior) withObject:nil afterDelay:0.25];
+    if (self.supportsPhysics) {
+        [self performSelector:@selector(addInnerSnapBehavior) withObject:nil afterDelay:0.25];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,11 +65,13 @@
 
 - (void) addOuterSnapBehavior {
     [self.animator removeAllBehaviors];
-    CGPoint outerSnap;
-    outerSnap.x = self.view.centerX - self.view.width;
-    outerSnap.y = self.view.centerY;
-    UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:self.contentView snapToPoint:outerSnap];
-    [self.animator addBehavior:snapBehavior];
+    if (self.supportsPhysics) {
+        CGPoint outerSnap;
+        outerSnap.x = self.view.centerX - self.view.width;
+        outerSnap.y = self.view.centerY;
+        UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:self.contentView snapToPoint:outerSnap];
+        [self.animator addBehavior:snapBehavior];
+    }
 }
 
 - (void) addParallax {
@@ -105,6 +105,10 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (BOOL) supportsPhysics {
+    return [[UIDevice currentDevice] canReliablySupportiOS7Physics];
 }
 
 @end

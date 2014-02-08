@@ -49,6 +49,10 @@
 //        });
 //    });
     
+    cell.backgroundColor =
+    cell.textLabel.backgroundColor =
+    cell.detailTextLabel.backgroundColor = [UIColor beatTripperBackgroundColor];
+    
     return cell;
 }
 

@@ -60,6 +60,8 @@
     [self.typeLabel centerToParent];
     self.typeLabel.y = self.numberLabel.bottom;
     [self sizeToFit];
+    self.numberLabel.backgroundColor =
+    self.typeLabel.backgroundColor = [UIColor beatTripperBackgroundColor];
 }
 
 - (void) setType:(NSString*)type {

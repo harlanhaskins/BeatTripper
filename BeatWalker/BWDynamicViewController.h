@@ -15,5 +15,6 @@
 - (void) addInnerSnapBehavior;
 - (void) addOuterSnapBehavior;
 @property (nonatomic) UIView *contentView;
+@property (nonatomic, readonly) BOOL supportsPhysics;
 
 @end

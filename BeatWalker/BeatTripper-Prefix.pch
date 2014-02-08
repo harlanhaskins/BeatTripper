@@ -16,4 +16,5 @@
     #import <Foundation/Foundation.h>
     #import "UIView+Positioning.h"
     #import "UIColor+BeatTripper.h"
+    #import "UIDevice-Hardware.h"
 #endif

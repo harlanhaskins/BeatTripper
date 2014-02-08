@@ -84,6 +84,11 @@
     self.checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Check"]];
     self.checkView.alpha = 0.0;
     [self.contentView addSubview:self.checkView];
+    
+    self.addRouteButton.backgroundColor =
+    self.noRoutesLabel.backgroundColor =
+    self.checkView.backgroundColor =
+    self.pickRouteLabel.backgroundColor = self.contentView.backgroundColor;
 }
 
 - (void) reloadTableView {

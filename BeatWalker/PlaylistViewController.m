@@ -114,13 +114,15 @@
 
 - (void) dismiss {
     [self addOuterSnapBehavior];
-    [[MPMusicPlayerController iPodMusicPlayer] stop];
-    [[MPMusicPlayerController iPodMusicPlayer] setQueueWithItemCollection:nil];
-    [[MPMusicPlayerController iPodMusicPlayer] endGeneratingPlaybackNotifications];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self.model
-                                                    name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
-                                                  object:nil];
+    if (!TARGET_IPHONE_SIMULATOR) {
+        [[MPMusicPlayerController iPodMusicPlayer] stop];
+        [[MPMusicPlayerController iPodMusicPlayer] setQueueWithItemCollection:nil];
+        [[MPMusicPlayerController iPodMusicPlayer] endGeneratingPlaybackNotifications];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self.model
+                                                        name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+                                                      object:nil];
+    }
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -21,6 +21,7 @@
 		C93D9421189AEEFD00D1A336 /* UIColor+BeatTripper.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9420189AEEFD00D1A336 /* UIColor+BeatTripper.m */; };
 		C93D9424189AFC4A00D1A336 /* MusicView.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9423189AFC4A00D1A336 /* MusicView.m */; };
 		C93D9427189AFCAD00D1A336 /* PlayPauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C93D9426189AFCAD00D1A336 /* PlayPauseButton.m */; };
+		C97F87F818A1980F00B143DE /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = C97F87F718A1980F00B143DE /* UIDevice-Hardware.m */; };
 		C980CECA189D5A9100A9DFA4 /* RouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C980CEC9189D5A9100A9DFA4 /* RouteManager.m */; };
 		C980CECD189D5E5400A9DFA4 /* RouteDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C980CECC189D5E5400A9DFA4 /* RouteDataManager.m */; };
 		C98584611899F79100D52B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98584601899F79100D52B7F /* Foundation.framework */; };
@@ -62,6 +63,8 @@
 		C93D9423189AFC4A00D1A336 /* MusicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MusicView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C93D9425189AFCAD00D1A336 /* PlayPauseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayPauseButton.h; sourceTree = "<group>"; };
 		C93D9426189AFCAD00D1A336 /* PlayPauseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayPauseButton.m; sourceTree = "<group>"; };
+		C97F87F618A1980F00B143DE /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
+		C97F87F718A1980F00B143DE /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
 		C980CEC8189D5A9100A9DFA4 /* RouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteManager.h; sourceTree = "<group>"; };
 		C980CEC9189D5A9100A9DFA4 /* RouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteManager.m; sourceTree = "<group>"; };
 		C980CECB189D5E5400A9DFA4 /* RouteDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteDataManager.h; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 		C98584671899F79100D52B7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C97F87F618A1980F00B143DE /* UIDevice-Hardware.h */,
+				C97F87F718A1980F00B143DE /* UIDevice-Hardware.m */,
 				C98584681899F79100D52B7F /* BeatTripper-Info.plist */,
 				C98584691899F79100D52B7F /* InfoPlist.strings */,
 				C985846C1899F79100D52B7F /* main.m */,
@@ -340,6 +345,7 @@
 				C985849C189A106A00D52B7F /* UIView+Positioning.m in Sources */,
 				C985846D1899F79100D52B7F /* main.m in Sources */,
 				C9017755189B5AB500692598 /* PlaylistTableViewModel.m in Sources */,
+				C97F87F818A1980F00B143DE /* UIDevice-Hardware.m in Sources */,
 				C9017756189B5AB500692598 /* PlaylistViewController.m in Sources */,
 				A75409E0189B4637000F6B8C /* RouteCell.m in Sources */,
 				C920851D189D91E2000B1ED7 /* NewRouteViewController.m in Sources */,

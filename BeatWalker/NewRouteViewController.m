@@ -40,21 +40,37 @@
                                                                                     attributes:@{NSForegroundColorAttributeName: color}];
     self.routeNameTextField.textColor = [UIColor beatTripperTextColor];
     self.routeNameTextField.delegate = self;
-    [self.routeNameTextField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.5];
+    
+    [self.routeNameTextField performSelector:@selector(becomeFirstResponder)
+                                  withObject:nil
+                                  afterDelay:0.5];
+    
     [self.contentView addSubview:self.routeNameTextField];
     
     self.finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.finishButton setImage:[UIImage imageNamed:@"CheckButton"] forState:UIControlStateNormal];
-    [self.finishButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
+    [self.finishButton setImage:[UIImage imageNamed:@"CheckButton"]
+                       forState:UIControlStateNormal];
+    [self.finishButton addTarget:self action:@selector(finish)
+                forControlEvents:UIControlEventTouchUpInside];
     [self.finishButton sizeToFit];
     self.finishButton.enabled = NO;
     [self.contentView addSubview:self.finishButton];
     
     self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.cancelButton setImage:[UIImage imageNamed:@"XButton"] forState:UIControlStateNormal];
-    [self.cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    [self.cancelButton setImage:[UIImage imageNamed:@"XButton"]
+                       forState:UIControlStateNormal];
+    
+    [self.cancelButton addTarget:self action:@selector(dismiss)
+                forControlEvents:UIControlEventTouchUpInside];
+    
     [self.cancelButton sizeToFit];
     [self.contentView addSubview:self.cancelButton];
+    
+    self.cancelButton.backgroundColor =
+    self.finishButton.backgroundColor =
+    self.routeLabel.backgroundColor =
+    self.routeNameTextField.backgroundColor =
+    self.contentView.backgroundColor;
 }
 
 - (void) dismiss {

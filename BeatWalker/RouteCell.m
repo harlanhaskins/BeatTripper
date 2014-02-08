@@ -29,9 +29,13 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    cell.textLabel.textColor = [UIColor beatTripperTextColor];
     cell.contentView.backgroundColor =
-    cell.backgroundColor = [UIColor beatTripperBackgroundColor];
+    cell.backgroundColor =
+    cell.textLabel.backgroundColor =
+    cell.detailTextLabel.backgroundColor = [UIColor beatTripperBackgroundColor];
+    
+    
+    cell.textLabel.textColor =
     cell.detailTextLabel.textColor = [UIColor beatTripperTextColor];
     
     return cell;

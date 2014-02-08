@@ -31,6 +31,8 @@
 
 @property (nonatomic, readonly) BOOL isCompilation;
 
+@property (nonatomic, readonly) BOOL isStoredOniCloud;
+
 @property (nonatomic, readonly) NSString *podcastTitle;
 
 @property (nonatomic, readonly) NSInteger playCount;

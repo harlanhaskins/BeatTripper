@@ -35,29 +35,36 @@
 + (instancetype) model {
     
     PlaylistTableViewModel *model = [PlaylistTableViewModel new];
-    model.musicController = [MPMusicPlayerController iPodMusicPlayer];
-    model.musicCheckTimer = [NSTimer timerWithTimeInterval:1.0
-                                                    target:model
-                                                  selector:@selector(updatePlayedSongsCount)
-                                                  userInfo:nil
-                                                   repeats:YES];
     
-    [[NSNotificationCenter defaultCenter] addObserver:model
-                                             selector:@selector(handleNowPlayingItemChange)
-                                                 name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
-                                               object:nil];
-    
-    [model.musicController beginGeneratingPlaybackNotifications];
-    
-    model.musicController.shuffleMode = MPMusicShuffleModeOff;
-    
-    [[NSRunLoop currentRunLoop] addTimer:model.musicCheckTimer forMode:NSDefaultRunLoopMode];
+    if (!TARGET_IPHONE_SIMULATOR) {
+        model.musicController = [MPMusicPlayerController iPodMusicPlayer];
+        model.musicCheckTimer = [NSTimer timerWithTimeInterval:1.0
+                                                        target:model
+                                                      selector:@selector(updatePlayedSongsCount)
+                                                      userInfo:nil
+                                                       repeats:YES];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:model
+                                                 selector:@selector(handleNowPlayingItemChange)
+                                                     name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+                                                   object:nil];
+        
+        [model.musicController beginGeneratingPlaybackNotifications];
+        
+        model.musicController.shuffleMode = MPMusicShuffleModeOff;
+        
+        [[NSRunLoop currentRunLoop] addTimer:model.musicCheckTimer forMode:NSDefaultRunLoopMode];
+    }
     
     return model;
 }
 
 - (void) loadSongs {
     // Load songs in the background.
+    if (TARGET_IPHONE_SIMULATOR) {
+        return;
+    }
+    
     dispatch_queue_t queue = dispatch_queue_create("SongLoading", NULL);
     dispatch_async(queue, ^{
         
@@ -74,7 +81,7 @@
         for (int i = 0; i < songLimit; ++i) {
             [self.currentIndices addObject:@(i)];
         }
-//        [self togglePlayback:PlayStatePlaying];
+        //        [self togglePlayback:PlayStatePlaying];
     });
 }
 
@@ -86,14 +93,14 @@
     NSInteger numberOfCollections = [query items].count;
     NSInteger highestNumberOfItems = 400;
     NSInteger numberOfItems = numberOfCollections >= highestNumberOfItems ? highestNumberOfItems : numberOfCollections;
-    for (int i = 0; i < numberOfItems; i++) {
+    while (songsArray.count < numberOfItems) {
         MPMediaItem *song;
         do {
             NSInteger randomIndex = arc4random_uniform((u_int32_t)[querySongsArray count]);
             song = querySongsArray[randomIndex];
         }
         while ([songsArray indexOfObject:song] != NSNotFound);
-        [songsArray addObject:song];
+            [songsArray addObject:song];
     }
     
     MPMediaItemCollection *collection = [MPMediaItemCollection collectionWithItems:songsArray];
