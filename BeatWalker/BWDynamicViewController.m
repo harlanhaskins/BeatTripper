@@ -108,7 +108,11 @@
 }
 
 - (BOOL) supportsPhysics {
-    return [[UIDevice currentDevice] canReliablySupportiOS7Physics];
+    NSString *modelIdentifier = [[UIDevice currentDevice] modelIdentifier];
+    return (([modelIdentifier rangeOfString:@"iPad4,"].location != NSNotFound)   ||
+            ([modelIdentifier rangeOfString:@"iPod5,"].location != NSNotFound) ||
+            ([modelIdentifier rangeOfString:@"iPhone5,"].location != NSNotFound) ||
+            ([modelIdentifier rangeOfString:@"iPhone6,"].location != NSNotFound));
 }
 
 @end
