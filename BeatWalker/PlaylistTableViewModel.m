@@ -16,9 +16,7 @@
 
 @property (nonatomic) NSMutableArray *deletedIndices;
 @property (nonatomic) NSMutableArray *currentIndices;
-@property (nonatomic) MPMusicPlayerController *musicController;
-
-@property (nonatomic) MPMediaItemCollection *collection;
+@property (nonatomic) GVMusicPlayerController *musicController;
 
 @property (nonatomic) NSUInteger currentPlayingSongIndex;
 
@@ -37,21 +35,24 @@
     PlaylistTableViewModel *model = [PlaylistTableViewModel new];
     
     if (!TARGET_IPHONE_SIMULATOR) {
-        model.musicController = [MPMusicPlayerController iPodMusicPlayer];
+//        model.musicController = [MPMusicPlayerController iPodMusicPlayer];
+        model.musicController = [GVMusicPlayerController sharedInstance];
         model.musicCheckTimer = [NSTimer timerWithTimeInterval:1.0
                                                         target:model
                                                       selector:@selector(updatePlayedSongsCount)
                                                       userInfo:nil
                                                        repeats:YES];
         
-        [[NSNotificationCenter defaultCenter] addObserver:model
-                                                 selector:@selector(handleNowPlayingItemChange)
-                                                     name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
-                                                   object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:model
+//                                                 selector:@selector(handleNowPlayingItemChange)
+//                                                     name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+//                                                   object:nil];
         
-        [model.musicController beginGeneratingPlaybackNotifications];
+//        [model.musicController beginGeneratingPlaybackNotifications];
+        [model.musicController addDelegate:model];
         
-        model.musicController.shuffleMode = MPMusicShuffleModeOff;
+        model.musicController.shouldReturnToBeginningWhenSkippingToPreviousItem = NO;
+        model.musicController.shuffleMode = MPMusicShuffleModeSongs;
         
         [[NSRunLoop currentRunLoop] addTimer:model.musicCheckTimer forMode:NSDefaultRunLoopMode];
     }
@@ -71,13 +72,14 @@
         self.deletedIndices = [NSMutableArray array];
         
         MPMediaQuery *songQuery = [MPMediaQuery songsQuery];
-        
-        MPMediaItemCollection *collection = [self shuffledCollectionWithMediaQuery:songQuery];
-        self.collection = collection;
-        [self.musicController setQueueWithItemCollection:collection];
+//
+//        MPMediaItemCollection *collection = [self shuffledCollectionWithMediaQuery:songQuery];
+//        self.collection = collection;
+//        [self.musicController setQueueWithItemCollection:collection];
+        [self.musicController setQueueWithQuery:songQuery];
         
         self.currentIndices = [NSMutableArray array];
-        NSInteger songLimit = MIN(collection.items.count, 400);
+        NSInteger songLimit = MIN(self.musicController.queue.count, 400);
         for (int i = 0; i < songLimit; ++i) {
             [self.currentIndices addObject:@(i)];
         }
@@ -120,7 +122,7 @@
 }
 
 - (MPMediaItem*) currentSong {
-    return self.collection.items[self.currentPlayingSongIndex];
+    return self.musicController.queue[self.currentPlayingSongIndex];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -129,7 +131,7 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger songIndex = [self.currentIndices[indexPath.row] integerValue];
-    NSArray *songs = [self.collection items];
+    NSArray *songs = self.musicController.queue;
     MPMediaItem *song = songs[songIndex];
     
     MediaItemTableViewCell *cell = [MediaItemTableViewCell cellWithMediaItem:song
@@ -215,13 +217,14 @@
 }
 
 - (NSUInteger) nextPlayableIndexAfterIndex:(NSUInteger)index {
-    if (index >= self.collection.items.count) {
+    if (index >= self.musicController.queue.count) {
         return NSNotFound;
     }
     NSNumber *number = @(index + 1);
     while ([self.deletedIndices indexOfObject:number] != NSNotFound) {
+        NSLog(@"Next Index Attempt: %@", number);
         number = @([number intValue] + 1);
-        if ([number integerValue] >= self.collection.items.count) {
+        if ([number integerValue] >= self.musicController.queue.count) {
             return NSNotFound;
         }
     }
@@ -238,6 +241,7 @@
     }
     NSNumber *number = @(index - 1);
     while ([self.deletedIndices indexOfObject:number] != NSNotFound) {
+        NSLog(@"Previous Index Attempt: %@", number);
         number = @([number intValue] - 1);
         if ([number integerValue] < 0) {
             return NSNotFound;
@@ -270,8 +274,7 @@
 }
 
 - (void) playSongAtIndex:(NSInteger)index {
-    MPMediaItem *song = self.collection.items[index];
-    [self.musicController setNowPlayingItem:song];
+    [self.musicController playItemAtIndex:index];
     [self adjustInternalMusicRepresentationForNextSong];
 }
 
@@ -329,6 +332,10 @@
         self.currentPlayingSongIndex = musicControllerSongIndex;
         NSLog(@"Current Index: %li", (long)self.currentPlayingSongIndex);
     }
+}
+
+- (void) musicPlayer:(GVMusicPlayerController *)musicPlayer trackDidChange:(MPMediaItem *)nowPlayingItem previousTrack:(MPMediaItem *)previousTrack {
+    [self handleNowPlayingItemChange];
 }
 
 - (void) reloadTable {

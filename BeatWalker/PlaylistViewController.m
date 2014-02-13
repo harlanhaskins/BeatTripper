@@ -149,7 +149,6 @@
 - (void) viewDidLayoutSubviews {
     self.tableView.frame = self.contentView.frame;
     self.tableView.height /= 1.5;
-    self.tableView.width += 1;
     [self.tableView centerToParent];
     self.tableView.y += 25.0;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);

@@ -77,27 +77,25 @@
 - (void) addParallax {
     
     NSInteger relativeAbsoluteValue = 15;
-    
+
     // Set vertical effect
     UIInterpolatingMotionEffect *verticalMotionEffect =
-    [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.y"
-     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y"
+                                                    type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
     verticalMotionEffect.minimumRelativeValue = @(-relativeAbsoluteValue);
     verticalMotionEffect.maximumRelativeValue = @(relativeAbsoluteValue);
-    
+
     // Set horizontal effect
     UIInterpolatingMotionEffect *horizontalMotionEffect =
-    [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.x"
-     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x"
+                                                    type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
     horizontalMotionEffect.minimumRelativeValue = @(-relativeAbsoluteValue);
     horizontalMotionEffect.maximumRelativeValue = @(relativeAbsoluteValue);
-    
+
     // Create group to combine both
     UIMotionEffectGroup *group = [UIMotionEffectGroup new];
     group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
-    
+
     // Add both effects to your view
     [self.contentView addMotionEffect:group];
 }

@@ -10,10 +10,11 @@
 #import <Foundation/Foundation.h>
 #import "MusicView.h"
 #import "PlayPauseButton.h"
+#import "GVMusicPlayerController.h"
 
 @class MPMediaItem, Route;
 
-@interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, MusicViewDelegate>
+@interface PlaylistTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate, MusicViewDelegate, GVMusicPlayerControllerDelegate>
 
 + (instancetype) model;
 - (void) loadSongs;
