@@ -19,20 +19,10 @@
     
     // Stop playback if music is playing.
     if (!TARGET_IPHONE_SIMULATOR) {
-        [[MPMusicPlayerController iPodMusicPlayer] stop];
+        [[MPMusicPlayerController systemMusicPlayer] stop];
         [self cacheMediaItems];
     }
     
-    RouteViewController *routeVC = [RouteViewController new];
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor beatTripperBackgroundColor];
-    
-    self.window.rootViewController = routeVC;
-    
-    [self.window makeKeyAndVisible];
     return YES;
 }
 

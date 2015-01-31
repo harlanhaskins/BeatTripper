@@ -10,7 +10,7 @@
 #import "MusicView.h"
 #import "PlayPauseButton.h"
 
-@interface MusicView ()
+@interface MusicView () <PlayPauseButtonDelegate>
 
 @property (nonatomic) NSMutableArray *buttons;
 
@@ -27,10 +27,8 @@
     for (int i = 0; i < 3; i++) {
         UIButton *button;
         if (i == 1) {
-            button = [PlayPauseButton new];
-            [(PlayPauseButton*)button setPlayBackBlock:^(PlayState state) {
-                [self.delegate togglePlayback:state];
-            }];
+            PlayPauseButton *button = [PlayPauseButton new];
+            button.delegate = self;
         }
         else {
             button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -42,6 +40,10 @@
         [self addSubview:button];
         [self.buttons addObject:button];
     }
+}
+
+- (void)playPauseButton:(PlayPauseButton *)button didChangePlayState:(PlayState)state {
+    [self.delegate togglePlayback:state];
 }
 
 - (void) setFrame:(CGRect)frame {

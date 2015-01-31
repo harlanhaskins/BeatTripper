@@ -14,10 +14,16 @@ typedef enum {
     PlayStatePaused
 } PlayState;
 
+@class PlayPauseButton;
+@protocol PlayPauseButtonDelegate <NSObject>
+
+- (void)playPauseButton:(PlayPauseButton *)button didChangePlayState:(PlayState)state;
+
+@end
+
 @interface PlayPauseButton : UIButton
 
 @property (nonatomic, readonly) PlayState playState;
-
-@property (nonatomic, copy) void (^playBackBlock)(PlayState state);
+@property (nonatomic) id<PlayPauseButtonDelegate> delegate;
 
 @end

@@ -9,13 +9,18 @@
 
 #import <UIKit/UIKit.h>
 #import "MusicView.h"
-#import "BWDynamicViewController.h"
 
 @class Route;
 
-@interface PlaylistViewController : BWDynamicViewController
+@class PlaylistViewController;
+@protocol PlaylistViewControllerDelegate <NSObject>
 
-+ (instancetype) controllerWithCompletionBlock:(void (^)(NSTimeInterval time, double songAmount))completion;
+- (void)playlistViewController:(PlaylistViewController *)controller didSaveTripWithElapsedTime:(NSTimeInterval)time numberOfSongs:(CGFloat)songs;
+
+@end
+
+@interface PlaylistViewController : UITableViewController
+
 @property (nonatomic) Route *route;
 
 @end

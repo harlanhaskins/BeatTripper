@@ -12,8 +12,4 @@
 
 @interface RouteTableViewModel : NSObject<UITableViewDataSource, UITableViewDelegate>
 
-+ (instancetype) model;
-@property (nonatomic, copy) void (^pushRouteAtIndex)(NSInteger index);
-@property (nonatomic, copy) void (^didDeleteRoute)(NSInteger index);
-
 @end

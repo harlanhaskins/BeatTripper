@@ -36,24 +36,19 @@
 }
 
 - (void) playBackChanged {
-    MPMusicPlaybackState state = [[MPMusicPlayerController iPodMusicPlayer] playbackState];
+    MPMusicPlaybackState state = [[MPMusicPlayerController systemMusicPlayer] playbackState];
     self.playState = (state == MPMusicPlaybackStatePlaying) ? PlayStatePlaying : PlayStatePaused;
 }
 
 - (void) setPlayState:(PlayState)playState {
     _playState = playState;
     [self setBackgroundImage:[self imageForCurrentPlayState] forState:UIControlStateNormal];
+    [self.delegate playPauseButton:self didChangePlayState:playState];
 }
-        
-        
+
+
 - (void) didTouchButton {
-    if (self.playState == PlayStatePaused) {
-        self.playState = PlayStatePlaying;
-    }
-    else {
-        self.playState = PlayStatePaused;
-    }
-    self.playBackBlock(self.playState);
+    self.playState = self.playState == PlayStatePaused ? PlayStatePlaying : PlayStatePaused;
 }
 
 - (void) dealloc {

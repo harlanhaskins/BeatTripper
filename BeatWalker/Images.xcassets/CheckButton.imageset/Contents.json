@@ -2,13 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "CheckMark.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "CheckMark-1.png"
+      "filename" : "Check.pdf"
     }
   ],
   "info" : {

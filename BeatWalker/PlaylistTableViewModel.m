@@ -8,9 +8,9 @@
 //
 
 #import "PlaylistTableViewModel.h"
-#import "MPMediaItem-Properties.h"
 #import "MediaItemTableViewCell.h"
 #import "RouteManager.h"
+@import MediaPlayer;
 
 @interface PlaylistTableViewModel ()
 
@@ -37,7 +37,7 @@
     PlaylistTableViewModel *model = [PlaylistTableViewModel new];
     
     if (!TARGET_IPHONE_SIMULATOR) {
-        model.musicController = [MPMusicPlayerController iPodMusicPlayer];
+        model.musicController = [MPMusicPlayerController systemMusicPlayer];
         model.musicCheckTimer = [NSTimer timerWithTimeInterval:1.0
                                                         target:model
                                                       selector:@selector(updatePlayedSongsCount)
@@ -81,29 +81,31 @@
         for (int i = 0; i < songLimit; ++i) {
             [self.currentIndices addObject:@(i)];
         }
-        //        [self togglePlayback:PlayStatePlaying];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        });
     });
 }
 
 - (MPMediaItemCollection*) shuffledCollectionWithMediaQuery:(MPMediaQuery*)query {
     NSArray *querySongsArray = [query items];
     
-    NSMutableArray *songsArray = [NSMutableArray array];
+    NSMutableSet *songs = [NSMutableSet set];
     
     NSInteger numberOfCollections = [query items].count;
     NSInteger highestNumberOfItems = 400;
     NSInteger numberOfItems = numberOfCollections >= highestNumberOfItems ? highestNumberOfItems : numberOfCollections;
-    while (songsArray.count < numberOfItems) {
+    while (songs.count < numberOfItems) {
         MPMediaItem *song;
         do {
             NSInteger randomIndex = arc4random_uniform((u_int32_t)[querySongsArray count]);
             song = querySongsArray[randomIndex];
+            [songs addObject:song];
         }
-        while ([songsArray indexOfObject:song] != NSNotFound);
-            [songsArray addObject:song];
+        while (![songs containsObject:song]);
     }
     
-    MPMediaItemCollection *collection = [MPMediaItemCollection collectionWithItems:songsArray];
+    MPMediaItemCollection *collection = [MPMediaItemCollection collectionWithItems:songs.allObjects];
     return collection;
 }
 
@@ -114,8 +116,6 @@
         double totalTime = self.musicController.nowPlayingItem.playbackDuration;
         self.currentSongPlayTime = currentTime;
         self.currentSongAmount = currentTime / totalTime;
-        self.playbackTimeUpdated([self totalTimeWithCurrentTime]);
-        self.songNumberUpdated([self totalSongAmountWithCurrentSongAmount]);
     }
 }
 
@@ -132,8 +132,8 @@
     NSArray *songs = [self.collection items];
     MPMediaItem *song = songs[songIndex];
     
-    MediaItemTableViewCell *cell = [MediaItemTableViewCell cellWithMediaItem:song
-                                                               isCurrentSong:(indexPath.row == 0)];
+    MediaItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MediaItemCell" forIndexPath:indexPath];
+    [cell setMediaItem:song currentSong:(indexPath.row == self.currentPlayingSongIndex)];
     
     return cell;
 }
@@ -338,7 +338,6 @@
 - (void) finish {
     [self adjustInternalMusicRepresentationForNextSong];
     [self.musicCheckTimer invalidate];
-    self.updatedRouteBlock(self.totalSongPlayTime, self.totalSongAmount);
 }
 
 @end

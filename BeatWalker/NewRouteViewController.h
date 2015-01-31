@@ -7,11 +7,11 @@
 //  Distributed under the MIT license.
 //
 
-#import "BWDynamicViewController.h"
+@import UIKit;
 
 @class Route;
 
-@interface NewRouteViewController : BWDynamicViewController<UITextFieldDelegate>
+@interface NewRouteViewController : UIViewController<UITextFieldDelegate>
 
 @property (nonatomic, copy) void (^finishedCreatingRouteBlock)(Route* route);
 

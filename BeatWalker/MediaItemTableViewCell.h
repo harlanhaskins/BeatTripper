@@ -13,7 +13,6 @@
 
 @interface MediaItemTableViewCell : UITableViewCell
 
-@property (nonatomic, readonly) MPMediaItem *mediaItem;
-+ (instancetype) cellWithMediaItem:(MPMediaItem*)item isCurrentSong:(BOOL)currentSong;
+- (void)setMediaItem:(MPMediaItem *)item currentSong:(BOOL)currentSong;
 
 @end

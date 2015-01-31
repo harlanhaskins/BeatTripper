@@ -8,11 +8,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BWDynamicViewController.h"
 #import "PlaylistViewController.h"
 
-@interface RouteViewController : BWDynamicViewController
-
-@property (nonatomic) PlaylistViewController *playlistVC;
+@interface RouteViewController : UITableViewController
 
 @end

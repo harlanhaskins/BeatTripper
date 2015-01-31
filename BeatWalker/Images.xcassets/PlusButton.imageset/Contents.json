@@ -2,13 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "plusButton-1.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "plusButton@2x.png"
+      "filename" : "Plus.pdf"
     }
   ],
   "info" : {

@@ -13,6 +13,6 @@
 
 @interface RouteCell : UITableViewCell
 
-+ (instancetype) cellWithRoute:(Route *)route;
+@property (nonatomic) Route *route;
 
 @end

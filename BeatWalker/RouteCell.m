@@ -10,35 +10,11 @@
 #import "RouteCell.h"
 #import "Route.h"
 
-@interface RouteCell ()
-
-@property (nonatomic) Route *route;
-
-@end
-
 @implementation RouteCell
 
-+ (instancetype) cellWithRoute:(Route *)route
-{
-    RouteCell *cell = [[RouteCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                       reuseIdentifier:@"RouteCell"];
-    
-    cell.route = route;
-    cell.textLabel.text = route.name;
-    cell.detailTextLabel.text = route.details;
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    cell.contentView.backgroundColor =
-    cell.backgroundColor =
-    cell.textLabel.backgroundColor =
-    cell.detailTextLabel.backgroundColor = [UIColor beatTripperBackgroundColor];
-    
-    
-    cell.textLabel.textColor =
-    cell.detailTextLabel.textColor = [UIColor beatTripperTextColor];
-    
-    return cell;
+- (void)setRoute:(Route *)route {
+    self.textLabel.text = route.name;
+    self.detailTextLabel.text = route.details;
 }
 
 @end

@@ -31,7 +31,7 @@
     self.routeLabel.textColor = [UIColor beatTripperTextColor];
     self.routeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:26.0];
     [self.routeLabel sizeToFit];
-    [self.contentView addSubview:self.routeLabel];
+    [self.view addSubview:self.routeLabel];
     
     self.routeNameTextField = [UITextField new];
     
@@ -45,7 +45,7 @@
                                   withObject:nil
                                   afterDelay:0.5];
     
-    [self.contentView addSubview:self.routeNameTextField];
+    [self.view addSubview:self.routeNameTextField];
     
     self.finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.finishButton setImage:[UIImage imageNamed:@"CheckButton"]
@@ -54,7 +54,7 @@
                 forControlEvents:UIControlEventTouchUpInside];
     [self.finishButton sizeToFit];
     self.finishButton.enabled = NO;
-    [self.contentView addSubview:self.finishButton];
+    [self.view addSubview:self.finishButton];
     
     self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.cancelButton setImage:[UIImage imageNamed:@"XButton"]
@@ -64,13 +64,13 @@
                 forControlEvents:UIControlEventTouchUpInside];
     
     [self.cancelButton sizeToFit];
-    [self.contentView addSubview:self.cancelButton];
+    [self.view addSubview:self.cancelButton];
     
     self.cancelButton.backgroundColor =
     self.finishButton.backgroundColor =
     self.routeLabel.backgroundColor =
     self.routeNameTextField.backgroundColor =
-    self.contentView.backgroundColor;
+    self.view.backgroundColor;
 }
 
 - (void) dismiss {
@@ -86,7 +86,6 @@
 
 - (void) close {
     [self resignFirstResponder];
-    [self addOuterSnapBehavior];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -97,7 +96,7 @@
     self.routeLabel.y = 50.0;
     
     self.routeNameTextField.height = 44.0;
-    self.routeNameTextField.width = self.contentView.width * 0.75;
+    self.routeNameTextField.width = self.view.width * 0.75;
     [self.routeNameTextField centerToParent];
     self.routeNameTextField.y = self.routeLabel.bottom + padding;
     

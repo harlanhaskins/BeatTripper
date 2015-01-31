@@ -8,7 +8,7 @@
 //
 
 #import "MediaItemTableViewCell.h"
-#import "MPMediaItem-Properties.h"
+@import MediaPlayer;
 
 @interface MediaItemTableViewCell ()
 
@@ -16,51 +16,45 @@
 
 @end
 
+static NSCache *artworkCache;
+
 @implementation MediaItemTableViewCell
 
-+ (instancetype) cellWithMediaItem:(MPMediaItem*)item isCurrentSong:(BOOL)currentSong {
-    MediaItemTableViewCell *cell = [[MediaItemTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    
-    cell.mediaItem = item;
-    
-    cell.textLabel.textColor =
-    cell.detailTextLabel.textColor = currentSong ? [UIColor beatTripperTextColor] : [UIColor beatTripperUnhighlightedTextColor];
-    [cell.imageView setClipsToBounds:YES];
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    cell.textLabel.width -= 15.0;
-    
-    cell.accessoryView = [UIView new];
-
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *artwork = item.artwork;
-        NSString *artist = item.artist;
-        NSString *title = item.title;
-        
-        UILabel *timeStampLabel = [item cellTimeStampLabel];
-        timeStampLabel.center = CGPointMake(cell.width - 20.0, 44.0 / 2.0);
-        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-            cell.textLabel.text = title;
-            cell.detailTextLabel.text = artist;
-            cell.imageView.image = artwork;
-            [cell.contentView addSubview:timeStampLabel];
-//        });
-//    });
-    
-    cell.backgroundColor =
-    cell.textLabel.backgroundColor =
-    cell.detailTextLabel.backgroundColor = [UIColor beatTripperBackgroundColor];
-    
-    return cell;
++ (void)initialize {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        artworkCache = [NSCache new];
+    });
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
+- (void)setMediaItem:(MPMediaItem *)item currentSong:(BOOL)currentSong {
+    self.mediaItem = item;
+    
+    self.textLabel.textColor =
+    self.detailTextLabel.textColor = currentSong ? [UIColor beatTripperTextColor] : [UIColor beatTripperUnhighlightedTextColor];
+    
+    self.textLabel.text = item.title;
+    self.detailTextLabel.text = item.artist;
+    
+    [self fetchArtwork];
+}
 
-    // Configure the view for the selected state
+- (void)fetchArtwork {
+    if ([artworkCache objectForKey:self.mediaItem.assetURL.absoluteString]) {
+        self.imageView.image = [artworkCache objectForKey:self.mediaItem.assetURL.absoluteString];
+    } else {
+        self.imageView.image = [UIImage imageNamed:@"BlankArtwork"];
+        [artworkCache setObject:self.imageView.image forKey:self.mediaItem.assetURL.absoluteString];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *artwork = [self.mediaItem.artwork imageWithSize:CGSizeMake(44.0, 44.0)];
+            [artworkCache setObject:artwork forKey:self.mediaItem.assetURL.absoluteString];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:1.0 initialSpringVelocity:1.0 options:0 animations:^{
+                    self.imageView.image = artwork;
+                } completion:nil];
+            });
+        });
+    }
 }
 
 @end

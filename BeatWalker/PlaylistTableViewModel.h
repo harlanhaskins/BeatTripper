@@ -20,14 +20,9 @@
 
 @property (nonatomic) UIRefreshControl *refreshControl;
 
-@property (nonatomic) UITableView *tableView;
+@property (nonatomic, weak) UITableView *tableView;
 
 @property (nonatomic, copy) void (^refreshTableViewBlock)();
-
-@property (nonatomic, copy) void (^playbackTimeUpdated)(double playbackTime);
-@property (nonatomic, copy) void (^songNumberUpdated)(double songNumber);
-
-@property (nonatomic, copy) void (^updatedRouteBlock)(NSTimeInterval time, double songAmount);
 
 @property (nonatomic, readonly) MPMediaItem *currentSong;
 

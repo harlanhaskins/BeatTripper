@@ -3,5 +3,6 @@
 
 target "BeatTripper" do
 pod 'UIDevice-Hardware'
+pod 'UIView+Positioning'
 end
 

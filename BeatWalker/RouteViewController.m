@@ -15,103 +15,24 @@
 
 @interface RouteViewController ()
 
-@property (nonatomic) UITableView *tableView;
-@property (nonatomic) RouteTableViewModel *model;
-
-@property (nonatomic) UIRefreshControl *refreshControl;
-
-@property (nonatomic) UILabel *pickRouteLabel;
-
-@property (nonatomic) UIButton *addRouteButton;
-
-@property (nonatomic) UIView *tableViewTopBorderCoverView;
-
-@property (nonatomic) UILabel *noRoutesLabel;
-
-@property (nonatomic) UIView *checkView;
+@property (nonatomic) NSString *noRoutesAttributedString;
 
 @end
 
 @implementation RouteViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.model = [RouteTableViewModel model];
-    
-    self.pickRouteLabel = [UILabel new];
-    self.pickRouteLabel.text = @"Your Routes";
-    self.pickRouteLabel.textColor = [UIColor beatTripperTextColor];
-    self.pickRouteLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:26.0];
-    [self.pickRouteLabel sizeToFit];
-    [self.contentView addSubview:self.pickRouteLabel];
-    
-    __weak RouteViewController *weakSelf = self;
-    self.model.pushRouteAtIndex = ^(NSInteger index){
-        [weakSelf pushRouteAtIndex:index];
-    };
-    self.model.didDeleteRoute = ^(NSInteger index) {
-        [weakSelf showNoItemsMessageIfNecessary];
-    };
-    
-    self.tableView = [self createTableViewWithRefreshControl];
-    self.tableView.backgroundColor = self.contentView.backgroundColor;
-    self.tableView.dataSource = self.model;
-    self.tableView.delegate = self.model;
-    self.tableView.separatorColor = [UIColor beatTripperSubtleTextColor];
-    
-    self.tableViewTopBorderCoverView = [UIView new];
-    
-    [self.contentView addSubview:self.tableViewTopBorderCoverView];
-    
-    [self.contentView addSubview:self.tableView];
-    
-    self.addRouteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.addRouteButton setImage:[UIImage imageNamed:@"PlusButton"] forState:UIControlStateNormal];
-    [self.addRouteButton addTarget:self action:@selector(showNewRouteViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.addRouteButton sizeToFit];
-    self.addRouteButton.size = CGSizeApplyAffineTransform(self.addRouteButton.size, CGAffineTransformMakeScale(0.9, 0.9));
-    [self.contentView addSubview:self.addRouteButton];
-    
-    self.noRoutesLabel = [UILabel new];
-    self.noRoutesLabel.numberOfLines = 0;
-    self.noRoutesLabel.attributedText = [self noRoutesAttributedString];
-    self.noRoutesLabel.font = self.pickRouteLabel.font;
-    self.noRoutesLabel.textAlignment = NSTextAlignmentCenter;
-    [self.noRoutesLabel sizeToFit];
-    [self.contentView addSubview:self.noRoutesLabel];
-    
-    self.checkView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Check"]];
-    self.checkView.alpha = 0.0;
-    [self.contentView addSubview:self.checkView];
-    
-    self.addRouteButton.backgroundColor =
-    self.noRoutesLabel.backgroundColor =
-    self.checkView.backgroundColor =
-    self.pickRouteLabel.backgroundColor = self.contentView.backgroundColor;
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.noRoutesAttributedString = [self noRoutesAttributedString];
+    [self reloadTableView];
 }
 
 - (void) reloadTableView {
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
-    [self showNoItemsMessageIfNecessary];
 }
 
-- (UITableView*) createTableViewWithRefreshControl {
-    UITableViewController *tableVCForRefreshControl = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-    tableVCForRefreshControl.refreshControl = [UIRefreshControl new];
-    [tableVCForRefreshControl.refreshControl addTarget:self action:@selector(reloadTableView) forControlEvents:UIControlEventAllEvents];
-    self.refreshControl = tableVCForRefreshControl.refreshControl;
-    
-    return tableVCForRefreshControl.tableView;
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.tableView reloadData];
-}
-
-- (NSAttributedString*) noRoutesAttributedString {
+- (NSAttributedString*) newNoRoutesAttributedString {
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc]
                                          initWithString:@"Tap the + icon\nto get started!"];
     
@@ -125,83 +46,25 @@
     return string;
 }
 
-- (void) pushRouteAtIndex:(NSInteger)index {
-    Route *route = [[RouteManager sharedManager] routeAtIndex:index];
-    void (^updatedRouteBlock)(NSTimeInterval, double) = ^(NSTimeInterval time, double songAmount) {
-        [[RouteManager sharedManager] addTime:time toRoute:route];
-        [[RouteManager sharedManager] addSongAmount:songAmount toRoute:route];
-        [self.tableView reloadData];
-        [self performSelector:@selector(flashCheck) withObject:nil afterDelay:0.2];
-    };
-    PlaylistViewController *playlistVC = [PlaylistViewController controllerWithCompletionBlock:updatedRouteBlock];
-    [self presentViewController:playlistVC animated:YES completion:nil];
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[RouteManager sharedManager] numberOfRoutes];
 }
 
-- (void) flashCheck {
-    [UIView animateWithDuration:0.0 animations:^{
-        self.checkView.alpha = 0.75;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:1.0 animations:^{
-            self.checkView.alpha = 0.0;
-        }];
-    }];
+- (UITableViewCell*) tableView:(UITableView*) tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Route *route = [[RouteManager sharedManager] routeAtIndex:indexPath.row];
+    RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RouteCell" forIndexPath:indexPath];
+    cell.route = route;
+    return cell;
 }
 
-- (void) showNewRouteViewController {
-    NewRouteViewController *newRouteVC = [NewRouteViewController new];
-    newRouteVC.finishedCreatingRouteBlock = ^(Route* route) {
-        if (route) {
-            [[RouteManager sharedManager] addRoute:route];
-            [self.tableView reloadData];
-        }
-        [self showNoItemsMessageIfNecessary];
-    };
-    [self presentViewController:newRouteVC animated:YES completion:nil];
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
-- (void) showNoItemsMessageIfNecessary {
-    self.noRoutesLabel.hidden = ![self shouldShowNoItemsLabel];
-}
-
-- (BOOL) shouldShowNoItemsLabel {
-    return [[RouteManager sharedManager] numberOfRoutes] == 0;
-}
-
-- (void) viewDidLayoutSubviews {
-    self.tableView.frame = self.view.frame;
-    self.tableView.height *= 0.75;
-    self.tableView.bottom = self.contentView.height;
-    
-    [self.checkView centerToParent];
-    
-    CGFloat sidePadding = 25.0;
-    
-    [self.pickRouteLabel centerToParent];
-    self.pickRouteLabel.x = sidePadding;
-    self.pickRouteLabel.centerY = (self.tableView.y / 2);
-    
-    [self.addRouteButton centerToParent];
-    self.addRouteButton.right = self.contentView.right - sidePadding;
-    self.addRouteButton.centerY = self.pickRouteLabel.centerY;
-    
-    [self setTableViewBorderCovers];
-    
-    [self.noRoutesLabel centerToParent];
-    
-    [self showNoItemsMessageIfNecessary];
-}
-
-
-- (void) setTableViewBorderCovers {
-    self.tableViewTopBorderCoverView.backgroundColor = [UIColor beatTripperSubtleTextColor];
-    
-    self.tableViewTopBorderCoverView.width = self.contentView.width; // * 1.5;
-    
-    self.tableViewTopBorderCoverView.height = (1.0 / [[UIScreen mainScreen] scale]);
-    
-    [self.tableViewTopBorderCoverView centerToParent];
-    
-    self.tableViewTopBorderCoverView.y = self.tableView.y - (1.0 / [[UIScreen mainScreen] scale]);
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[RouteManager sharedManager] deleteRouteAtIndex:indexPath.row];
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 @end
